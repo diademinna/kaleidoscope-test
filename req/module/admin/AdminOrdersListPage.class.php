@@ -1,0 +1,94 @@
+<?php
+require_once("module/AbstractPageModule.class.php");
+
+class AdminOrdersListPage extends AbstractPageModule {
+	var $conn;
+
+	function doBeforeOutput(){
+		$this->Authenticate();
+		
+		$this->registerThis('ChangeCountPage');
+		$this->processRequest();
+                $this->template->assign('unit', "orders");
+	}
+
+	function doContent(){
+		$conn = &DbFactory::getConnection();
+		
+		if($GLOBALS[_SERVER][QUERY_STRING]){
+			$get_param = "?".$GLOBALS[_SERVER][QUERY_STRING];
+		}
+		else{
+			$get_param = "";
+		}
+		$this->template->assign('get_param', $get_param);
+		
+		
+		$page = $this->request->getValue ('page');
+		if(!$page){
+			$page=1;
+		}
+		$this->template->assign('page', $page);
+			
+		$id = $this->request->getValue('id');
+		$action = $this->request->getValue ('action');
+		
+		if ($action == "delete" && !empty($id))	{
+			$query = $conn->newStatement("DELETE FROM user WHERE id=:id:");
+                        $query->setInteger('id', $id);
+                        $query->execute();
+	        
+			$this->response->redirect("/admin/user/list/{$page}/{$get_param}");
+		}
+		else {
+                    if($this->request->getValue('count_page')){
+                            define('COUNT_PAGE', $this->request->getValue('count_page'));
+                    }
+                    else{
+                            define('COUNT_PAGE', 20);
+                    }
+                    require_once 'module/common/PagerFactory.class.php';
+                    $pager = new PagerFactory();			
+                    $sql = "SELECT us.name, us.last_name, us.city, us.address, us.login, us.name_company, ord.* FROM orders ord INNER JOIN user us ON us.id=ord.id_user ORDER BY ord.date DESC";
+                    $fromWhereCnt = "orders";
+                    $href = "/admin/user/list/".$get_param;
+
+                    $pagerString = $pager->getPagerString($page, $sql, $fromWhereCnt, $href);
+                    $data = $pager->getPageData();
+                    foreach ($data as $key=>$value)
+                    {
+                        $query = $conn->newStatement("SELECT ord_pr.*, pr.price AS price_product, pr.ext as img_ext, pr.name AS name_product FROM order_product ord_pr INNER JOIN product pr ON ord_pr.id_product=pr.id WHERE ord_pr.id_order=:id_order:");
+                        $query->setInteger('id_order', $value['id']);
+                        $data_product = $query->getAllRecords();
+                        if ($data_product)
+                        {
+                            $data[$key]['order_product'] = $data_product;
+                            $total_summa = 0;
+                            foreach ($data_product as $key2=>$value2)
+                            {
+                                $total_summa = $total_summa + $value2['price_product']*$value2['count'];
+                            }
+                            $data[$key]['total_summa'] = $total_summa;
+                        }
+                    }
+
+                    $this->template->assign('pager_string', $pagerString);
+                    $this->template->assign('data', $data);
+
+                    $this->response->write($this->renderTemplate('admin/admin_orders_list.tpl'));
+		}
+	}
+	
+	
+	function ChangeCountPage($val, $get_param){
+		$objResponse = new xajaxResponse();
+		
+		$new_get_param = $this->ParamGET($val, $get_param, "count_page");		
+		$objResponse->redirect("/admin/orders/list/{$new_get_param}");
+		
+		return $objResponse;
+	}
+
+	
+}
+?>

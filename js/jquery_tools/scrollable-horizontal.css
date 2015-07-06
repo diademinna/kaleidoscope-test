@@ -1,0 +1,119 @@
+/*
+	root element for the scrollable.
+	when scrolling occurs this element stays still.
+*/
+.scrollable {
+	/* required settings */
+	position:relative;
+	overflow:hidden;
+	width: 555px;
+	height:325px;
+}
+
+.scroll_item {
+	text-align:center;
+	width:223px;
+}
+
+/*
+	root element for scrollable items. Must be absolutely positioned
+	and it should have a extremely large width to accomodate scrollable items.
+	it's enough that you set the width and height for the root element and
+	not for this element.
+*/
+.scrollable .sc_items {
+	/* this cannot be too large */
+	width:20000em;
+	position:absolute;
+	clear:both;
+}
+
+.sc_items div {
+	float:left;
+}
+
+/* single scrollable item */
+.scrollable img {
+/*
+	float:left;
+	margin:20px 5px 20px 21px;
+	background-color:#fff;
+	padding:2px;
+	border:1px solid #ccc;
+	width:100px;
+	height:75px;
+	
+	-moz-border-radius:4px;
+	-webkit-border-radius:4px;
+*/
+}
+
+/* active item */
+.scrollable .active {
+	border:2px solid #000;
+	position:relative;
+	cursor:default;
+}
+
+
+/* BUTTONS*/
+/* this makes it possible to add next button beside scrollable */
+.scrollable {
+	float:left;	
+}
+
+/* prev, next, prevPage and nextPage buttons */
+a.browse {
+	background: url(arrow_l.png) no-repeat;
+	display:block;
+	width:40px;
+	height:40px;
+	float:left;
+	margin:42px  10px;
+	cursor:pointer;
+	font-size:1px;
+}
+
+/* right */
+a.right 				{ background: url(arrow_r.png) no-repeat; clear:right; margin-right: 0px;}
+/*a.right:hover 		{ background-position:-30px -30px; }
+a.right:active 	{ background-position:-60px -30px; } */
+
+
+/* left */
+a.left				{ margin-left: 0px; } 
+/*a.left:hover  		{ background-position:-30px 0; }
+a.left:active  	{ background-position:-60px 0; }*/
+
+/* up and down */
+a.up, a.down		{ 
+	background:url(vert_large.png) no-repeat; 
+	float: none;
+	margin: 10px 50px;
+}
+
+/* up */
+a.up:hover  		{ background-position:-30px 0; }
+a.up:active  		{ background-position:-60px 0; }
+
+/* down */
+a.down 				{ background-position: 0 -30px; }
+a.down:hover  		{ background-position:-30px -30px; }
+a.down:active  	{ background-position:-60px -30px; } 
+
+
+/* disabled navigational button */
+#arrow_left a.disabled {
+	background: url(arrow_l_noact.png) no-repeat;
+}
+#arrow_right a.disabled {
+	background: url(arrow_r_noact.png) no-repeat;
+}
+
+/* disabled navigational button */
+#arrow_left2 a.disabled {
+	background: url(arrow_l_noact.png) no-repeat;
+}
+#arrow_right2 a.disabled {
+	background: url(arrow_r_noact.png) no-repeat;
+}

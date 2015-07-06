@@ -1,0 +1,20 @@
+.overlay {
+	/*	background-image:url(/js/jquery_tools/white.png); width:640px; padding:35px;	*/	
+	display:none; /* initially overlay is hidden */
+    background-color:#f1eee9;
+    width:580px;
+    min-height:410px;
+    padding:12px 12px;
+    border: 1px solid #CCCCCC;
+    box-shadow: 0 0 16px rgba(150, 150, 150, 0.9);
+}
+
+/* default close button positioned on upper right corner */
+.overlay .close {background-image:url(/js/jquery_tools/btn_close.png); position:absolute; right:5px; top:5px; cursor:pointer; height:20px; width:20px;}
+
+/* use a semi-transparent image for the overlay 
+#overlay {background-image:url(http://static.flowplayer.org/img/overlay/transparent.png); color:#efefef; height:450px;}
+*/
+
+/* container for external content. uses vertical scrollbar, if needed */
+div.contentWrap {height:441px; overflow-y:auto;}
