@@ -23,6 +23,10 @@ class AdminCategoryAddPage extends FormPageModule {
 		
 		$id_category = $this->request->getValue("id_category"); // только когда редактируем
 		$this->template->assign('id_category', $id_category);
+                
+                $query = $this->conn->newStatement("SELECT * FROM product_param WHERE parent_id=0");
+                $data_product_param = $query->getAllRecords();
+                $this->template->assign('data_product_param', $data_product_param);
 		
 		// ФОРМИРУЕМ НАВИГАЦИЮ.
 		if($id_category){  // выбрана какая-то категория				
@@ -64,20 +68,21 @@ class AdminCategoryAddPage extends FormPageModule {
 		$id_category = $this->request->getValue("id_category"); // только когда редактируем
 		
 		if (!empty($id_category) && $action == "edit"){
-			$query = $this->conn->newStatement("UPDATE category SET name=:name:, text=:text:, ext=:ext:, title=:title: WHERE id=:id_category:");
+			$query = $this->conn->newStatement("UPDATE category SET name=:name:, text=:text:, ext=:ext:, title=:title:, id_group_param=:id_group_param: WHERE id=:id_category:");
 	        $query->setInteger('id_category', $id_category);
 		}
 		else{
 			$query_pos = $this->conn->newStatement("SELECT MAX(pos)+1 FROM category");
 			$pos = (int)$query_pos->getOneValue();
 								
-			$query = $this->conn->newStatement("INSERT INTO category SET name=:name:, text=:text:, title=:title:, ext=:ext:, active=:active:, pos=:pos:, parent_id=:parent_id:, main=:main:");
+			$query = $this->conn->newStatement("INSERT INTO category SET name=:name:, text=:text:, title=:title:, ext=:ext:, active=:active:, pos=:pos:, parent_id=:parent_id:, main=:main:, id_group_param=:id_group_param:");
 			$query->setInteger('active', 1);
 			$query->setInteger("pos", $pos?$pos:1);
 			$query->setInteger("parent_id", $parent_id);
 			$query->setInteger("main", 0);
 		}
 		
+		$query->setInteger('id_group_param', $this->formData['id_group_param']);
 		$query->setVarChar('name', $this->formData['name']);
 		$query->setText('text', $this->formData['text']);
 		$query->setVarChar('title', $this->formData['title']);

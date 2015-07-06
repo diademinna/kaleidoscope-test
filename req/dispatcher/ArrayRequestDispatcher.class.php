@@ -202,6 +202,16 @@ class ArrayRequestDispatcher extends RequestDispatcher {
 						
 			'/admin/category/add/(\d+)/'				=> array('moduleName' => 'admin/AdminCategoryAddPage', 'moduleType' => 'module', 'parent_id' => '$1'),
 			'/admin/category/add/(\d+)/edit/(\d+)/'		=> array('moduleName' => 'admin/AdminCategoryAddPage', 'moduleType' => 'module', 'parent_id' => '$1', 'action' => 'edit', 'id_category' => '$2'),
+                    
+                        //параметры для продукта
+                        '/admin/product_param/list/'						=> array('moduleName' => 'admin/AdminProductParamListPage', 'moduleType' => 'module'),
+			'/admin/product_param/list/(\d+)/'				=> array('moduleName' => 'admin/AdminProductParamListPage', 'moduleType' => 'module', 'id_product_param' => '$1'),
+			'/admin/product_param/list/(\d+)/delete/(\d+)/'	=> array('moduleName' => 'admin/AdminProductParamListPage', 'moduleType' => 'module', 'id_product_param' => '$1', 'action' => 'delete', 'id' => '$2'),
+			'/admin/product_param/add/(\d+)/'				=> array('moduleName' => 'admin/AdminProductParamAddPage', 'moduleType' => 'module', 'parent_id' => '$1'),
+			'/admin/product_param/add/(\d+)/edit/(\d+)/'		=> array('moduleName' => 'admin/AdminProductParamAddPage', 'moduleType' => 'module', 'parent_id' => '$1', 'action' => 'edit', 'id_product_param' => '$2'),
+                    
+                    
+                    
 			
 			'/admin/product/list/'	=> array('moduleName' => 'admin/AdminProductListPage', 'moduleType' => 'module'),
                         '/admin/product/list/(\d+)/'				=> array('moduleName' => 'admin/AdminProductListPage', 'moduleType' => 'module', 'page' => '$1'),

@@ -80,6 +80,12 @@
                             <span class="nav-label">Заказы</span>
                         </a>
                     </li>
+                    <li{if $unit=="product_param"} class="active"{/if}>
+                        <a href="/admin/product_param/list/">
+                            <i class="fa fa-cog"></i>
+                            <span class="nav-label">Параметры продуктов</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </nav>
@@ -103,7 +109,11 @@
                     <h2>{$smarty.capture.content_name}</h2>
                     {if $mass_navigation}
                         <ol class="breadcrumb">
-                            <li><a href="/admin/category/list/">Все категории</a></li>
+                            {if $unit=="product_param"}
+                                <li><a href="/admin/product_param/list/">Все группы параметров</a></li>
+                            {else}
+                                <li><a href="/admin/category/list/">Все категории</a></li>
+                            {/if}
                             {foreach from=$mass_navigation item=cur name=loop}
                                 {if $smarty.foreach.loop.last}
                                     <li class="active">

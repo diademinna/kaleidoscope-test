@@ -1,16 +1,16 @@
-<?php /* Smarty version Smarty3-b7, created on 2015-07-06 17:41:13
+<?php /* Smarty version Smarty3-b7, created on 2015-07-07 00:36:24
          compiled from ".\templates\admin/admin_product_add.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:19927559a938940abe4-69140173%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:25592559af4d8550152-54989903%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'ca656c2d96e62719cd12a0629bf66f7f8b8dcd01' => 
     array (
       0 => '.\\templates\\admin/admin_product_add.tpl',
-      1 => 1436115965,
+      1 => 1436218581,
     ),
   ),
-  'nocache_hash' => '19927559a938940abe4-69140173',
+  'nocache_hash' => '25592559af4d8550152-54989903',
   'function' => 
   array (
   ),
@@ -117,6 +117,25 @@ if (count($_from) > 0){
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Параметры* :</label>
+                <div class="col-sm-10">
+                    <?php  $_smarty_tpl->tpl_vars['cur'] = new Smarty_Variable;
+ $_from = $_smarty_tpl->getVariable('data_product_params')->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+if (count($_from) > 0){
+    foreach ($_from as $_smarty_tpl->tpl_vars['cur']->key => $_smarty_tpl->tpl_vars['cur']->value){
+?>
+                        <div class="checkbox">
+                        <input id="optionsCheckBox_<?php echo $_smarty_tpl->getVariable('cur')->value['id'];?>
+" type="checkbox" name="id_param[<?php echo $_smarty_tpl->getVariable('cur')->value['id'];?>
+]" value="<?php echo $_smarty_tpl->getVariable('cur')->value['id'];?>
+" <?php if ($_smarty_tpl->getVariable('cur')->value['id']==$_smarty_tpl->getVariable('data')->value['id_param']){?> checked=""<?php }?>> <label class="label_checkbox" for="optionsCheckBox_<?php echo $_smarty_tpl->getVariable('cur')->value['id'];?>
+" style="padding-left:25px;"><?php echo $_smarty_tpl->getVariable('cur')->value['name'];?>
+</label><br />
+                        </div>
+                    <?php }} ?>
                 </div>
             </div>
             <div class="form-group">

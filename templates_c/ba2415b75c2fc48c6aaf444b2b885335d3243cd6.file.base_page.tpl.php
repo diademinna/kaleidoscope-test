@@ -1,16 +1,16 @@
-<?php /* Smarty version Smarty3-b7, created on 2015-07-06 14:21:19
+<?php /* Smarty version Smarty3-b7, created on 2015-07-06 23:18:02
          compiled from ".\templates\admin/common/base_page.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:28326559a64afeccbd0-23727361%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:7171559ae27a368025-27811683%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'ba2415b75c2fc48c6aaf444b2b885335d3243cd6' => 
     array (
       0 => '.\\templates\\admin/common/base_page.tpl',
-      1 => 1435955653,
+      1 => 1436213881,
     ),
   ),
-  'nocache_hash' => '28326559a64afeccbd0-23727361',
+  'nocache_hash' => '7171559ae27a368025-27811683',
   'function' => 
   array (
   ),
@@ -101,6 +101,12 @@ $_smarty_tpl->decodeProperties(array (
                             <span class="nav-label">Заказы</span>
                         </a>
                     </li>
+                    <li<?php if ($_smarty_tpl->getVariable('unit')->value=="product_param"){?> class="active"<?php }?>>
+                        <a href="/admin/product_param/list/">
+                            <i class="fa fa-cog"></i>
+                            <span class="nav-label">Параметры продуктов</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </nav>
@@ -125,7 +131,11 @@ $_smarty_tpl->decodeProperties(array (
 </h2>
                     <?php if ($_smarty_tpl->getVariable('mass_navigation')->value){?>
                         <ol class="breadcrumb">
-                            <li><a href="/admin/category/list/">Все категории</a></li>
+                            <?php if ($_smarty_tpl->getVariable('unit')->value=="product_param"){?>
+                                <li><a href="/admin/product_param/list/">Все группы параметров</a></li>
+                            <?php }else{ ?>
+                                <li><a href="/admin/category/list/">Все категории</a></li>
+                            <?php }?>
                             <?php  $_smarty_tpl->tpl_vars['cur'] = new Smarty_Variable;
  $_from = $_smarty_tpl->getVariable('mass_navigation')->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
  $_smarty_tpl->tpl_vars['cur']->total=count($_from);

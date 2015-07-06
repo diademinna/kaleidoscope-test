@@ -1,16 +1,16 @@
-<?php /* Smarty version Smarty3-b7, created on 2015-06-24 23:02:00
+<?php /* Smarty version Smarty3-b7, created on 2015-07-07 00:20:43
          compiled from ".\templates\admin/admin_category_add.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:23801558b0cb89fc4f3-36730295%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:12701559af12ba0bc88-20938952%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'ff415010105172304659830a66befd79cebe8599' => 
     array (
       0 => '.\\templates\\admin/admin_category_add.tpl',
-      1 => 1434832492,
+      1 => 1436217640,
     ),
   ),
-  'nocache_hash' => '23801558b0cb89fc4f3-36730295',
+  'nocache_hash' => '12701559af12ba0bc88-20938952',
   'function' => 
   array (
   ),
@@ -38,6 +38,25 @@ $_smarty_tpl->decodeProperties(array (
 " />
 			</div>
 		</div>
+                <?php if ($_smarty_tpl->getVariable('data_product_param')->value){?>
+		<div class="form-group">
+                    <label class="col-sm-2 control-label">Параметры для товара* :</label>
+                    <div class="col-sm-10">
+                         <input id="optionsRadios_0" type="radio" name="id_group_param" value="<?php echo $_smarty_tpl->getVariable('cur')->value['id'];?>
+" <?php if ($_smarty_tpl->getVariable('data')->value['id_group_param']==0){?> checked=""<?php }?>> Не указывать<br />
+                        <?php  $_smarty_tpl->tpl_vars['cur'] = new Smarty_Variable;
+ $_from = $_smarty_tpl->getVariable('data_product_param')->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+if (count($_from) > 0){
+    foreach ($_from as $_smarty_tpl->tpl_vars['cur']->key => $_smarty_tpl->tpl_vars['cur']->value){
+?>
+                            <input id="optionsRadios_<?php echo $_smarty_tpl->getVariable('cur')->value['id'];?>
+" type="radio" name="id_group_param" value="<?php echo $_smarty_tpl->getVariable('cur')->value['id'];?>
+" <?php if ($_smarty_tpl->getVariable('cur')->value['id']==$_smarty_tpl->getVariable('data')->value['id_group_param']){?> checked=""<?php }?>> <?php echo $_smarty_tpl->getVariable('cur')->value['name'];?>
+<br />
+                        <?php }} ?>
+                    </div>
+		</div>
+                <?php }?>
 		<div class="form-group">
 			<label class="col-sm-2 control-label">Контент <br />(если необходим):</label>
 			<div class="col-sm-10">

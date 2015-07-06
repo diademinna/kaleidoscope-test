@@ -16,6 +16,17 @@
 				<input name="name" class="form-control" type="text" value="{$data.name}" />
 			</div>
 		</div>
+                {if $data_product_param}
+		<div class="form-group">
+                    <label class="col-sm-2 control-label">Параметры для товара* :</label>
+                    <div class="col-sm-10">
+                         <input id="optionsRadios_0" type="radio" name="id_group_param" value="{$cur.id}" {if $data.id_group_param== 0} checked=""{/if}> Не указывать<br />
+                        {foreach from=$data_product_param item=cur}
+                            <input id="optionsRadios_{$cur.id}" type="radio" name="id_group_param" value="{$cur.id}" {if $cur.id==$data.id_group_param} checked=""{/if}> {$cur.name}<br />
+                        {/foreach}
+                    </div>
+		</div>
+                {/if}
 		<div class="form-group">
 			<label class="col-sm-2 control-label">Контент <br />(если необходим):</label>
 			<div class="col-sm-10">

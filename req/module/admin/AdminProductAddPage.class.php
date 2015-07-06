@@ -51,19 +51,55 @@ class AdminProductAddPage extends FormPageModule {
 			$query = $this->conn->newStatement("SELECT * FROM product WHERE id=:id:");
 			$query->setInteger('id', $id);
 			$data = $query->getFirstRecord();
+                        $query = $this->conn->newStatement("SELECT * FROM product_params_value WHERE id_product=:id_product:");
+			$query->setInteger('id_product', $id);
+                        
 			$this->template->assign('data', $data);
+                        
+                        $query = $this->conn->newStatement("SELECT * FROM category WHERE id=:id:");
+                        $query->setInteger('id', $data['id_category']);
+                        $data_category = $query->getFirstRecord();
+                        
+                        $query = $this->conn->newStatement("SELECT * FROM product_param WHERE id=:id:");
+                        $query->setInteger('id', $data_category['id_group_param']);
+                        $data_group_param = $query->getFirstRecord();
+                        if ($data_group_param)
+                        {
+                            $query = $this->conn->newStatement("SELECT * FROM product_param WHERE parent_id=:parent_id:");
+                            $query->setInteger('parent_id', $data_group_param['id']);
+                            $data_product_params = $query->getAllRecords();
+                            $this->template->assign('data_product_params', $data_product_params);
+                        }
+                        
+                        
 		}
+                
+               
 		$this->response->write($this->renderTemplate('admin/admin_product_add.tpl'));
 	}
 	
 	
 	public function doFormValid() {
+            
 		$action = $this->request->getValue("action");
 		$parent_id = $this->request->getValue("parent_id"); 
 		$id = $this->request->getValue("id"); // только когда редактируем
 		
 		$this->formData['cost'] = trim($this->formData['cost']);
 		$this->formData['cost'] = str_replace(" ", "", $this->formData['cost']);
+                
+                
+                $query = $this->conn->newStatement("DELETE FROM product_params_value WHERE id_product=:id_product:");
+                $query->setInteger('id_product', $id);
+                $query->execute();
+                foreach ($this->formData['id_param'] as $key=>$value)
+                {
+                    $query = $this->conn->newStatement("INSERT INTO product_params_value SET id_param=:id_param:, id_product=:id_product:");
+                    $query->setInteger('id_product', $id);
+                    $query->setInteger('id_param', $key);
+                    $query->execute();
+                }
+                  
   
 		if(!empty($id) && $action == "edit"){
 			$query = $this->conn->newStatement("
@@ -74,7 +110,7 @@ class AdminProductAddPage extends FormPageModule {
 					old_price=:old_price:,
 					text=:text:,
 					ext=:ext:, 
-					title=:title: 
+					title=:title:
 				WHERE id=:id:
 			");
 	        $query->setInteger('id', $id);
