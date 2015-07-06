@@ -1,6 +1,6 @@
-<?php /* Smarty version Smarty3-b7, created on 2015-06-16 00:07:23
+<?php /* Smarty version Smarty3-b7, created on 2015-07-06 17:00:30
          compiled from ".\templates\admin/common/select_count_page.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:17999557f3e8b436bb4-84349211%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:26027559a89fea60fb3-93085171%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
@@ -10,7 +10,7 @@ $_smarty_tpl->decodeProperties(array (
       1 => 1434379334,
     ),
   ),
-  'nocache_hash' => '17999557f3e8b436bb4-84349211',
+  'nocache_hash' => '26027559a89fea60fb3-93085171',
   'function' => 
   array (
   ),

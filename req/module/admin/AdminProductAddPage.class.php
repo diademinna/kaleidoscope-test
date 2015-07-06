@@ -157,10 +157,12 @@ class AdminProductAddPage extends FormPageModule {
                             if($img_position==1 OR $img_position==3){  // гориз.
                                 $tmp_img->resizeProportionally("uploaded/product/{$id_new}_sm.{$image_type}", 165, 1);
                                 $tmp_img->resizeProportionally("uploaded/product/{$id_new}_prev.{$image_type}", 270, 1);
+                                $tmp_img->resizeProportionally("uploaded/product/{$id_new}_buy.{$image_type}", 100, 1);
                             }
                             else{ // вертик.
                                  $tmp_img->resizeProportionallyHeight("uploaded/product/{$id_new}_sm.{$image_type}", 165, 1);
                                  $tmp_img->resizeProportionallyHeight("uploaded/product/{$id_new}_prev.{$image_type}", 270, 1);
+                                 $tmp_img->resizeProportionallyHeight("uploaded/product/{$id_new}_buy.{$image_type}", 100, 1);
                             }
 				
 				
@@ -179,7 +181,8 @@ class AdminProductAddPage extends FormPageModule {
 			$query->setVarChar('ext', $this->formData['ext']?$this->formData['ext']:NULL);
                       
                         $query->execute();
-                        $id_new = $query->getInsertId();
+                        if ($action != 'edit')
+                            $id_new = $query->getInsertId();
 		}
                 if ($action != "edit")
                 {
@@ -233,6 +236,7 @@ class AdminProductAddPage extends FormPageModule {
 		
 		FileSystem::deleteFile("uploaded/product/{$id}_sm.{$data['ext']}");
 		FileSystem::deleteFile("uploaded/product/{$id}_prev.{$data['ext']}");
+		FileSystem::deleteFile("uploaded/product/{$id}_buy.{$data['ext']}");
 		FileSystem::deleteFile("uploaded/product/{$id}.{$data['ext']}");
 		
 		$query = $conn->newStatement("UPDATE product SET ext=NULL, img_position=0 WHERE id={$id}");

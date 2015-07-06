@@ -50,21 +50,6 @@
                 }
              });
             $('#info_about_cart').show();
-            
-          /*  var count_header = parseInt($('#total_count-cart-header').text());
-            var price_header = parseInt($('#total_price-cart-header').text());
-             //новые значения
-            var price_add = $(this).parent().find('.container-product__price').text();
-            price_add = price_add.replace("руб.", ""),
-            price_add = parseInt(price_add.replace(" ", "")),
-            
-            new_price = 0;
-            new_count = 0;
-            new_price = price_header + price_add;
-            new_count = count_header+ 1;
-            $('#total_price-cart-header').text(new_price);
-            $('#total_count-cart-header').text(new_count);
-            location.reload();*/
             location.reload();
             
         });

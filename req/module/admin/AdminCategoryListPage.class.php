@@ -64,9 +64,9 @@ class AdminCategoryListPage extends AbstractPageModule {
                             // удалить все картинки товаров
                             foreach ($data_product as $cur) { // $cur - товар
                                 if($cur['ext']){
-                                    FileSystem::deleteFile("uploaded/product/{$cur['id']}_icon.{$cur['ext']}");
                                     FileSystem::deleteFile("uploaded/product/{$cur['id']}_prev.{$cur['ext']}");
                                     FileSystem::deleteFile("uploaded/product/{$cur['id']}_sm.{$cur['ext']}");
+                                    FileSystem::deleteFile("uploaded/product/{$cur['id']}_buy.{$cur['ext']}");
                                     FileSystem::deleteFile("uploaded/product/{$cur['id']}.{$cur['ext']}");
                                 }
                                 $query = $this->conn->newStatement("DELETE FROM product_info WHERE id_product=:id_product:");

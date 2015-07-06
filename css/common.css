@@ -97,8 +97,8 @@ header { color:#9d9d9d;font-size: 12px;}
 .block-bestsellers__name {text-transform: uppercase; font-size: 14px; font-weight: 700;}
 .block-bestsellers__name a {text-decoration: none; color:#676767;}
 .block-bestsellers-price {font-family: Lobster; margin:20px 0 0 0;}
-.block-bestsellers__old_price {float:left; width:70px; text-decoration: line-through; text-align: left; color:#464646;}
-.block-bestsellers_price {float: right; width:75px; color: #eb5f60; font-size: 18px; text-align: right;}
+.block-bestsellers__old_price {float:left; width:65px; text-decoration: line-through; text-align: left; color:#464646;}
+.block-bestsellers_price {float: right; width:80px; color: #eb5f60; font-size: 17px; text-align: right;}
 .block-bestsellers:last-child .block-bestsellers-description:after {content: none;}
 footer{margin-top:30px;}
 .footer-bgr_white {background-color: #ffffff; padding:20px 0; }
@@ -128,7 +128,7 @@ footer{margin-top:30px;}
 .pager_string .cur {background-color: #fa8268; padding:5px 10px; display: inline-table; margin-right:10px;border-radius: 5px; color:#ffffff;border:1px solid #fa8268;}
 .pager_string a {background-color: #ffffff; border:1px solid #fa8268;padding:5px 10px; border-radius: 5px; margin-right:10px; display: inline-table; color: #fa8268; text-decoration: none;}
 .navigation {background-color: #ffffff; border:1px solid #e9e8dd; padding:5px 15px; font-size:15px;}
-.navigation .fa-chevron-right {margin:0 8px; font-size: 12px; display: inline;}
+.navigation .fa-chevron-right {margin:0 4px; font-size: 12px; display: inline;}
 .navigation .fa-home {font-size:18px;}
 .navigation a .fa-home {color:#fa8268;}
 .navigation a{color:#808080; text-decoration: none;}
@@ -158,8 +158,8 @@ select.form-control option {padding:5px 10px;}
 .description-product-price-actual{float:right; font-family: Lobster; font-size: 22px; color:#eb5f60; margin:10px 0 0 15px;}
 .description-product-code {color:#333333; font-size: 15px; margin-top:10px;}
 .description-product-code span { color:#999999;}
-.description-product-count {color:#333333; font-size: 15px; float:left; text-align: center;}
-.description_in_cart {float:left;margin-left:10px; text-align: center; width: 150px;}
+.description-product-count {color:#333333; font-size: 15px; }
+.description_in_cart {float:right;margin-left:10px; text-align: center; width: 150px;}
 .description-product-count span { color:#999999; padding-right:10px;}
 .description-product-count_input {width:25px; margin:0 10px; text-align: center;}
 .description-product-count .fa {cursor: pointer; font-size: 18px;}
@@ -172,6 +172,7 @@ select.form-control option {padding:5px 10px;}
 .gallery-carousel-content { overflow: hidden; position: relative; margin: 0 30px; padding: 20px 0;}
 .gallery-carousel-content > div { margin: 0; padding: 0; position: relative; width: 20000em;}
 .gallery-carousel-block {float: left; margin-right: 10px;}
+.gallery-carousel-block img{background-color: #ffffff;}
 .gallery-carousel-left { border-radius: 5px; height: 13px; left: 0; padding: 13px 0 13px 0; position: absolute; top: 35px; transition: all 0.2s linear 0s; width: 16px; cursor: pointer; font-size:26px;}
 .gallery-carousel-right { border-radius: 5px; height: 13px; right: 0; padding: 13px 0 13px 0; position: absolute; top: 35px; transition: all 0.2s linear 0s; width: 16px; cursor: pointer; font-size:26px;}
 .gallery-carousel-left:hover, .gallery-carousel-right:hover {color:#fa8268;}

@@ -1,16 +1,16 @@
-<?php /* Smarty version Smarty3-b7, created on 2015-07-06 16:58:23
+<?php /* Smarty version Smarty3-b7, created on 2015-07-06 17:34:01
          compiled from ".\templates\common/base_page.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:21522559a897f8259a6-32798346%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:505559a91d934c774-12869853%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '7ea33b6fdf0c1432e6017bf0d11ae65cd0b94df0' => 
     array (
       0 => '.\\templates\\common/base_page.tpl',
-      1 => 1436191102,
+      1 => 1436193230,
     ),
   ),
-  'nocache_hash' => '21522559a897f8259a6-32798346',
+  'nocache_hash' => '505559a91d934c774-12869853',
   'function' => 
   array (
   ),
@@ -72,21 +72,6 @@ if (!is_callable('smarty_modifier_date_format')) include 'D:\Programms\OpenServe
                 }
              });
             $('#info_about_cart').show();
-            
-          /*  var count_header = parseInt($('#total_count-cart-header').text());
-            var price_header = parseInt($('#total_price-cart-header').text());
-             //новые значения
-            var price_add = $(this).parent().find('.container-product__price').text();
-            price_add = price_add.replace("руб.", ""),
-            price_add = parseInt(price_add.replace(" ", "")),
-            
-            new_price = 0;
-            new_count = 0;
-            new_price = price_header + price_add;
-            new_count = count_header+ 1;
-            $('#total_price-cart-header').text(new_price);
-            $('#total_count-cart-header').text(new_count);
-            location.reload();*/
             location.reload();
             
         });

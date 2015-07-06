@@ -25,6 +25,25 @@
         $('.gallery-carousel-right').bind('click',function(){
             $('.gallery-carousel-content').jcarousel('scroll', '+=1');
         });
+        
+        $('.button-in-cart').click(function(){
+            var id_product = $('.button-in-cart').attr('id');
+            id_product = id_product.replace("id_product_", "");
+             $.ajax({
+                type: "POST",
+                dataType: "json",
+                url: "/add_product/",
+                async: false,
+                data:{
+                    id_product: id_product
+                },
+                success: function(data){
+                }
+             });
+            $('#info_about_cart').show();
+            location.reload();
+        });
+       
     });
 </script>
     <div class="container-width_670px">
@@ -33,14 +52,12 @@
             <i class="fa fa-chevron-right"></i>
             {if $mass_navigation}
                 <a href="/category/">Каталог</a>
-                {foreach from=$mass_navigation item=cur name=loop}
+                {foreach from=$mass_navigation item=cur}
                     <i class="fa fa-chevron-right"></i>
-                    {if $smarty.foreach.loop.last}
-                        {$cur.name}
-                    {else}
-                        <a href="/category/{$cur.id}/">{$cur.name}</a>
-                    {/if}
+                    <a href="/category/{$cur.id}/">{$cur.name}</a>
                 {/foreach}
+                <i class="fa fa-chevron-right"></i>
+                {$data_product.name}
             {else}
                 Каталог
             {/if}
@@ -58,6 +75,7 @@
                             {foreach from=$data_product_photo item=cur}
                                 <div class="gallery-carousel-block">
                                     <a onclick="return hs.expand(this, config1);" onfocus="this.blur();" href="/uploaded/product/{$cur.id_product}/{$cur.id}.{$cur.ext}" align="left"><img alt="{$cur.name}" title="{$cur.name}" src="/uploaded/product/{$cur.id_product}/{$cur.id}_prev.{$data_product.ext}" /></a>
+                                    <div class="highslide-caption">{$cur.name}</div>
                                 </div>
                             {/foreach}
                         </div>
@@ -81,7 +99,7 @@
                     <span>Количество:</span><i class="fa fa-minus"></i><input class="description-product-count_input" type="text" value="1" name="count" /><i class="fa fa-plus"></i>
                 </div>
                 <div class="description_in_cart" style="margin-top:10px;">
-                    <div class="button-in-cart"><i class="fa fa-shopping-cart"></i> В корзину</div>
+                    <div class="button-in-cart" id="id_product_{$data_product.id}"><i class="fa fa-shopping-cart"></i> В корзину</div>
                 </div>
                 <div class="clear"></div>
                 <div class="product-params">

@@ -1,16 +1,16 @@
-<?php /* Smarty version Smarty3-b7, created on 2015-07-05 19:27:43
+<?php /* Smarty version Smarty3-b7, created on 2015-07-06 17:32:37
          compiled from ".\templates\product.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:2182055995aff3b1c26-86718138%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:9764559a918562f8d2-68814879%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'a0a0ea1f4ba0b28399383d7b7c7c75c5ef8ab4d7' => 
     array (
       0 => '.\\templates\\product.tpl',
-      1 => 1436113662,
+      1 => 1436193156,
     ),
   ),
-  'nocache_hash' => '2182055995aff3b1c26-86718138',
+  'nocache_hash' => '9764559a918562f8d2-68814879',
   'function' => 
   array (
   ),
@@ -43,6 +43,25 @@ $_smarty_tpl->decodeProperties(array (
         $('.gallery-carousel-right').bind('click',function(){
             $('.gallery-carousel-content').jcarousel('scroll', '+=1');
         });
+        
+        $('.button-in-cart').click(function(){
+            var id_product = $('.button-in-cart').attr('id');
+            id_product = id_product.replace("id_product_", "");
+             $.ajax({
+                type: "POST",
+                dataType: "json",
+                url: "/add_product/",
+                async: false,
+                data:{
+                    id_product: id_product
+                },
+                success: function(data){
+                }
+             });
+            $('#info_about_cart').show();
+            location.reload();
+        });
+       
     });
 </script>
     <div class="container-width_670px">
@@ -53,25 +72,17 @@ $_smarty_tpl->decodeProperties(array (
                 <a href="/category/">Каталог</a>
                 <?php  $_smarty_tpl->tpl_vars['cur'] = new Smarty_Variable;
  $_from = $_smarty_tpl->getVariable('mass_navigation')->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
- $_smarty_tpl->tpl_vars['cur']->total=count($_from);
- $_smarty_tpl->tpl_vars['cur']->iteration=0;
- $_smarty_tpl->tpl_vars['smarty']->value['foreach']['loop']['total'] = $_smarty_tpl->tpl_vars['cur']->total;
 if (count($_from) > 0){
     foreach ($_from as $_smarty_tpl->tpl_vars['cur']->key => $_smarty_tpl->tpl_vars['cur']->value){
- $_smarty_tpl->tpl_vars['cur']->iteration++;
- $_smarty_tpl->tpl_vars['cur']->last = $_smarty_tpl->tpl_vars['cur']->iteration === $_smarty_tpl->tpl_vars['cur']->total;
- $_smarty_tpl->tpl_vars['smarty']->value['foreach']['loop']['last'] = $_smarty_tpl->tpl_vars['cur']->last;
 ?>
                     <i class="fa fa-chevron-right"></i>
-                    <?php if ($_smarty_tpl->getVariable('smarty')->value['foreach']['loop']['last']){?>
-                        <?php echo $_smarty_tpl->getVariable('cur')->value['name'];?>
-
-                    <?php }else{ ?>
-                        <a href="/category/<?php echo $_smarty_tpl->getVariable('cur')->value['id'];?>
+                    <a href="/category/<?php echo $_smarty_tpl->getVariable('cur')->value['id'];?>
 /"><?php echo $_smarty_tpl->getVariable('cur')->value['name'];?>
 </a>
-                    <?php }?>
                 <?php }} ?>
+                <i class="fa fa-chevron-right"></i>
+                <?php echo $_smarty_tpl->getVariable('data_product')->value['name'];?>
+
             <?php }else{ ?>
                 Каталог
             <?php }?>
@@ -108,6 +119,8 @@ if (count($_from) > 0){
 /<?php echo $_smarty_tpl->getVariable('cur')->value['id'];?>
 _prev.<?php echo $_smarty_tpl->getVariable('data_product')->value['ext'];?>
 " /></a>
+                                    <div class="highslide-caption"><?php echo $_smarty_tpl->getVariable('cur')->value['name'];?>
+</div>
                                 </div>
                             <?php }} ?>
                         </div>
@@ -135,7 +148,8 @@ _prev.<?php echo $_smarty_tpl->getVariable('data_product')->value['ext'];?>
                     <span>Количество:</span><i class="fa fa-minus"></i><input class="description-product-count_input" type="text" value="1" name="count" /><i class="fa fa-plus"></i>
                 </div>
                 <div class="description_in_cart" style="margin-top:10px;">
-                    <div class="button-in-cart"><i class="fa fa-shopping-cart"></i> В корзину</div>
+                    <div class="button-in-cart" id="id_product_<?php echo $_smarty_tpl->getVariable('data_product')->value['id'];?>
+"><i class="fa fa-shopping-cart"></i> В корзину</div>
                 </div>
                 <div class="clear"></div>
                 <div class="product-params">

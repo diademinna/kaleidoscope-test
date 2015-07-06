@@ -1,16 +1,16 @@
-<?php /* Smarty version Smarty3-b7, created on 2015-07-06 14:21:21
+<?php /* Smarty version Smarty3-b7, created on 2015-07-06 17:56:08
          compiled from ".\templates\index.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:21652559a64b175ebc9-75956765%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:29874559a97086af4f6-54967090%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '749422d4cfc3eb5677cf499730392b6accd4d1c7' => 
     array (
       0 => '.\\templates\\index.tpl',
-      1 => 1435663397,
+      1 => 1436194566,
     ),
   ),
-  'nocache_hash' => '21652559a64b175ebc9-75956765',
+  'nocache_hash' => '29874559a97086af4f6-54967090',
   'function' => 
   array (
   ),
@@ -78,62 +78,36 @@ _sm.<?php echo $_smarty_tpl->getVariable('cur')->value['ext'];?>
 <div class="container-width_300px">
 <div class="bgr-green title-block">часто покупаемые товары</div>
 <div class="container-bestsellers">
+    <?php  $_smarty_tpl->tpl_vars['cur'] = new Smarty_Variable;
+ $_from = $_smarty_tpl->getVariable('data_product_buys')->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+if (count($_from) > 0){
+    foreach ($_from as $_smarty_tpl->tpl_vars['cur']->key => $_smarty_tpl->tpl_vars['cur']->value){
+?>
 	<div class="block-bestsellers">
-		<div class="block-bestsellers-image">
-			<a href="#"><img src="/img/bestsellers/1.png" /></a>
-		</div>
-		<div class="block-bestsellers-description">
-			<div class="block-bestsellers__name"><a href="#">ВЕСЕЛЫЙ МИШКА</a></div>
-			<div class="block-bestsellers-price">
-				<div class="block-bestsellers__old_price">80  руб.</div>
-				<div class="block-bestsellers_price">50  руб.</div>
-				<div class="clear"></div>
-			</div>
-		</div>
-		<div class="clear"></div>
+            <div class="block-bestsellers-image">
+                    <a href="/product/<?php echo $_smarty_tpl->getVariable('cur')->value['id'];?>
+/"><img src="/uploaded/product/<?php echo $_smarty_tpl->getVariable('cur')->value['id'];?>
+_buy.<?php echo $_smarty_tpl->getVariable('cur')->value['ext'];?>
+" /></a>
+            </div>
+            <div class="block-bestsellers-description">
+                <div class="block-bestsellers__name"><a href="/product/<?php echo $_smarty_tpl->getVariable('cur')->value['id'];?>
+/"><?php echo $_smarty_tpl->getVariable('cur')->value['name'];?>
+</a></div>
+                <div class="block-bestsellers-price">
+                    <?php if ($_smarty_tpl->getVariable('cur')->value['old_price']){?>
+                        <div class="block-bestsellers__old_price"><?php echo smarty_modifier_cost($_smarty_tpl->getVariable('cur')->value['old_price']);?>
+  руб.</div>
+                    <?php }?>
+                    <div class="block-bestsellers_price"><?php echo smarty_modifier_cost($_smarty_tpl->getVariable('cur')->value['price']);?>
+  руб.</div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <div class="clear"></div>
 	</div>
-	<div class="block-bestsellers">
-		<div class="block-bestsellers-image">
-			<a href="#"><img src="/img/bestsellers/2.png" /></a>
-		</div>
-		<div class="block-bestsellers-description">
-			<div class="block-bestsellers__name"><a href="#">ВЕСЕЛЫЙ МИШКА</a></div>
-			<div class="block-bestsellers-price">
-				<div class="block-bestsellers__old_price">80  руб.</div>
-				<div class="block-bestsellers_price">50  руб.</div>
-				<div class="clear"></div>
-			</div>
-		</div>
-		<div class="clear"></div>
-	</div>
-	<div class="block-bestsellers">
-		<div class="block-bestsellers-image">
-			<a href="#"><img src="/img/bestsellers/3.png" /></a>
-		</div>
-		<div class="block-bestsellers-description">
-			<div class="block-bestsellers__name"><a href="#">ВЕСЕЛЫЙ МИШКА</a></div>
-			<div class="block-bestsellers-price">
-				<div class="block-bestsellers__old_price">80  руб.</div>
-				<div class="block-bestsellers_price">50  руб.</div>
-				<div class="clear"></div>
-			</div>
-		</div>
-		<div class="clear"></div>
-	</div>
-	<div class="block-bestsellers">
-		<div class="block-bestsellers-image">
-			<a href="#"><img src="/img/bestsellers/4.png" /></a>
-		</div>
-		<div class="block-bestsellers-description">
-			<div class="block-bestsellers__name"><a href="#">ВЕСЕЛЫЙ МИШКА</a></div>
-			<div class="block-bestsellers-price">
-				<div class="block-bestsellers__old_price">80  руб.</div>
-				<div class="block-bestsellers_price">50  руб.</div>
-				<div class="clear"></div>
-			</div>
-		</div>
-		<div class="clear"></div>
-	</div>
+    <?php }} ?>
+	
 </div>
 </div>
 <div class="clear"></div>

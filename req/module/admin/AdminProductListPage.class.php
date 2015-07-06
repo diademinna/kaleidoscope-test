@@ -57,6 +57,7 @@ class AdminProductListPage extends AbstractPageModule {
 
                     FileSystem::deleteFile("uploaded/product/{$id}_sm.{$data_product['ext']}");
                     FileSystem::deleteFile("uploaded/product/{$id}_prev.{$data_product['ext']}");
+                    FileSystem::deleteFile("uploaded/product/{$id}_buy.{$data_product['ext']}");
                     FileSystem::deleteFile("uploaded/product/{$id}.{$data_product['ext']}");
 								
                     // удаляем галерею
