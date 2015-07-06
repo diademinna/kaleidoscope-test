@@ -1,16 +1,16 @@
-<?php /* Smarty version Smarty3-b7, created on 2015-07-06 00:36:12
+<?php /* Smarty version Smarty3-b7, created on 2015-07-06 16:58:23
          compiled from ".\templates\common/base_page.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:295005599a34c7530f5-05845148%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:21522559a897f8259a6-32798346%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '7ea33b6fdf0c1432e6017bf0d11ae65cd0b94df0' => 
     array (
       0 => '.\\templates\\common/base_page.tpl',
-      1 => 1436132171,
+      1 => 1436191102,
     ),
   ),
-  'nocache_hash' => '295005599a34c7530f5-05845148',
+  'nocache_hash' => '21522559a897f8259a6-32798346',
   'function' => 
   array (
   ),
@@ -73,7 +73,7 @@ if (!is_callable('smarty_modifier_date_format')) include 'D:\Programms\OpenServe
              });
             $('#info_about_cart').show();
             
-            var count_header = parseInt($('#total_count-cart-header').text());
+          /*  var count_header = parseInt($('#total_count-cart-header').text());
             var price_header = parseInt($('#total_price-cart-header').text());
              //новые значения
             var price_add = $(this).parent().find('.container-product__price').text();
@@ -86,7 +86,8 @@ if (!is_callable('smarty_modifier_date_format')) include 'D:\Programms\OpenServe
             new_count = count_header+ 1;
             $('#total_price-cart-header').text(new_price);
             $('#total_count-cart-header').text(new_count);
-          //  location.reload();
+            location.reload();*/
+            location.reload();
             
         });
         $('.header-cart-product__remove').click(function(e){
@@ -104,11 +105,29 @@ if (!is_callable('smarty_modifier_date_format')) include 'D:\Programms\OpenServe
                 }
             });
             e.stopPropagation();
-           var count_header = parseInt($('#total_count-cart-header').text());
-            var price_header = parseInt($('#total_price-cart-header').text());
+            //значения количества товаров и цены в выпадашке наверху
+            var count_header = parseInt($('#total_count-cart-header').text());
+            var price_header = parseInt($('#total_price-cart-header').text().replace(" ", ""));
+            
+            var price_product = parseInt($(this).parent().find('span.price').text().replace(" ", ""));//цена за 1 товар в позиции
+            var count_product = parseInt($(this).parent().find('span.count').text()); //количество товара в позиции
+            $('#total_count-cart-header').text(count_header-count_product);
+            var price = parseInt(price_header-price_product*count_product);
+            price = String(price);
+            price = price.replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ');
+            $('#total_price-cart-header').text(price);
+            $('#total_price-container_cart').text(price+'руб.');
+            $(this).parent().remove();
+            if (count_header == 1)
+            {
+                $('.header-cart__container').html('Ваша корзина пуста!');
+            }
+            
+            
+            //console.log(price_header);
             
              //новые значения
-            var price_add = $(this).parent().find('.container-product__price').text();
+        /*  var price_add = $(this).parent().find('.container-product__price').text();
             console.log(price_add);
             price_add = price_add.replace("руб.", ""),
             price_add = parseInt(price_add.replace(" ", "")),
@@ -119,8 +138,8 @@ if (!is_callable('smarty_modifier_date_format')) include 'D:\Programms\OpenServe
             new_count = count_header - 1;
             $('#total_price-cart-header').text(new_price);
             $('#total_count-cart-header').text(new_count);
-            $(this).parent().remove();
-            //location.reload();
+            
+            //location.reload();*/
         });
         
     });
@@ -162,7 +181,7 @@ if (!is_callable('smarty_modifier_date_format')) include 'D:\Programms\OpenServe
                     <div class="header-cart__heading" data-toggle="dropdown" >
                         <i class="icon-basket"></i>
                         <span id="header-cart_top"> Моя корзина: <span id="total_count-cart-header"><?php if ($_smarty_tpl->getVariable('cart')->value){?><?php echo count($_smarty_tpl->getVariable('cart')->value);?>
-<?php }else{ ?>0<?php }?></span> продукта (-ов) - <span id="total_price-cart-header"><?php if ($_smarty_tpl->getVariable('cart')->value){?><?php echo $_smarty_tpl->getVariable('total_price')->value;?>
+<?php }else{ ?>0<?php }?></span> продукта (-ов) - <span id="total_price-cart-header"><?php if ($_smarty_tpl->getVariable('cart')->value){?><?php echo smarty_modifier_cost($_smarty_tpl->getVariable('total_price')->value);?>
 <?php }else{ ?>0<?php }?></span> руб.</span>
                         <i class="icon-down-open"></i>
                     </div>
@@ -204,7 +223,7 @@ _sm.<?php echo $_smarty_tpl->getVariable('cur')->value['ext'];?>
                                 <table class="header-cart-total__item">
                                   <tr>
                                     <td class="name">Общая стоимость:</td>
-                                    <td><span><?php echo smarty_modifier_cost($_smarty_tpl->getVariable('total_price')->value);?>
+                                    <td><span id="total_price-container_cart"><?php echo smarty_modifier_cost($_smarty_tpl->getVariable('total_price')->value);?>
  руб.</span></td>
                                   </tr>
                                 </table>

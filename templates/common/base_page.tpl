@@ -51,7 +51,7 @@
              });
             $('#info_about_cart').show();
             
-            var count_header = parseInt($('#total_count-cart-header').text());
+          /*  var count_header = parseInt($('#total_count-cart-header').text());
             var price_header = parseInt($('#total_price-cart-header').text());
              //новые значения
             var price_add = $(this).parent().find('.container-product__price').text();
@@ -64,7 +64,8 @@
             new_count = count_header+ 1;
             $('#total_price-cart-header').text(new_price);
             $('#total_count-cart-header').text(new_count);
-          //  location.reload();
+            location.reload();*/
+            location.reload();
             
         });
         $('.header-cart-product__remove').click(function(e){
@@ -82,11 +83,29 @@
                 }
             });
             e.stopPropagation();
-           var count_header = parseInt($('#total_count-cart-header').text());
-            var price_header = parseInt($('#total_price-cart-header').text());
+            //значения количества товаров и цены в выпадашке наверху
+            var count_header = parseInt($('#total_count-cart-header').text());
+            var price_header = parseInt($('#total_price-cart-header').text().replace(" ", ""));
+            
+            var price_product = parseInt($(this).parent().find('span.price').text().replace(" ", ""));//цена за 1 товар в позиции
+            var count_product = parseInt($(this).parent().find('span.count').text()); //количество товара в позиции
+            $('#total_count-cart-header').text(count_header-count_product);
+            var price = parseInt(price_header-price_product*count_product);
+            price = String(price);
+            price = price.replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ');
+            $('#total_price-cart-header').text(price);
+            $('#total_price-container_cart').text(price+'руб.');
+            $(this).parent().remove();
+            if (count_header == 1)
+            {
+                $('.header-cart__container').html('Ваша корзина пуста!');
+            }
+            
+            
+            //console.log(price_header);
             
              //новые значения
-            var price_add = $(this).parent().find('.container-product__price').text();
+        /*  var price_add = $(this).parent().find('.container-product__price').text();
             console.log(price_add);
             price_add = price_add.replace("руб.", ""),
             price_add = parseInt(price_add.replace(" ", "")),
@@ -97,8 +116,8 @@
             new_count = count_header - 1;
             $('#total_price-cart-header').text(new_price);
             $('#total_count-cart-header').text(new_count);
-            $(this).parent().remove();
-            //location.reload();
+            
+            //location.reload();*/
         });
         
     });
@@ -137,7 +156,7 @@
                     <div class="header-cart">
                     <div class="header-cart__heading" data-toggle="dropdown" >
                         <i class="icon-basket"></i>
-                        <span id="header-cart_top"> Моя корзина: <span id="total_count-cart-header">{if $cart}{count($cart)}{else}0{/if}</span> продукта (-ов) - <span id="total_price-cart-header">{if $cart}{$total_price}{else}0{/if}</span> руб.</span>
+                        <span id="header-cart_top"> Моя корзина: <span id="total_count-cart-header">{if $cart}{count($cart)}{else}0{/if}</span> продукта (-ов) - <span id="total_price-cart-header">{if $cart}{$total_price|cost}{else}0{/if}</span> руб.</span>
                         <i class="icon-down-open"></i>
                     </div>
                     <div class="header-cart__content">
@@ -167,7 +186,7 @@
                                 <table class="header-cart-total__item">
                                   <tr>
                                     <td class="name">Общая стоимость:</td>
-                                    <td><span>{$total_price|cost} руб.</span></td>
+                                    <td><span id="total_price-container_cart">{$total_price|cost} руб.</span></td>
                                   </tr>
                                 </table>
                             </div>

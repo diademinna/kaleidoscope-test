@@ -1,6 +1,6 @@
-<?php /* Smarty version Smarty3-b7, created on 2015-06-15 22:28:12
+<?php /* Smarty version Smarty3-b7, created on 2015-07-06 14:21:20
          compiled from ".\templates\common/tinymce.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:24545557f274cda3742-91724121%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:24807559a64b01150b2-41354281%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
@@ -10,7 +10,7 @@ $_smarty_tpl->decodeProperties(array (
       1 => 1434379334,
     ),
   ),
-  'nocache_hash' => '24545557f274cda3742-91724121',
+  'nocache_hash' => '24807559a64b01150b2-41354281',
   'function' => 
   array (
   ),
