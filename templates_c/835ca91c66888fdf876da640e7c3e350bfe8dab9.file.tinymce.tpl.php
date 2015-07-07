@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty3-b7, created on 2015-07-06 14:21:20
+<?php /* Smarty version Smarty3-b7, created on 2015-07-07 11:35:10
          compiled from ".\templates\common/tinymce.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:24807559a64b01150b2-41354281%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_smarty_tpl->decodeProperties(array (
     '835ca91c66888fdf876da640e7c3e350bfe8dab9' => 
     array (
       0 => '.\\templates\\common/tinymce.tpl',
-      1 => 1434379334,
+      1 => 1436257098,
     ),
   ),
   'nocache_hash' => '24807559a64b01150b2-41354281',

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty3-b7, created on 2015-07-06 14:21:25
+<?php /* Smarty version Smarty3-b7, created on 2015-07-07 11:35:11
          compiled from ".\templates\category.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:13390559a64b56a0365-08518279%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_smarty_tpl->decodeProperties(array (
     '8b8d5e7c56e6e5abaed147561ae75e91b2c83948' => 
     array (
       0 => '.\\templates\\category.tpl',
-      1 => 1435826926,
+      1 => 1436257098,
     ),
   ),
   'nocache_hash' => '13390559a64b56a0365-08518279',
@@ -16,7 +16,9 @@ $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
 )); /*/%%SmartyHeaderCode%%*/?>
-<?php ob_start(); ?>
+<?php if (!is_callable('smarty_modifier_truncate')) include 'D:\Programms\OpenServer\OpenServer\domains\kaleidoscope-test.ru\req\external\smarty\plugins\modifier.truncate.php';
+if (!is_callable('smarty_modifier_cost')) include 'D:\Programms\OpenServer\OpenServer\domains\kaleidoscope-test.ru\req\external\smarty\plugins\modifier.cost.php';
+?><?php ob_start(); ?>
 
 <script>
     function SortFunction(action_val, page, id_category)

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty3-b7, created on 2015-07-06 14:21:25
+<?php /* Smarty version Smarty3-b7, created on 2015-07-07 11:35:11
          compiled from ".\templates\rebuild/products.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:14703559a64b5a4dab9-64346998%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_smarty_tpl->decodeProperties(array (
     '922eaced79f68130eebd892486e9488a7c9ba896' => 
     array (
       0 => '.\\templates\\rebuild/products.tpl',
-      1 => 1435658256,
+      1 => 1436257098,
     ),
   ),
   'nocache_hash' => '14703559a64b5a4dab9-64346998',

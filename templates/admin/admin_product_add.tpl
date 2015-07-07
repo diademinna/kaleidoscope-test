@@ -80,16 +80,6 @@
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-sm-2 control-label">Параметры* :</label>
-                <div class="col-sm-10">
-                    {foreach from=$data_product_params item=cur}
-                        <div class="checkbox">
-                        <input id="optionsCheckBox_{$cur.id}" type="checkbox" name="id_param[{$cur.id}]" value="{$cur.id}" {if $data['product_param'][{$cur.id}]} checked=""{/if}> <label class="label_checkbox" for="optionsCheckBox_{$cur.id}" style="padding-left:25px;">{$cur.name}</label><br />
-                        </div>
-                    {/foreach}
-                </div>
-            </div>
-            <div class="form-group">
                 <label class="col-sm-2 control-label">Контент <br />(если необходим):</label>
                 <div class="col-sm-10">
                     <textarea name="text" class="tiny" type="text">{$data.text}</textarea>
