@@ -7,7 +7,7 @@ class AdminCategoryListPage extends AbstractPageModule {
 	function doBeforeOutput(){
 		$this->Authenticate();
 
-		$this->registerThis("ChangeCountPage", "Activate", "Sort", "ActivateProduct", "SortProduct", "ChangeFlag", "ChangeCategory", "ChangeProduct");
+		$this->registerThis("ChangeCountPage", "Activate", "Sort", "ActivateProduct", "SortProduct", "ChangeFlag", "ChangeCategory", "ChangeProduct", "SetParameter");
 		$this->processRequest();
 		$this->template->assign('unit', "category");
 	}
@@ -136,6 +136,7 @@ class AdminCategoryListPage extends AbstractPageModule {
 			$query = $this->conn->newStatement("SELECT * FROM category WHERE {$where_cat} ORDER BY pos DESC, id DESC");
 			$query->setInteger('id_category', $id_category);
 			$data_category = $query->getAllRecords();
+                        
                         foreach ($data_category as $key=>$value)
                         {
                             $query = $this->conn->newStatement("SELECT * FROM category WHERE parent_id=:parent_id:");
@@ -146,6 +147,12 @@ class AdminCategoryListPage extends AbstractPageModule {
                                 $data_category[$key]['category_child']=$data_category_child;
                             }
                         }
+                        
+                        
+                        $query = $this->conn->newStatement("SELECT * FROM parameter WHERE parent_id=0 ORDER BY name DESC");
+                        $data_parameters = $query->getAllRecords();
+                        $this->template->assign('data_parameters', $data_parameters);
+                        
                         $this->template->assign('data_category', $data_category);
 
 
@@ -501,7 +508,22 @@ class AdminCategoryListPage extends AbstractPageModule {
 
 		return $xajax;
 	}
+        function SetParameter($id_category, $id_param) {
+		$xajax = new xajaxResponse();
 
+		$conn = &DbFactory::getConnection();
+		$query = $conn->newStatement("UPDATE category SET id_parameter=:id_parameter: WHERE id=:id:");
+                $query->setInteger('id', $id_category);
+                $query->setInteger("id_parameter", $id_param);
+                $query->execute();
+                
+                //дочерние категории
+                $query = $conn->newStatement("UPDATE category SET id_parameter=:id_parameter: WHERE parent_id=:parent_id:");
+                $query->setInteger('parent_id', $id_category);
+                $query->setInteger("id_parameter", $id_param);
+                $query->execute();
+		return $xajax;
+	}
 
 }
 ?>

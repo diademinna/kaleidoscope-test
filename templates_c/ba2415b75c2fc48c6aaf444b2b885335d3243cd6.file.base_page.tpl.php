@@ -1,16 +1,16 @@
-<?php /* Smarty version Smarty3-b7, created on 2015-07-07 13:55:25
+<?php /* Smarty version Smarty3-b7, created on 2015-07-07 15:37:24
          compiled from ".\templates\admin/common/base_page.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:16101559bb01da83d39-96334317%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:5472559bc804d3b207-01236379%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'ba2415b75c2fc48c6aaf444b2b885335d3243cd6' => 
     array (
       0 => '.\\templates\\admin/common/base_page.tpl',
-      1 => 1436266524,
+      1 => 1436272640,
     ),
   ),
-  'nocache_hash' => '16101559bb01da83d39-96334317',
+  'nocache_hash' => '5472559bc804d3b207-01236379',
   'function' => 
   array (
   ),
@@ -101,6 +101,12 @@ $_smarty_tpl->decodeProperties(array (
                             <span class="nav-label">Заказы</span>
                         </a>
                     </li>
+                    <li<?php if ($_smarty_tpl->getVariable('unit')->value=="parameter"){?> class="active"<?php }?>>
+                        <a href="/admin/parameter/list/">
+                            <i class="fa fa-wrench"></i>
+                            <span class="nav-label">Параметры для категорий</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </nav>
@@ -125,8 +131,11 @@ $_smarty_tpl->decodeProperties(array (
 </h2>
                     <?php if ($_smarty_tpl->getVariable('mass_navigation')->value){?>
                         <ol class="breadcrumb">
-                            
-                            <li><a href="/admin/category/list/">Все категории</a></li>
+                            <?php if ($_smarty_tpl->getVariable('unit')->value=='parameter'){?>
+                                <li><a href="/admin/parameter/list/">Все параметры</a></li>
+                            <?php }else{ ?>
+                                <li><a href="/admin/category/list/">Все категории</a></li>
+                            <?php }?>
                             
                             <?php  $_smarty_tpl->tpl_vars['cur'] = new Smarty_Variable;
  $_from = $_smarty_tpl->getVariable('mass_navigation')->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
@@ -146,9 +155,15 @@ if (count($_from) > 0){
                                     </li>
                                 <?php }else{ ?>
                                     <li>
-                                        <a href="/admin/category/list/<?php echo $_smarty_tpl->getVariable('cur')->value['id'];?>
+                                        <?php if ($_smarty_tpl->getVariable('unit')->value=='parameter'){?>
+                                            <a href="/admin/parameter/list/<?php echo $_smarty_tpl->getVariable('cur')->value['id'];?>
 /"><?php echo $_smarty_tpl->getVariable('cur')->value['name'];?>
 </a>
+                                        <?php }else{ ?>
+                                            <a href="/admin/category/list/<?php echo $_smarty_tpl->getVariable('cur')->value['id'];?>
+/"><?php echo $_smarty_tpl->getVariable('cur')->value['name'];?>
+</a>
+                                        <?php }?>
                                     </li>
                                 <?php }?>
                             <?php }} ?>

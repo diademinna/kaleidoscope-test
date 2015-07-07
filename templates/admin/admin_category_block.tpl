@@ -15,6 +15,7 @@
                     <tr>
                         <th></th>
                         <th>Название</th>
+                        <th>Фильтр по</th>
                         <th>На сайте</th>
                         <th>Действия</th>
                     </tr>
@@ -34,6 +35,14 @@
                             {else}
                                 {$cur.name}
                             {/if}
+                        </td>
+                        
+                        <td>
+                            <input id="optionsRadios0" type="radio" name="id_cat_{$cur.id}" value="0" {if !$cur.id_parameter} checked="checked"{/if} {if $level} disabled="disabled"{/if} onclick="xajax_SetParameter('{$cur.id}',0);">  нет фильтра<br/>
+                            {foreach from=$data_parameters item=cur2}
+                                
+                                <input id="optionsRadios{$cur2.id}" type="radio" name="id_cat_{$cur.id}" value="{$cur2.id}" {if $cur.id_parameter==$cur2.id} checked="checked"{/if} {if $level} disabled="disabled"{/if}  onclick="xajax_SetParameter('{$cur.id}','{$cur2.id}');">  {$cur2.name}<br/>
+                            {/foreach}
                         </td>
                         <td>
                             <div class="checkbox">

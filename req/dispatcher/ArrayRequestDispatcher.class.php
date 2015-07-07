@@ -203,6 +203,14 @@ class ArrayRequestDispatcher extends RequestDispatcher {
 			'/admin/category/add/(\d+)/'				=> array('moduleName' => 'admin/AdminCategoryAddPage', 'moduleType' => 'module', 'parent_id' => '$1'),
 			'/admin/category/add/(\d+)/edit/(\d+)/'		=> array('moduleName' => 'admin/AdminCategoryAddPage', 'moduleType' => 'module', 'parent_id' => '$1', 'action' => 'edit', 'id_category' => '$2'),
                     
+                        ///параметры
+			'/admin/parameter/list/'						=> array('moduleName' => 'admin/AdminParameterListPage', 'moduleType' => 'module'),
+			'/admin/parameter/list/(\d+)/'				=> array('moduleName' => 'admin/AdminParameterListPage', 'moduleType' => 'module', 'id_parameter' => '$1'),
+			'/admin/parameter/list/(\d+)/delete/(\d+)/'	=> array('moduleName' => 'admin/AdminParameterListPage', 'moduleType' => 'module', 'id_parameter' => '$1', 'action' => 'delete', 'id' => '$2'),
+						
+			'/admin/parameter/add/(\d+)/'				=> array('moduleName' => 'admin/AdminParameterAddPage', 'moduleType' => 'module', 'parent_id' => '$1'),
+			'/admin/parameter/add/(\d+)/edit/(\d+)/'		=> array('moduleName' => 'admin/AdminParameterAddPage', 'moduleType' => 'module', 'parent_id' => '$1', 'action' => 'edit', 'id_parameter' => '$2'),
+                        
 			
                     
 			

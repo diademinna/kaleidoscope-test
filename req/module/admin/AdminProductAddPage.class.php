@@ -48,17 +48,32 @@ class AdminProductAddPage extends FormPageModule {
 		$id = $this->request->getValue("id"); // только когда редактируем
 		
 		if(!empty($id) AND $action == "edit"){
-			$query = $this->conn->newStatement("SELECT * FROM product WHERE id=:id:");
-			$query->setInteger('id', $id);
-			$data = $query->getFirstRecord();
-			$this->template->assign('data', $data);
+                    $query = $this->conn->newStatement("SELECT * FROM product WHERE id=:id:");
+                    $query->setInteger('id', $id);
+                    $data = $query->getFirstRecord();
+                    
+
+                    $query = $this->conn->newStatement("SELECT * FROM category WHERE id=:id:");
+                    $query->setInteger('id', $data['id_category']);
+                    $data_category = $query->getFirstRecord();
                         
-                        $query = $this->conn->newStatement("SELECT * FROM category WHERE id=:id:");
-                        $query->setInteger('id', $data['id_category']);
-                        $data_category = $query->getFirstRecord();
-                        
-                        
-                        
+                    if ($data_category['id_parameter'])
+                    {
+                        $query = $this->conn->newStatement("SELECT * FROM parameter WHERE parent_id=:parent_id:");
+                        $query->setInteger('parent_id', $data_category['id_parameter']);
+                        $data_filtr = $query->getAllRecords();
+                        foreach ($data_filtr as $key=>$value)
+                        {
+                            $query = $this->conn->newStatement("SELECT * FROM product_parameter WHERE id_parameter=:id_parameter: AND id_product=:id_product:");
+                            $query->setInteger('id_parameter', $value['id']);
+                            $query->setInteger('id_product', $id);
+                            $data_filtr_product = $query->getAllRecords();
+                            if ($data_filtr_product)
+                                $data_filtr[$key]['select'] = 1;
+                        }
+                        $this->template->assign('data_filtr', $data_filtr);
+                    }
+                    $this->template->assign('data', $data);
 		}
                 
                
@@ -68,6 +83,7 @@ class AdminProductAddPage extends FormPageModule {
 	
 	public function doFormValid() {
             
+            
 		$action = $this->request->getValue("action");
 		$parent_id = $this->request->getValue("parent_id"); 
 		$id = $this->request->getValue("id"); // только когда редактируем
@@ -76,7 +92,22 @@ class AdminProductAddPage extends FormPageModule {
 		$this->formData['cost'] = str_replace(" ", "", $this->formData['cost']);
                 
                 
-               
+                if ($action == 'edit')
+                {
+                    $query = $this->conn->newStatement("DELETE FROM product_parameter WHERE id_product=:id_product:");
+                    $query->setInteger('id_product', $id);
+                    $query->execute();
+                    if ($this->formData['id_param'])
+                    {
+                        foreach ($this->formData['id_param'] as $key=>$value)
+                        {
+                            $query = $this->conn->newStatement("INSERT INTO product_parameter SET id_parameter=:id_parameter:, id_product=:id_product:");
+                            $query->setInteger('id_parameter', $value);
+                            $query->setInteger('id_product', $id);
+                            $query->execute();
+                        }
+                    }
+                }
                   
   
 		if(!empty($id) && $action == "edit"){

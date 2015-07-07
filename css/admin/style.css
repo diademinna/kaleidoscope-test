@@ -7534,3 +7534,7 @@ input[type=checkbox] {
     border-radius: 3px;
     margin-right:10px;
 }
+.checkbox label, .radio label
+{
+    padding-left:30px;
+}

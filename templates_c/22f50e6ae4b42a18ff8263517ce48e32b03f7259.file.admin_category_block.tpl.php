@@ -1,16 +1,16 @@
-<?php /* Smarty version Smarty3-b7, created on 2015-07-07 12:44:04
+<?php /* Smarty version Smarty3-b7, created on 2015-07-07 17:01:32
          compiled from ".\templates\admin/admin_category_block.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:12013559b9f64344cd5-93712601%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:26547559bdbbcc82763-53979477%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '22f50e6ae4b42a18ff8263517ce48e32b03f7259' => 
     array (
       0 => '.\\templates\\admin/admin_category_block.tpl',
-      1 => 1436262243,
+      1 => 1436277691,
     ),
   ),
-  'nocache_hash' => '12013559b9f64344cd5-93712601',
+  'nocache_hash' => '26547559bdbbcc82763-53979477',
   'function' => 
   array (
   ),
@@ -34,6 +34,7 @@ $_smarty_tpl->decodeProperties(array (
                     <tr>
                         <th></th>
                         <th>Название</th>
+                        <th>Фильтр по</th>
                         <th>На сайте</th>
                         <th>Действия</th>
                     </tr>
@@ -64,6 +65,26 @@ if (count($_from) > 0){
                                 <?php echo $_smarty_tpl->getVariable('cur')->value['name'];?>
 
                             <?php }?>
+                        </td>
+                        
+                        <td>
+                            <input id="optionsRadios0" type="radio" name="id_cat_<?php echo $_smarty_tpl->getVariable('cur')->value['id'];?>
+" value="0" <?php if (!$_smarty_tpl->getVariable('cur')->value['id_parameter']){?> checked="checked"<?php }?> <?php if ($_smarty_tpl->getVariable('level')->value){?> disabled="disabled"<?php }?> onclick="xajax_SetParameter('<?php echo $_smarty_tpl->getVariable('cur')->value['id'];?>
+',0);">  нет фильтра<br/>
+                            <?php  $_smarty_tpl->tpl_vars['cur2'] = new Smarty_Variable;
+ $_from = $_smarty_tpl->getVariable('data_parameters')->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+if (count($_from) > 0){
+    foreach ($_from as $_smarty_tpl->tpl_vars['cur2']->key => $_smarty_tpl->tpl_vars['cur2']->value){
+?>
+                                
+                                <input id="optionsRadios<?php echo $_smarty_tpl->getVariable('cur2')->value['id'];?>
+" type="radio" name="id_cat_<?php echo $_smarty_tpl->getVariable('cur')->value['id'];?>
+" value="<?php echo $_smarty_tpl->getVariable('cur2')->value['id'];?>
+" <?php if ($_smarty_tpl->getVariable('cur')->value['id_parameter']==$_smarty_tpl->getVariable('cur2')->value['id']){?> checked="checked"<?php }?> <?php if ($_smarty_tpl->getVariable('level')->value){?> disabled="disabled"<?php }?>  onclick="xajax_SetParameter('<?php echo $_smarty_tpl->getVariable('cur')->value['id'];?>
+','<?php echo $_smarty_tpl->getVariable('cur2')->value['id'];?>
+');">  <?php echo $_smarty_tpl->getVariable('cur2')->value['name'];?>
+<br/>
+                            <?php }} ?>
                         </td>
                         <td>
                             <div class="checkbox">
