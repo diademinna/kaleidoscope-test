@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty3-b7, created on 2015-06-16 12:50:29
+<?php /* Smarty version Smarty3-b7, created on 2015-07-07 12:34:27
          compiled from "D:\Programms\OpenServer\OpenServer\domains\kaleidoscope-test.ru\req\external\smarty\debug.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:30404557ff165c9e378-10542877%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_smarty_tpl->decodeProperties(array (
     '93ecf1f06d87d5fbf4c14c690d98f2afe0c27ec8' => 
     array (
       0 => 'D:\\Programms\\OpenServer\\OpenServer\\domains\\kaleidoscope-test.ru\\req\\external\\smarty\\debug.tpl',
-      1 => 1434379266,
+      1 => 1436257098,
     ),
   ),
   'nocache_hash' => '30404557ff165c9e378-10542877',

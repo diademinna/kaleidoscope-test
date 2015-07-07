@@ -114,7 +114,8 @@ footer{margin-top:30px;}
 .footer-bottom {text-align: center; color:#ffffff; padding:10px 0;}
 .container_margin_top {}
 .container-catalog {background-color: #ffffff; margin-bottom:30px; border-right:1px solid #e9e8dd; border-left:1px solid #e9e8dd; border-bottom:1px solid #e9e8dd;}
-.container-catalog_item { color:#ffffff;position: relative; }
+.container-catalog_item { color:#ffffff;position: relative; border-bottom: 1px solid #e9e8dd;}
+.container-catalog_item:last-child{border-bottom:none;}
 .container-catalog_link {background-color: #eb5f60;text-decoration: none; color:#ffffff; text-transform: uppercase;padding:7px 20px; display: block; font-size: 15px;}
 .container-catalog_link:hover {background-color: #fa8268;}
 .container-catalog_link.active {background-color:#93c567;}

@@ -29,7 +29,7 @@
                             </div>
                         </td>
                         <td>
-                            {if !$level}
+                            {if $cur['category_child']}
                             <a href="/admin/category/list/{$cur.id}/" title="Перейти в этот раздел">{$cur.name}</a>
                             {else}
                                 {$cur.name}

@@ -1,16 +1,16 @@
-<?php /* Smarty version Smarty3-b7, created on 2015-07-07 11:35:45
+<?php /* Smarty version Smarty3-b7, created on 2015-07-07 13:55:25
          compiled from ".\templates\admin/common/base_page.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:20518559b8f616e8b19-32478988%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:16101559bb01da83d39-96334317%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'ba2415b75c2fc48c6aaf444b2b885335d3243cd6' => 
     array (
       0 => '.\\templates\\admin/common/base_page.tpl',
-      1 => 1436258144,
+      1 => 1436266524,
     ),
   ),
-  'nocache_hash' => '20518559b8f616e8b19-32478988',
+  'nocache_hash' => '16101559bb01da83d39-96334317',
   'function' => 
   array (
   ),
@@ -86,7 +86,7 @@ $_smarty_tpl->decodeProperties(array (
                     <li<?php if ($_smarty_tpl->getVariable('unit')->value=="product"){?> class="active"<?php }?>>
                         <a href="/admin/product/list/">
                             <i class="fa fa-list-alt"></i>
-                            <span class="nav-label">Продукты</span>
+                            <span class="nav-label">Товары</span>
                         </a>
                     </li>
                     <li<?php if ($_smarty_tpl->getVariable('unit')->value=="user"){?> class="active"<?php }?>>

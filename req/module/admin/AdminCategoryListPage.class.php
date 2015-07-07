@@ -136,15 +136,18 @@ class AdminCategoryListPage extends AbstractPageModule {
 			$query = $this->conn->newStatement("SELECT * FROM category WHERE {$where_cat} ORDER BY pos DESC, id DESC");
 			$query->setInteger('id_category', $id_category);
 			$data_category = $query->getAllRecords();
-			$this->template->assign('data_category', $data_category);
+                        foreach ($data_category as $key=>$value)
+                        {
+                            $query = $this->conn->newStatement("SELECT * FROM category WHERE parent_id=:parent_id:");
+                            $query->setInteger('parent_id', $value['id']);
+                            $data_category_child = $query->getAllRecords();
+                            if ($data_category_child)
+                            {
+                                $data_category[$key]['category_child']=$data_category_child;
+                            }
+                        }
+                        $this->template->assign('data_category', $data_category);
 
-			// достаем все ТОВАРЫ в этой категории
-			$query = $this->conn->newStatement("SELECT * FROM product WHERE {$where_prod} ORDER BY pos DESC, id DESC");
-			$query->setInteger('id_category', $id_category);
-			$data_product = $query->getAllRecords();
-			$this->template->assign('data_product', $data_product);
-
-			
 
 
 			// ФОРМИРУЕМ НАВИГАЦИЮ.

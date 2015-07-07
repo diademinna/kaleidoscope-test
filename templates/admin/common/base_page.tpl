@@ -65,7 +65,7 @@
                     <li{if $unit=="product"} class="active"{/if}>
                         <a href="/admin/product/list/">
                             <i class="fa fa-list-alt"></i>
-                            <span class="nav-label">Продукты</span>
+                            <span class="nav-label">Товары</span>
                         </a>
                     </li>
                     <li{if $unit=="user"} class="active"{/if}>

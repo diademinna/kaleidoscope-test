@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty3-b7, created on 2015-07-07 00:20:43
+<?php /* Smarty version Smarty3-b7, created on 2015-07-07 12:34:24
          compiled from ".\templates\admin/admin_category_add.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:12701559af12ba0bc88-20938952%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_smarty_tpl->decodeProperties(array (
     'ff415010105172304659830a66befd79cebe8599' => 
     array (
       0 => '.\\templates\\admin/admin_category_add.tpl',
-      1 => 1436217640,
+      1 => 1436257098,
     ),
   ),
   'nocache_hash' => '12701559af12ba0bc88-20938952',

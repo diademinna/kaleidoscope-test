@@ -1,16 +1,16 @@
-<?php /* Smarty version Smarty3-b7, created on 2015-07-06 21:16:00
+<?php /* Smarty version Smarty3-b7, created on 2015-07-07 12:44:04
          compiled from ".\templates\admin/admin_category_block.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:7157559ac5e02ebce0-52037403%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:12013559b9f64344cd5-93712601%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '22f50e6ae4b42a18ff8263517ce48e32b03f7259' => 
     array (
       0 => '.\\templates\\admin/admin_category_block.tpl',
-      1 => 1435827008,
+      1 => 1436262243,
     ),
   ),
-  'nocache_hash' => '7157559ac5e02ebce0-52037403',
+  'nocache_hash' => '12013559b9f64344cd5-93712601',
   'function' => 
   array (
   ),
@@ -56,7 +56,7 @@ if (count($_from) > 0){
                             </div>
                         </td>
                         <td>
-                            <?php if (!$_smarty_tpl->getVariable('level')->value){?>
+                            <?php if ($_smarty_tpl->getVariable('cur')->value['category_child']){?>
                             <a href="/admin/category/list/<?php echo $_smarty_tpl->getVariable('cur')->value['id'];?>
 /" title="Перейти в этот раздел"><?php echo $_smarty_tpl->getVariable('cur')->value['name'];?>
 </a>

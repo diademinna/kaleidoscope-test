@@ -1,5 +1,5 @@
 {capture name="content_name"}
-	Каталог / {if $data.name}Редактировать - {$data.name}{else}Добавить продукт{/if}
+	Товары / {if $data.name}Редактировать - {$data.name}{else}Добавить продукт{/if}
 {/capture}
 
 
@@ -22,19 +22,14 @@
                     <select class="form-control m-b" name="id_category">
                         <option value="0">--- Выберите ---</option>
                         {foreach from=$data_category item=cur}
-                            {if $data.id_category == $cur.id}
-                                <option selected="selected" style="font-weight: 700;" value="{$cur.id}">{$cur.name}</option>
-                            {else}
-                                <option style="font-weight: 700;" value="{$cur.id}">{$cur.name}</option>
-                            {/if}
                             {if $cur.subcategory}
-                                {foreach from=$cur.subcategory item=cur2}
-                                    {if $data.id_category == $cur2.id}
-                                        <option selected="selected" value="{$cur2.id}">{$cur2.name}</option>
-                                    {else}
-                                        <option value="{$cur2.id}">{$cur2.name}</option>
-                                    {/if}
-                                {/foreach}
+                                <optgroup label="{$cur.name}">
+                                    {foreach from=$cur.subcategory item=cur2}
+                                        <option {if $data.id_category == $cur2.id}selected="selected"{/if} value="{$cur2.id}">{$cur2.name}</option>
+                                    {/foreach}
+                                </optgroup>
+                            {else}
+                                <option {if $data.id_category == $cur.id}selected="selected"{/if} value="{$cur.id}">{$cur.name}</option>
                             {/if}
                         {/foreach}
                     </select>
