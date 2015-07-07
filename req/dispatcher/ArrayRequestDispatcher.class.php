@@ -87,6 +87,7 @@ class ArrayRequestDispatcher extends RequestDispatcher {
 			
 			
 			'/sort_product/' => array('moduleName' => 'ajax/SortProductPage', 'moduleType' => 'module'), 
+			'/filtr_parameter/' => array('moduleName' => 'ajax/FiltrParameterPage', 'moduleType' => 'module'), 
 			'/filtr_price_product/' => array('moduleName' => 'ajax/FiltrPriceProductPage', 'moduleType' => 'module'), 
 			'/add_forma_comm/' => array('moduleName' => 'ajax/AddFormaCommPage', 'moduleType' => 'module'), 
 			'/send_comment/' => array('moduleName' => 'ajax/SendCommentPage', 'moduleType' => 'module'), 

@@ -1,24 +1,22 @@
-<?php /* Smarty version Smarty3-b7, created on 2015-07-07 11:35:11
+<?php /* Smarty version Smarty3-b7, created on 2015-07-07 22:47:17
          compiled from ".\templates\category.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:13390559a64b56a0365-08518279%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:27697559c2cc5c78e09-81424969%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '8b8d5e7c56e6e5abaed147561ae75e91b2c83948' => 
     array (
       0 => '.\\templates\\category.tpl',
-      1 => 1436257098,
+      1 => 1436298435,
     ),
   ),
-  'nocache_hash' => '13390559a64b56a0365-08518279',
+  'nocache_hash' => '27697559c2cc5c78e09-81424969',
   'function' => 
   array (
   ),
   'has_nocache_code' => false,
 )); /*/%%SmartyHeaderCode%%*/?>
-<?php if (!is_callable('smarty_modifier_truncate')) include 'D:\Programms\OpenServer\OpenServer\domains\kaleidoscope-test.ru\req\external\smarty\plugins\modifier.truncate.php';
-if (!is_callable('smarty_modifier_cost')) include 'D:\Programms\OpenServer\OpenServer\domains\kaleidoscope-test.ru\req\external\smarty\plugins\modifier.cost.php';
-?><?php ob_start(); ?>
+<?php ob_start(); ?>
 
 <script>
     function SortFunction(action_val, page, id_category)
@@ -96,6 +94,49 @@ $(document).ready(function(){
            // location.reload();
         }
         });
+        
+        $('.label_checkbox').click(function(){
+            var min_price = $( "#contentSlider1" ).text();
+            var max_price = $( "#contentSlider2" ).text();
+            var id_parameter = $(this).prev().val();
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                url: "/filtr_parameter/",
+                async: true,
+                data:{
+                    id_parameter:id_parameter,
+                    id_category:<?php echo $_smarty_tpl->getVariable('id_category')->value;?>
+,
+                    min_price:min_price,
+                    max_price:max_price
+                    
+                },
+                success: function(data){
+                    $("#sort_products").html(data.data_ajax_sort_products);
+                }
+            });
+        });
+        $('.apply-filtr').click(function(){
+            var min_price = $( "#contentSlider1" ).text();
+            var max_price = $( "#contentSlider2" ).text();
+             $.ajax({
+                type: "POST",
+                dataType: "json",
+                url: "/filtr_parameter/",
+                async: true,
+                data:{
+                    id_parameter:0,
+                    id_category:<?php echo $_smarty_tpl->getVariable('id_category')->value;?>
+,
+                    min_price:min_price,
+                    max_price:max_price
+                },
+                success: function(data){
+                    $("#sort_products").html(data.data_ajax_sort_products);
+                }
+            });
+        });
 });
 </script> 
 
@@ -141,6 +182,31 @@ if (count($_from) > 0){
             <div class="clear"></div>
         </div>
     </div>
+    <br />
+    <?php if ($_smarty_tpl->getVariable('data_category')->value['data_filtr']){?>
+    <div class='container-filtr'>
+        <div class='container_filtr_name'><?php echo $_smarty_tpl->getVariable('data_category')->value['filtr_name'];?>
+</div>
+        <br />
+        <?php  $_smarty_tpl->tpl_vars['cur'] = new Smarty_Variable;
+ $_from = $_smarty_tpl->getVariable('data_category')->value['data_filtr']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+if (count($_from) > 0){
+    foreach ($_from as $_smarty_tpl->tpl_vars['cur']->key => $_smarty_tpl->tpl_vars['cur']->value){
+?>
+            <div class="radio">
+                <input id="male<?php echo $_smarty_tpl->getVariable('cur')->value['id'];?>
+" <?php if ($_smarty_tpl->getVariable('id_parameter_filtr')->value==$_smarty_tpl->getVariable('cur')->value['id']){?> checked="checked"<?php }?> type="radio" value="<?php echo $_smarty_tpl->getVariable('cur')->value['id'];?>
+" name="id_parameter">
+                <label class="label_checkbox" for="male<?php echo $_smarty_tpl->getVariable('cur')->value['id'];?>
+"><span style="background:url(/uploaded/parameter/<?php echo $_smarty_tpl->getVariable('cur')->value['id'];?>
+_sm.<?php echo $_smarty_tpl->getVariable('cur')->value['ext'];?>
+) no-repeat transparent 0 0; padding:0 0 5px 30px;"><?php echo $_smarty_tpl->getVariable('cur')->value['name'];?>
+</span></label>
+            </div>
+        <?php }} ?>
+        <div style="text-align:center;"><div class="apply-filtr">Сбросить фильтр</div></div>
+    </div>
+    <?php }?>
 </div>
 <div class="container-width_670px margin-left">
     <div class="navigation">

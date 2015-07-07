@@ -15,6 +15,8 @@ class ProductPage extends AbstractPageModule {
 		$data_product = $query->getFirstRecord();
 		$this->template->assign('data_product', $data_product);
                 
+                
+                
                  ///определение ip-адреса пользователя
                 if (!empty($_SERVER['HTTP_CLIENT_IP']))
                 {

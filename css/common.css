@@ -240,3 +240,15 @@ td.error{color: #ed7877;}
 .checkout-summa {text-align: right; font-family: Lobster; font-size: 20px; padding-top:20px;}
 .checkout-summa span {color: #eb5f60;}
 .cart-info a {color: #808080;}
+.checkbox { margin-bottom: 0; margin-top: 0;}
+.checkbox, .radio {display: block; margin-bottom: 15px; margin-top: 15px; position: relative;}
+.checkbox input[type="checkbox"], .checkbox-inline input[type="checkbox"], .radio input[type="radio"], .radio-inline input[type="radio"] { margin-left: -20px; position: absolute;}
+input[type="radio"] { display: none;}
+input[type="radio"]:checked + label.label_checkbox::before { background-color: #089172;color: #f3f3f3;content: "✓"; font-size: 15px; line-height: 15px; text-align: center; text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);}
+label.label_checkbox::before { background-color: #fff;border: 1px solid #cccccc; bottom: 0;content: ""; display: inline-block; height: 20px; left: 0; margin-right: 10px; position: absolute; width: 20px; border-radius:12px;}
+.checkbox label, .radio label { padding-left: 30px;}
+.checkbox label, .radio label { cursor: pointer; font-weight: 400; margin-bottom: 0; min-height: 20px;padding-left: 30px;}
+label { display: inline-block; font-weight: 700; margin-bottom: 5px; max-width: 100%;}
+.apply-filtr{background-color: #93c567;padding:5px 15px; display: inline-block; margin-top:20px; color:#ffffff; cursor: pointer;}
+.apply-filtr:hover{background-color:#e97157;}
+.container-product_filtr{text-align: left;}

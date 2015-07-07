@@ -11,12 +11,26 @@ class CategoryPage extends AbstractPageModule {
 	function doContent(){
 		$id_category = $this->request->getValue('id_category');	
 		$action = $this->request->getValue('action');
-               
                 
-                $query = $this->conn->newStatement("SELECT name, text FROM category WHERE id=:id:");
+               
+                //вывод фильтра слева
+                $query = $this->conn->newStatement("SELECT cat.*, param.name AS filtr_name FROM category cat LEFT JOIN parameter param ON cat.id_parameter=param.id WHERE cat.id=:id:");
                 $query->setInteger('id', $id_category);
                 $data_category = $query->getFirstRecord();
+                
+                if ($data_category['id_parameter'])
+                {
+                    $query = $this->conn->newStatement("SELECT * FROM parameter WHERE parent_id=:parent_id:");
+                    $query->setInteger('parent_id', $data_category['id_parameter']);
+                    $data_filtr = $query->getAllRecords();
+                    if ($data_filtr)
+                        $data_category['data_filtr'] = $data_filtr;
+                }
                 $this->template->assign('data_category', $data_category);
+                
+                
+                
+                
                 /*Каталог*/
                 $query = $this->conn->newStatement("SELECT * FROM category WHERE parent_id=0 AND active=1 ORDER BY pos DESC, id DESC");
                 $data_catalog = $query->getAllRecords();			
@@ -53,6 +67,14 @@ class CategoryPage extends AbstractPageModule {
                     $mass_navigation = array_reverse($mass_navigation); // сортировка в правильной последовательности
                     $this->template->assign('mass_navigation', $mass_navigation);
 		}
+                if ($_COOKIE['parameters'])
+                {
+                    $mass = unserialize($_COOKIE['parameters']);
+                    $id_category_filtr = $mass['id_category'];
+                    $id_parameter_filtr = $mass['id_parameter'];
+                    $this->template->assign('id_parameter_filtr', $id_parameter_filtr);
+                }
+                
                 
                 if ($_COOKIE['polzunok'] == 0)
                 {

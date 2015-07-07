@@ -101,9 +101,10 @@ class AdminProductAddPage extends FormPageModule {
                     {
                         foreach ($this->formData['id_param'] as $key=>$value)
                         {
-                            $query = $this->conn->newStatement("INSERT INTO product_parameter SET id_parameter=:id_parameter:, id_product=:id_product:");
+                            $query = $this->conn->newStatement("INSERT INTO product_parameter SET id_parameter=:id_parameter:, id_product=:id_product:, id_category=:id_category:");
                             $query->setInteger('id_parameter', $value);
                             $query->setInteger('id_product', $id);
+                            $query->setInteger('id_category',$this->formData['id_category']);
                             $query->execute();
                         }
                     }

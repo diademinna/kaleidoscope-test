@@ -69,6 +69,47 @@ $(document).ready(function(){
            // location.reload();
         }
         });
+        
+        $('.label_checkbox').click(function(){
+            var min_price = $( "#contentSlider1" ).text();
+            var max_price = $( "#contentSlider2" ).text();
+            var id_parameter = $(this).prev().val();
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                url: "/filtr_parameter/",
+                async: true,
+                data:{
+                    id_parameter:id_parameter,
+                    id_category:{/literal}{$id_category}{literal},
+                    min_price:min_price,
+                    max_price:max_price
+                    
+                },
+                success: function(data){
+                    $("#sort_products").html(data.data_ajax_sort_products);
+                }
+            });
+        });
+        $('.apply-filtr').click(function(){
+            var min_price = $( "#contentSlider1" ).text();
+            var max_price = $( "#contentSlider2" ).text();
+             $.ajax({
+                type: "POST",
+                dataType: "json",
+                url: "/filtr_parameter/",
+                async: true,
+                data:{
+                    id_parameter:0,
+                    id_category:{/literal}{$id_category}{literal},
+                    min_price:min_price,
+                    max_price:max_price
+                },
+                success: function(data){
+                    $("#sort_products").html(data.data_ajax_sort_products);
+                }
+            });
+        });
 });
 </script> 
 {/literal}
@@ -100,6 +141,20 @@ $(document).ready(function(){
             <div class="clear"></div>
         </div>
     </div>
+    <br />
+    {if $data_category['data_filtr']}
+    <div class='container-filtr'>
+        <div class='container_filtr_name'>{$data_category.filtr_name}</div>
+        <br />
+        {foreach from=$data_category['data_filtr'] item=cur}
+            <div class="radio">
+                <input id="male{$cur.id}" {if $id_parameter_filtr==$cur.id} checked="checked"{/if} type="radio" value="{$cur.id}" name="id_parameter">
+                <label class="label_checkbox" for="male{$cur.id}"><span style="background:url(/uploaded/parameter/{$cur.id}_sm.{$cur.ext}) no-repeat transparent 0 0; padding:0 0 5px 30px;">{$cur.name}</span></label>
+            </div>
+        {/foreach}
+        <div style="text-align:center;"><div class="apply-filtr">Сбросить фильтр</div></div>
+    </div>
+    {/if}
 </div>
 <div class="container-width_670px margin-left">
     <div class="navigation">

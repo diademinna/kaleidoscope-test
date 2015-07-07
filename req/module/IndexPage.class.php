@@ -14,7 +14,6 @@ class IndexPage extends AbstractPageModule {
 		$this->template->assign('data_category', $data_category);
                 
                 
-                
                 //популярные товары
                 $query = $this->conn->newStatement("SELECT pr.*, pr_info.views as views FROM product pr INNER JOIN product_info pr_info ON pr.id=pr_info.id_product WHERE pr.active=1 ORDER BY pr_info.views DESC, pr.id DESC LIMIT 9");
 
