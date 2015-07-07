@@ -84,7 +84,7 @@
                 <div class="col-sm-10">
                     {foreach from=$data_product_params item=cur}
                         <div class="checkbox">
-                        <input id="optionsCheckBox_{$cur.id}" type="checkbox" name="id_param[{$cur.id}]" value="{$cur.id}" {if $cur.id==$data.id_param} checked=""{/if}> <label class="label_checkbox" for="optionsCheckBox_{$cur.id}" style="padding-left:25px;">{$cur.name}</label><br />
+                        <input id="optionsCheckBox_{$cur.id}" type="checkbox" name="id_param[{$cur.id}]" value="{$cur.id}" {if $data['product_param'][{$cur.id}]} checked=""{/if}> <label class="label_checkbox" for="optionsCheckBox_{$cur.id}" style="padding-left:25px;">{$cur.name}</label><br />
                         </div>
                     {/foreach}
                 </div>

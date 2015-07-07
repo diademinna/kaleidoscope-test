@@ -51,8 +51,13 @@ class AdminProductAddPage extends FormPageModule {
 			$query = $this->conn->newStatement("SELECT * FROM product WHERE id=:id:");
 			$query->setInteger('id', $id);
 			$data = $query->getFirstRecord();
-                        $query = $this->conn->newStatement("SELECT * FROM product_params_value WHERE id_product=:id_product:");
+                        
+                        
+                        $query = $this->conn->newStatement("SELECT pr_val.*, pr_param.name AS name_param FROM product_params_value pr_val LEFT JOIN product_param pr_param ON pr_val.id_param=pr_param.id WHERE pr_val.id_product=:id_product:");
 			$query->setInteger('id_product', $id);
+                        $data_product_param = $query->getAllRecords('id_param');
+                        if ($data_product_param)
+                            $data['product_param']=$data_product_param;
                         
 			$this->template->assign('data', $data);
                         

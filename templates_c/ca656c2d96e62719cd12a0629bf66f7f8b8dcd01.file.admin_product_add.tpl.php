@@ -1,16 +1,16 @@
-<?php /* Smarty version Smarty3-b7, created on 2015-07-07 00:36:24
+<?php /* Smarty version Smarty3-b7, created on 2015-07-07 10:06:11
          compiled from ".\templates\admin/admin_product_add.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:25592559af4d8550152-54989903%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:10113559b7a63bf4452-27286416%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'ca656c2d96e62719cd12a0629bf66f7f8b8dcd01' => 
     array (
       0 => '.\\templates\\admin/admin_product_add.tpl',
-      1 => 1436218581,
+      1 => 1436252769,
     ),
   ),
-  'nocache_hash' => '25592559af4d8550152-54989903',
+  'nocache_hash' => '10113559b7a63bf4452-27286416',
   'function' => 
   array (
   ),
@@ -131,7 +131,8 @@ if (count($_from) > 0){
                         <input id="optionsCheckBox_<?php echo $_smarty_tpl->getVariable('cur')->value['id'];?>
 " type="checkbox" name="id_param[<?php echo $_smarty_tpl->getVariable('cur')->value['id'];?>
 ]" value="<?php echo $_smarty_tpl->getVariable('cur')->value['id'];?>
-" <?php if ($_smarty_tpl->getVariable('cur')->value['id']==$_smarty_tpl->getVariable('data')->value['id_param']){?> checked=""<?php }?>> <label class="label_checkbox" for="optionsCheckBox_<?php echo $_smarty_tpl->getVariable('cur')->value['id'];?>
+" <?php ob_start();?><?php echo $_smarty_tpl->getVariable('cur')->value['id'];?>
+<?php $_tmp1=ob_get_clean();?><?php if ($_smarty_tpl->getVariable('data')->value['product_param'][$_tmp1]){?> checked=""<?php }?>> <label class="label_checkbox" for="optionsCheckBox_<?php echo $_smarty_tpl->getVariable('cur')->value['id'];?>
 " style="padding-left:25px;"><?php echo $_smarty_tpl->getVariable('cur')->value['name'];?>
 </label><br />
                         </div>
