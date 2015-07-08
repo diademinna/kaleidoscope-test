@@ -22,7 +22,7 @@ class AdminProductAddPage extends FormPageModule {
 		
 		$this->page = $this->request->getValue('page')?$this->request->getValue('page'):1;
 		$this->template->assign('page', $this->page);
-                 $query = $this->conn->newStatement("SELECT id, name, main FROM category WHERE active=1 AND parent_id=0 ORDER BY name");
+                $query = $this->conn->newStatement("SELECT id, name, main FROM category WHERE active=1 AND parent_id=0 ORDER BY name");
 	        $data_category = $query->getAllRecords();
                 if ($data_category)
                 {

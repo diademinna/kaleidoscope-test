@@ -21,7 +21,7 @@ class FiltrPriceProductPage extends AbstractPageModule {
                     $page = (int) $this->request->getValue('page');
                 }
                 $this->template->assign('page', $page);
-                
+               
                 if ($_COOKIE['polzunok'] == 0)
                 {
                     $name_field = "id";
@@ -55,6 +55,27 @@ class FiltrPriceProductPage extends AbstractPageModule {
                 }
                 else
                 {
+                    if ($_COOKIE['parameters'])
+                    {
+                        $mass = unserialize($_COOKIE['parameters']);
+                        $id_category_filtr = $mass['id_category'];
+                        if ($id_category_filtr == $id_category)
+                        {
+                            $id_parameter_filtr = $mass['id_parameter'];
+                            $this->template->assign('id_parameter_filtr', $id_parameter_filtr);
+                            $query = $this->conn->newStatement("SELECT id_product FROM product_parameter WHERE id_parameter=:id_parameter:");
+                            $query->setInteger('id_parameter', $id_parameter_filtr);
+                            $data_product_filtr = $query->getAllRecords();
+                            $mass_id_product = $data_product_filtr[0]['id_product'];
+                            $count=0;
+                            foreach ($data_product_filtr as $key=>$value)
+                            {
+                                $count++;
+                                if ($count>1)
+                                    $mass_id_product=$mass_id_product.",".$value['id_product'];
+                            }
+                        }
+                    }
                     $query = $this->conn->newStatement("SELECT id FROM category WHERE parent_id=:parent_id:");
                     $query->setInteger('parent_id', $id_category);
                     $data_subcategory = $query->getAllRecords();
@@ -65,8 +86,16 @@ class FiltrPriceProductPage extends AbstractPageModule {
                         foreach ($data_subcategory as $key=>$value)
                         {$mass=$mass.",".$value['id'];}
                     }
-                    $sql = "SELECT * FROM product WHERE (price BETWEEN {$min_price} AND {$max_price}) AND active=1 AND id_category IN ($mass) ORDER BY {$name_field} {$sort_order}";
-                    $fromWhereCnt = "product WHERE (price BETWEEN {$min_price} AND {$max_price}) AND active=1 AND id_category IN ($mass)";
+                    if ($id_parameter_filtr)
+                    {
+                        $sql = "SELECT * FROM product WHERE id IN ($mass_id_product) AND (price BETWEEN {$min_price} AND {$max_price}) AND active=1 AND id_category IN ($mass) ORDER BY {$name_field} {$sort_order}";
+                        $fromWhereCnt = "product WHERE id IN ($mass_id_product) AND (price BETWEEN {$min_price} AND {$max_price}) AND active=1 AND id_category IN ($mass)";
+                    }
+                    else
+                    {
+                        $sql = "SELECT * FROM product WHERE (price BETWEEN {$min_price} AND {$max_price}) AND active=1 AND id_category IN ($mass) ORDER BY {$name_field} {$sort_order}";
+                        $fromWhereCnt = "product WHERE (price BETWEEN {$min_price} AND {$max_price}) AND active=1 AND id_category IN ($mass)";
+                    }
                     $href = "/category/{$id_category}/page/?min_price=".$min_price."&max_price=".$max_price;
                 }
                 $pagerString = $pager->getPagerString($page, $sql, $fromWhereCnt, $href);

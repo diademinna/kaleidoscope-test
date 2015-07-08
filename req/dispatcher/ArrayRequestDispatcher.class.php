@@ -100,6 +100,7 @@ class ArrayRequestDispatcher extends RequestDispatcher {
                         '/remove_product/' => array('moduleName' => 'ajax/RemoveProductPage', 'moduleType' => 'module'), 
                         '/remove_one_product/' => array('moduleName' => 'ajax/RemoveOneProductPage', 'moduleType' => 'module'), 
                         '/add_order/' => array('moduleName' => 'ajax/AddOrderPage', 'moduleType' => 'module'), 
+                        '/admin_change_category/' => array('moduleName' => 'ajax/AdminChangeCategoryPage', 'moduleType' => 'module'), 
 			
 			
 			

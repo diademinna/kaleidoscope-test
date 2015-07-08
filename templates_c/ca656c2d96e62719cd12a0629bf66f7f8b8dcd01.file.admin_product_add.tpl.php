@@ -1,16 +1,16 @@
-<?php /* Smarty version Smarty3-b7, created on 2015-07-07 16:55:06
+<?php /* Smarty version Smarty3-b7, created on 2015-07-08 18:24:02
          compiled from ".\templates\admin/admin_product_add.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:10068559bda3a097348-63677650%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:26240559d4092b53369-68289443%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'ca656c2d96e62719cd12a0629bf66f7f8b8dcd01' => 
     array (
       0 => '.\\templates\\admin/admin_product_add.tpl',
-      1 => 1436277305,
+      1 => 1436369027,
     ),
   ),
-  'nocache_hash' => '10068559bda3a097348-63677650',
+  'nocache_hash' => '26240559d4092b53369-68289443',
   'function' => 
   array (
   ),
@@ -24,6 +24,24 @@ $_smarty_tpl->decodeProperties(array (
 
 <?php ob_start(); ?>
 
+<script>
+    function ChangeCategory(id_category)
+    {
+         $.ajax({
+            type: "POST",
+            dataType: "json",
+            url: "/admin_change_category/",
+            async: true,
+            data:{
+                id_category:id_category
+            },
+            success: function(data){
+                if (data.data_ajax_filtr)
+                    $("#block-parameters").html(data.data_ajax_filtr);
+            }
+        });
+    }
+</script>
 <div class="ibox-title">
 	<h5>Форма для добавления / редактирования продукта</h5>
 </div>
@@ -40,7 +58,7 @@ $_smarty_tpl->decodeProperties(array (
         <div class="form-group">
             <label class="col-sm-2 control-label">Категория* :</label>
                 <div class="col-sm-10">
-                    <select class="form-control m-b" name="id_category">
+                    <select class="form-control m-b" name="id_category" onchange="ChangeCategory(this.value);">
                         <option value="0">--- Выберите ---</option>
                         <?php  $_smarty_tpl->tpl_vars['cur'] = new Smarty_Variable;
  $_from = $_smarty_tpl->getVariable('data_category')->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
@@ -72,30 +90,16 @@ if (count($_from) > 0){
             <div class="form-group">
                 <label class="col-sm-2 control-label">Название* :</label>
                 <div class="col-sm-10">
-                        <input name="name" class="form-control" type="text" value="<?php echo $_smarty_tpl->getVariable('data')->value['name'];?>
+                    <input name="name" class="form-control" type="text" value="<?php echo $_smarty_tpl->getVariable('data')->value['name'];?>
 " />
                 </div>
             </div>
             <?php if ($_smarty_tpl->getVariable('data_filtr')->value){?>
-            <div class="form-group">
-                <label class="col-sm-2 control-label">Параметры* :</label>
-                <div class="col-sm-10">
-                    <?php  $_smarty_tpl->tpl_vars['cur'] = new Smarty_Variable;
- $_from = $_smarty_tpl->getVariable('data_filtr')->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
-if (count($_from) > 0){
-    foreach ($_from as $_smarty_tpl->tpl_vars['cur']->key => $_smarty_tpl->tpl_vars['cur']->value){
-?>
-                        <div class="checkbox">
-                           <input id="male<?php echo $_smarty_tpl->getVariable('cur')->value['id'];?>
-" <?php if ($_smarty_tpl->getVariable('cur')->value['select']){?> checked="checked"<?php }?> type="checkbox" value="<?php echo $_smarty_tpl->getVariable('cur')->value['id'];?>
-" name="id_param[<?php echo $_smarty_tpl->getVariable('cur')->value['id'];?>
-]"><label class="label_checkbox"  for="male<?php echo $_smarty_tpl->getVariable('cur')->value['id'];?>
-"><?php echo $_smarty_tpl->getVariable('cur')->value['name'];?>
-</label>
-                        </div>
-                    <?php }} ?>
+                <div class="form-group" id="block-parameters">
+                    <?php $_template = new Smarty_Internal_Template("rebuild/admin_parameters.tpl", $_smarty_tpl->smarty, $_smarty_tpl, $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null);
+ echo $_template->getRenderedTemplate();?><?php $_template->updateParentVariables(0);?><?php unset($_template);?>
+
                 </div>
-            </div>
             <?php }?>
             <div class="row">
                 <div class="col-sm-2"></div>

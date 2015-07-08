@@ -64,7 +64,7 @@ class FiltrParameterPage extends AbstractPageModule {
                 
                 if ($id_parameter)
                 {
-                    $query = $this->conn->newStatement("SELECT id_product FROM product_parameter WHERE id_parameter=:id_parameter:");
+                    $query = $this->conn->newStatement("SELECT * FROM product_parameter WHERE id_parameter=:id_parameter:");
                     $query->setInteger('id_parameter', $id_parameter);
                     $data_product = $query->getAllRecords();
                     $mass_id_product = $data_product[0]['id_product'];
@@ -75,6 +75,8 @@ class FiltrParameterPage extends AbstractPageModule {
                         if ($count>1)
                             $mass_id_product=$mass_id_product.",".$value['id_product'];
                     }
+                    if (!$mass_id_product)
+                        $mass_id_product = 0;
                 
                     if (!$min_price && !$max_price)
                     {

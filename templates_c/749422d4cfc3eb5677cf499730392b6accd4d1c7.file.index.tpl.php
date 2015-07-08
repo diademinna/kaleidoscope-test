@@ -1,16 +1,16 @@
-<?php /* Smarty version Smarty3-b7, created on 2015-07-07 18:16:18
+<?php /* Smarty version Smarty3-b7, created on 2015-07-08 16:00:00
          compiled from ".\templates\index.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:18957559bed420b5235-32017659%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:24509559d1ed09bfb23-68955770%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '749422d4cfc3eb5677cf499730392b6accd4d1c7' => 
     array (
       0 => '.\\templates\\index.tpl',
-      1 => 1436282166,
+      1 => 1436360399,
     ),
   ),
-  'nocache_hash' => '18957559bed420b5235-32017659',
+  'nocache_hash' => '24509559d1ed09bfb23-68955770',
   'function' => 
   array (
   ),
@@ -49,9 +49,7 @@ if (count($_from) > 0){
  $_smarty_tpl->tpl_vars['smarty']->value['foreach']['loop']['iteration']++;
 ?>
     <div class="container-product"<?php if ($_smarty_tpl->getVariable('smarty')->value['foreach']['loop']['iteration']%3==0){?> style="margin-right:0;"<?php }?>>
-        <div class="container-product_filtr">
-            fddsf
-        </div>
+       
         <div class="container-product__image"><a href="/product/<?php echo $_smarty_tpl->getVariable('cur')->value['id'];?>
 /"><img src="/uploaded/product/<?php echo $_smarty_tpl->getVariable('cur')->value['id'];?>
 _sm.<?php echo $_smarty_tpl->getVariable('cur')->value['ext'];?>

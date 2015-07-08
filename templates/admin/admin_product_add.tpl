@@ -5,6 +5,24 @@
 
 {capture name="content"}
 
+<script>
+    function ChangeCategory(id_category)
+    {
+         $.ajax({
+            type: "POST",
+            dataType: "json",
+            url: "/admin_change_category/",
+            async: true,
+            data:{
+                id_category:id_category
+            },
+            success: function(data){
+                if (data.data_ajax_filtr)
+                    $("#block-parameters").html(data.data_ajax_filtr);
+            }
+        });
+    }
+</script>
 <div class="ibox-title">
 	<h5>Форма для добавления / редактирования продукта</h5>
 </div>
@@ -19,7 +37,7 @@
         <div class="form-group">
             <label class="col-sm-2 control-label">Категория* :</label>
                 <div class="col-sm-10">
-                    <select class="form-control m-b" name="id_category">
+                    <select class="form-control m-b" name="id_category" onchange="ChangeCategory(this.value);">
                         <option value="0">--- Выберите ---</option>
                         {foreach from=$data_category item=cur}
                             {if $cur.subcategory}
@@ -38,20 +56,13 @@
             <div class="form-group">
                 <label class="col-sm-2 control-label">Название* :</label>
                 <div class="col-sm-10">
-                        <input name="name" class="form-control" type="text" value="{$data.name}" />
+                    <input name="name" class="form-control" type="text" value="{$data.name}" />
                 </div>
             </div>
             {if $data_filtr}
-            <div class="form-group">
-                <label class="col-sm-2 control-label">Параметры* :</label>
-                <div class="col-sm-10">
-                    {foreach from=$data_filtr item=cur}
-                        <div class="checkbox">
-                           <input id="male{$cur.id}" {if $cur.select} checked="checked"{/if} type="checkbox" value="{$cur.id}" name="id_param[{$cur.id}]"><label class="label_checkbox"  for="male{$cur.id}">{$cur.name}</label>
-                        </div>
-                    {/foreach}
+                <div class="form-group" id="block-parameters">
+                    {include file="rebuild/admin_parameters.tpl"}
                 </div>
-            </div>
             {/if}
             <div class="row">
                 <div class="col-sm-2"></div>
