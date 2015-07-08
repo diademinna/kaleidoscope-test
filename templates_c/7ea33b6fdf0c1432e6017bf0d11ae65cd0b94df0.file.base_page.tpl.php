@@ -1,16 +1,16 @@
-<?php /* Smarty version Smarty3-b7, created on 2015-07-07 11:35:00
+<?php /* Smarty version Smarty3-b7, created on 2015-07-09 00:32:10
          compiled from ".\templates\common/base_page.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:505559a91d934c774-12869853%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:23858559d96da209951-70811744%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '7ea33b6fdf0c1432e6017bf0d11ae65cd0b94df0' => 
     array (
       0 => '.\\templates\\common/base_page.tpl',
-      1 => 1436257098,
+      1 => 1436391107,
     ),
   ),
-  'nocache_hash' => '505559a91d934c774-12869853',
+  'nocache_hash' => '23858559d96da209951-70811744',
   'function' => 
   array (
   ),
@@ -66,7 +66,8 @@ if (!is_callable('smarty_modifier_date_format')) include 'D:\Programms\OpenServe
                 url: "/add_product/",
                 async: false,
                 data:{
-                    id_product: id_product
+                    id_product: id_product,
+                    count: 1
                 },
                 success: function(data){
                 }

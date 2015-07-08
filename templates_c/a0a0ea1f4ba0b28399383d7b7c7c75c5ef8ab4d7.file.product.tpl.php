@@ -1,16 +1,16 @@
-<?php /* Smarty version Smarty3-b7, created on 2015-07-07 14:30:12
+<?php /* Smarty version Smarty3-b7, created on 2015-07-09 00:32:09
          compiled from ".\templates\product.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:9764559a918562f8d2-68814879%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:20797559d96d9f01dc2-43646936%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'a0a0ea1f4ba0b28399383d7b7c7c75c5ef8ab4d7' => 
     array (
       0 => '.\\templates\\product.tpl',
-      1 => 1436257098,
+      1 => 1436391117,
     ),
   ),
-  'nocache_hash' => '9764559a918562f8d2-68814879',
+  'nocache_hash' => '20797559d96d9f01dc2-43646936',
   'function' => 
   array (
   ),
@@ -47,13 +47,15 @@ $_smarty_tpl->decodeProperties(array (
         $('.button-in-cart').click(function(){
             var id_product = $('.button-in-cart').attr('id');
             id_product = id_product.replace("id_product_", "");
+            count = $('.description-product-count_input').val();
              $.ajax({
                 type: "POST",
                 dataType: "json",
                 url: "/add_product/",
                 async: false,
                 data:{
-                    id_product: id_product
+                    id_product: id_product,
+                    count: count
                 },
                 success: function(data){
                 }
@@ -152,14 +154,24 @@ _prev.<?php echo $_smarty_tpl->getVariable('data_product')->value['ext'];?>
 "><i class="fa fa-shopping-cart"></i> В корзину</div>
                 </div>
                 <div class="clear"></div>
+                <?php if ($_smarty_tpl->getVariable('data_product')->value['filtr']){?>
                 <div class="product-params">
-                    <div class="product-params_name">События:</div>
+                    <div class="product-params_name"><?php echo $_smarty_tpl->getVariable('data_product')->value['name_filtr']['name_filtr'];?>
+:</div>
                     <ul class="product-params-param">
-                        <li style="background: url('/img/params/2.png') no-repeat transparent 0 0;">День Рождения</li>
-                        <li style="background: url('/img/params/3.png') no-repeat transparent 0 0;">День Св. Валентина</li>
-                        <li style="background: url('/img/params/1.png') no-repeat transparent 0 0;">8 Марта</li>
+                        <?php  $_smarty_tpl->tpl_vars['cur'] = new Smarty_Variable;
+ $_from = $_smarty_tpl->getVariable('data_product')->value['filtr']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+if (count($_from) > 0){
+    foreach ($_from as $_smarty_tpl->tpl_vars['cur']->key => $_smarty_tpl->tpl_vars['cur']->value){
+?>
+                            <li style="background: url('/uploaded/parameter/<?php echo $_smarty_tpl->getVariable('cur')->value['id_parameter'];?>
+_sm.<?php echo $_smarty_tpl->getVariable('cur')->value['ext'];?>
+') no-repeat transparent 0 0;"><?php echo $_smarty_tpl->getVariable('cur')->value['name_parameter'];?>
+</li>
+                        <?php }} ?>
                     </ul>
                 </div>
+                <?php }?>
                 <div class='product-podarok'>
                     <div class='product_podarok_icon'>  При покупке этого товара вы получаете в подарок 1 герберу
                     </div>

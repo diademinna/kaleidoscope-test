@@ -10,6 +10,7 @@ class AddProductPage extends AbstractPageModule {
 	
 	function doContent(){
 		$id_product = $this->request->getValue('id_product');
+		$count = (int) $this->request->getValue('count');
                 $expires = time() + 3600*24*5; //3600*24*365*5
                 if (isset($_COOKIE['user_cart']))
                 {
@@ -19,7 +20,7 @@ class AddProductPage extends AbstractPageModule {
                     {
                         if ($value['id_product'] == $id_product)
                         {
-                            $mass[$key]['count'] = $mass[$key]['count']+1;
+                            $mass[$key]['count'] = $mass[$key]['count']+$count;
                             $find = 1;
                         }
                     }
@@ -27,7 +28,7 @@ class AddProductPage extends AbstractPageModule {
                     {
                         $new_mass = array();
                         $new_mass['id_product'] = $id_product;
-                        $new_mass['count'] = 1;
+                        $new_mass['count'] = $count;
                         $mass[]=$new_mass;
                     }
                     setcookie("user_cart", serialize($mass), $expires, "/");
@@ -36,7 +37,7 @@ class AddProductPage extends AbstractPageModule {
                 {
                     $mass = array();
                     $mass[0]['id_product'] = $id_product;
-                    $mass[0]['count'] = 1;
+                    $mass[0]['count'] = $count;
                     setcookie("user_cart", serialize($mass), $expires, "/");
                 }
                 echo json_encode(array('data_add_product'=>"ok"));

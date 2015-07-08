@@ -44,7 +44,8 @@
                 url: "/add_product/",
                 async: false,
                 data:{
-                    id_product: id_product
+                    id_product: id_product,
+                    count: 1
                 },
                 success: function(data){
                 }

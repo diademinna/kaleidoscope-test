@@ -38,6 +38,8 @@ class AdminParameterListPage extends AbstractPageModule {
                     // удаляем категории
                     $query = $this->conn->newStatement("DELETE FROM parameter WHERE id IN (".implode(',', array_keys($this->mass_all_child_parameter) ).")");
                     $query->execute();
+                     $query = $this->conn->newStatement("DELETE FROM product_parameter WHERE id_parameter IN (".implode(',', array_keys($this->mass_all_child_parameter) ).")");
+                    $query->execute();
 
                     // удалить все картинки категорий
                     if($this->mass_all_child_parameter){

@@ -29,13 +29,15 @@
         $('.button-in-cart').click(function(){
             var id_product = $('.button-in-cart').attr('id');
             id_product = id_product.replace("id_product_", "");
+            count = $('.description-product-count_input').val();
              $.ajax({
                 type: "POST",
                 dataType: "json",
                 url: "/add_product/",
                 async: false,
                 data:{
-                    id_product: id_product
+                    id_product: id_product,
+                    count: count
                 },
                 success: function(data){
                 }
@@ -102,14 +104,16 @@
                     <div class="button-in-cart" id="id_product_{$data_product.id}"><i class="fa fa-shopping-cart"></i> В корзину</div>
                 </div>
                 <div class="clear"></div>
+                {if $data_product['filtr']}
                 <div class="product-params">
-                    <div class="product-params_name">События:</div>
+                    <div class="product-params_name">{$data_product['name_filtr']['name_filtr']}:</div>
                     <ul class="product-params-param">
-                        <li style="background: url('/img/params/2.png') no-repeat transparent 0 0;">День Рождения</li>
-                        <li style="background: url('/img/params/3.png') no-repeat transparent 0 0;">День Св. Валентина</li>
-                        <li style="background: url('/img/params/1.png') no-repeat transparent 0 0;">8 Марта</li>
+                        {foreach from=$data_product['filtr'] item=cur}
+                            <li style="background: url('/uploaded/parameter/{$cur.id_parameter}_sm.{$cur.ext}') no-repeat transparent 0 0;">{$cur.name_parameter}</li>
+                        {/foreach}
                     </ul>
                 </div>
+                {/if}
                 <div class='product-podarok'>
                     <div class='product_podarok_icon'>  При покупке этого товара вы получаете в подарок 1 герберу
                     </div>

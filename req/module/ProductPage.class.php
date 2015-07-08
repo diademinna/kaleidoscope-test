@@ -10,9 +10,23 @@ class ProductPage extends AbstractPageModule {
 		$this->template->assign('id_product', $id_product);
 		
 		// достаем ТОВАР
-		$query = $this->conn->newStatement("SELECT * FROM product WHERE id=:id_product: AND active=1");
+		$query = $this->conn->newStatement("SELECT * FROM product WHERE id=:id_product:");
 		$query->setInteger('id_product', $id_product);
 		$data_product = $query->getFirstRecord();
+                
+                $query = $this->conn->newStatement("SELECT cat.name, param.name AS name_filtr FROM category cat LEFT JOIN parameter param ON cat.id_parameter=param.id WHERE cat.id=:id:");
+		$query->setInteger('id', $data_product['id_category']);
+		$data_name_filtr = $query->getFirstRecord();
+                
+                ///значения фильтра
+                $query = $this->conn->newStatement("SELECT pr_param.*, param.name AS name_parameter, param.ext AS ext FROM product_parameter pr_param LEFT JOIN parameter param ON pr_param.id_parameter=param.id WHERE pr_param.id_product=:id_product:");
+		$query->setInteger('id_product', $id_product);
+		$data_filtr = $query->getAllRecords();
+                if ($data_filtr)
+                {
+                    $data_product['filtr'] = $data_filtr;
+                }
+                $data_product['name_filtr'] = $data_name_filtr;
 		$this->template->assign('data_product', $data_product);
                 
                 
