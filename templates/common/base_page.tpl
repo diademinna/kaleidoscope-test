@@ -225,10 +225,10 @@
                             {/foreach}
                         </ul>-->
                 </li>
+                <li class="header-menu__item"><a class="header-menu_link" href="/actions/">Акции</a></li>
                 <li class="header-menu__item"><a class="header-menu_link" href="#">Доставка</a></li>
                 <li class="header-menu__item"><a class="header-menu_link" href="#">Способы оплаты</a></li>
                 <li class="header-menu__item"><a class="header-menu_link" href="#">Контакты</a></li>
-                <li class="header-menu__item"><a class="header-menu_link" href="#">Акции</a></li>
                 <li class="header-menu__item"><a class="header-menu_link" href="#">Отзывы</a></li>
                 <div class="clear"></div>
             </ul>

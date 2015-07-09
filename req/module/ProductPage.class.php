@@ -14,6 +14,8 @@ class ProductPage extends AbstractPageModule {
 		$query->setInteger('id_product', $id_product);
 		$data_product = $query->getFirstRecord();
                 
+                
+                //название фильтра
                 $query = $this->conn->newStatement("SELECT cat.name, param.name AS name_filtr FROM category cat LEFT JOIN parameter param ON cat.id_parameter=param.id WHERE cat.id=:id:");
 		$query->setInteger('id', $data_product['id_category']);
 		$data_name_filtr = $query->getFirstRecord();
@@ -28,7 +30,6 @@ class ProductPage extends AbstractPageModule {
                 }
                 $data_product['name_filtr'] = $data_name_filtr;
 		$this->template->assign('data_product', $data_product);
-                
                 
                 
                  ///определение ip-адреса пользователя
@@ -86,7 +87,24 @@ class ProductPage extends AbstractPageModule {
                     }
                     $mass_navigation = array_reverse($mass_navigation); // сортировка в правильной последовательности
                     $this->template->assign('mass_navigation', $mass_navigation);
+                    
+                    //достаем акции
+                    $data_actions = array();
+                    foreach ($mass_navigation as $key=>$value)
+                    {
+                        $query = $this->conn->newStatement("SELECT act_cat.*, act.text_product AS text_action FROM actions_category act_cat LEFT JOIN actions act ON act_cat.id_action=act.id WHERE act.date_end>now() AND act_cat.id_category=:id_category:");
+                        $query->setInteger('id_category', $value['id']);
+                        $data_action_category = $query->getAllRecords();
+                        if ($data_action_category)
+                            $data_actions = array_merge ($data_actions, $data_action_category);
+                    }
+                    $this->template->assign('data_actions', $data_actions);
 		}
+                 //часто покупаемые товары
+                $query = $this->conn->newStatement("SELECT pr.*, pr_info.buys as buys FROM product pr INNER JOIN product_info pr_info ON pr.id=pr_info.id_product WHERE pr.active=1 ORDER BY pr_info.buys DESC, pr.id DESC LIMIT 5");
+
+		$data_product_buys = $query->getAllRecords();
+		$this->template->assign('data_product_buys', $data_product_buys);
 	
 		$this->setPageTitle("".($data_product['title']?$data_product['title']:$data_product['name'])."");
 		

@@ -106,7 +106,10 @@ class ArrayRequestDispatcher extends RequestDispatcher {
 			
 			/* DEVELOPER CODE */
 			
-			
+			/*АКЦИИ*/
+                        '/actions/' 			=> array('moduleName' => 'ActionsPage', 'moduleType' => 'module'),
+			'/actions/page/(\d+)/' => array('moduleName' => 'ActionsPage', 'moduleType' => 'module', 'page' => '$1'),
+			'/actions/(\d+)/' 		=> array('moduleName' => 'ActionsPage', 'moduleType' => 'module', 'id' => '$1'),
 			
 			
 			

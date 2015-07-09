@@ -94,6 +94,7 @@ $(document).ready(function(){
         $('.apply-filtr').click(function(){
             var min_price = $( "#contentSlider1" ).text();
             var max_price = $( "#contentSlider2" ).text();
+            $('.radio').children('input').removeAttr("checked");
              $.ajax({
                 type: "POST",
                 dataType: "json",

@@ -92,8 +92,8 @@
             <div class="description-product_text">
                 <div class="description-product_name">{$data_product.name}</div>
                 <div class="description-product-price">
-                    {if $data_product.price}<div class="description-product-price-actual">{$data_product.price} руб.</div>{/if}
-                    {if $data_product.old_price}<div class="description-product-price_old">{$data_product.old_price} руб.</div>{/if}
+                    {if $data_product.price}<div class="description-product-price-actual">{$data_product.price|cost} руб.</div>{/if}
+                    {if $data_product.old_price}<div class="description-product-price_old">{$data_product.old_price|cost} руб.</div>{/if}
                     <div class="clear"></div>
                 </div>
                 <div class="description-product-code"><span>Артикул:</span> {$data_product.code}</div>
@@ -114,10 +114,14 @@
                     </ul>
                 </div>
                 {/if}
-                <div class='product-podarok'>
-                    <div class='product_podarok_icon'>  При покупке этого товара вы получаете в подарок 1 герберу
-                    </div>
-                </div>
+                {if $data_actions}
+                    {foreach from=$data_actions item=cur}
+                        <div class='product-podarok'>
+                            <div class='product_podarok_icon'>{$cur.text_action}
+                            </div>
+                        </div>
+                    {/foreach}
+                {/if}
             </div>
             <div class="clear"></div>
             {if $data_product.text}
@@ -133,63 +137,25 @@
     <div class="container-width_300px">
         <div class="bgr-green title-block">часто покупаемые товары</div>
         <div class="container-bestsellers">
-	<div class="block-bestsellers">
-		<div class="block-bestsellers-image">
-			<a href="#"><img src="/img/bestsellers/1.png" /></a>
-		</div>
-		<div class="block-bestsellers-description">
-			<div class="block-bestsellers__name"><a href="#">ВЕСЕЛЫЙ МИШКА</a></div>
-			<div class="block-bestsellers-price">
-				<div class="block-bestsellers__old_price">80  руб.</div>
-				<div class="block-bestsellers_price">50  руб.</div>
-				<div class="clear"></div>
-			</div>
-		</div>
-		<div class="clear"></div>
-	</div>
-	<div class="block-bestsellers">
-		<div class="block-bestsellers-image">
-			<a href="#"><img src="/img/bestsellers/2.png" /></a>
-		</div>
-		<div class="block-bestsellers-description">
-			<div class="block-bestsellers__name"><a href="#">ВЕСЕЛЫЙ МИШКА</a></div>
-			<div class="block-bestsellers-price">
-				<div class="block-bestsellers__old_price">80  руб.</div>
-				<div class="block-bestsellers_price">50  руб.</div>
-				<div class="clear"></div>
-			</div>
-		</div>
-		<div class="clear"></div>
-	</div>
-	<div class="block-bestsellers">
-		<div class="block-bestsellers-image">
-			<a href="#"><img src="/img/bestsellers/3.png" /></a>
-		</div>
-		<div class="block-bestsellers-description">
-			<div class="block-bestsellers__name"><a href="#">ВЕСЕЛЫЙ МИШКА</a></div>
-			<div class="block-bestsellers-price">
-				<div class="block-bestsellers__old_price">80  руб.</div>
-				<div class="block-bestsellers_price">50  руб.</div>
-				<div class="clear"></div>
-			</div>
-		</div>
-		<div class="clear"></div>
-	</div>
-	<div class="block-bestsellers">
-		<div class="block-bestsellers-image">
-			<a href="#"><img src="/img/bestsellers/4.png" /></a>
-		</div>
-		<div class="block-bestsellers-description">
-			<div class="block-bestsellers__name"><a href="#">ВЕСЕЛЫЙ МИШКА</a></div>
-			<div class="block-bestsellers-price">
-				<div class="block-bestsellers__old_price">80  руб.</div>
-				<div class="block-bestsellers_price">50  руб.</div>
-				<div class="clear"></div>
-			</div>
-		</div>
-		<div class="clear"></div>
-	</div>
-</div>
+	{foreach from=$data_product_buys item=cur}
+            <div class="block-bestsellers">
+                <div class="block-bestsellers-image">
+                        <a href="/product/{$cur.id}/"><img src="/uploaded/product/{$cur.id}_buy.{$cur.ext}" /></a>
+                </div>
+                <div class="block-bestsellers-description">
+                    <div class="block-bestsellers__name"><a href="/product/{$cur.id}/">{$cur.name}</a></div>
+                    <div class="block-bestsellers-price">
+                        {if $cur.old_price}
+                            <div class="block-bestsellers__old_price">{$cur.old_price|cost}  руб.</div>
+                        {/if}
+                        <div class="block-bestsellers_price">{$cur.price|cost}  руб.</div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+    {/foreach}
+    </div>
     </div>
     <div class="clear"></div>
 	

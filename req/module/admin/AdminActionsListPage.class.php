@@ -64,6 +64,14 @@ class AdminActionsListPage extends AbstractPageModule {
 			
 			$pagerString = $pager->getPagerString($page, $sql, $fromWhereCnt, $href);
 			$data = $pager->getPageData();
+                        foreach ($data as $key=>$value)
+                        {
+                            $query = $conn->newStatement("SELECT act_cat.*, cat.name AS name_category FROM actions_category act_cat LEFT JOIN category cat ON act_cat.id_category=cat.id WHERE act_cat.id_action=:id_action:");
+                            $query->setInteger('id_action', $value['id']);
+                            $data_category = $query->getAllRecords();
+                            if ($data_category)
+                                $data[$key]['category'] = $data_category;
+                        }
 			
 			$this->template->assign('pager_string', $pagerString);
 			$this->template->assign('data', $data);

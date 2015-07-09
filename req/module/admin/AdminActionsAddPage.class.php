@@ -158,24 +158,14 @@ class AdminActionsAddPage extends FormPageModule {
                     if($this->formData['type_resize'] == 1){
                             //  РЕСАЙЗИТЬ по ОПРЕДЕЛЕННЫМ РАЗМЕРАМ
                             if($img_position==1 OR $img_position==3){  // гориз.
-                                    $tmp_img->ResizeFromRaf(200, 120, "uploaded/actions/{$id_new}_sm.{$image_type}");
+                                   $tmp_img->ResizeFromRaf(280, 170, "uploaded/actions/{$id_new}_sm.{$image_type}");
                             }
                             else{ // вертик.
-                                    $tmp_img->ResizeFromRaf(120, 200, "uploaded/actions/{$id_new}_sm.{$image_type}");
+                                    $tmp_img->ResizeFromRaf(100, 170, "uploaded/actions/{$id_new}_sm.{$image_type}");
                             }
 
                             // РЕCАЙЗИТЬ ПРОПОРЦИОНАЛЬНО ШИРИНЕ!
                             //$tmp_img->resizeProportionally("uploaded/actions/{$id_new}_sm.{$image_type}", 200, 1);
-                    }
-                    elseif ($this->formData['type_resize'] == 2){
-                            //  РЕСАЙЗИТЬ по ОПРЕДЕЛЕННЫМ РАЗМЕРАМ С ПУСТЫМИ ПОЛЯМИ
-                            if($img_position==1 OR $img_position==3){  // гориз.
-                                    $tmp_img->Resize(200, 120, "uploaded/actions/{$id_new}_sm.{$image_type}");
-                            }
-                            else{ // вертик.
-                                    $tmp_img->Resize(120, 200, "uploaded/actions/{$id_new}_sm.{$image_type}");
-                            }
-
                     }
 			
 			

@@ -1,16 +1,16 @@
-<?php /* Smarty version Smarty3-b7, created on 2015-07-09 15:11:53
+<?php /* Smarty version Smarty3-b7, created on 2015-07-09 17:38:08
          compiled from ".\templates\admin/admin_actions_add.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:6004559e6509f39fd7-55678633%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:17909559e87502fc9d6-41954774%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'da848bf29a4a4b23dcc0e29b831ef5101ff7c884' => 
     array (
       0 => '.\\templates\\admin/admin_actions_add.tpl',
-      1 => 1436443910,
+      1 => 1436452685,
     ),
   ),
-  'nocache_hash' => '6004559e6509f39fd7-55678633',
+  'nocache_hash' => '17909559e87502fc9d6-41954774',
   'function' => 
   array (
   ),
@@ -89,8 +89,10 @@ $_smarty_tpl->decodeProperties(array (
 if (count($_from) > 0){
     foreach ($_from as $_smarty_tpl->tpl_vars['cur']->key => $_smarty_tpl->tpl_vars['cur']->value){
 ?>
-                        <optgroup label="<?php echo $_smarty_tpl->getVariable('cur')->value['name'];?>
-"></optgroup>
+                        <option <?php ob_start();?><?php echo $_smarty_tpl->getVariable('cur2')->value['id'];?>
+<?php $_tmp1=ob_get_clean();?><?php if ($_smarty_tpl->getVariable('data_select_category')->value[$_tmp1]){?> selected="selected"<?php }?> style="font-weight: 700;" value="<?php echo $_smarty_tpl->getVariable('cur')->value['id'];?>
+"><?php echo $_smarty_tpl->getVariable('cur')->value['name'];?>
+</option>
                         <?php if ($_smarty_tpl->getVariable('cur')->value['child']){?>
                             <?php  $_smarty_tpl->tpl_vars['cur2'] = new Smarty_Variable;
  $_from = $_smarty_tpl->getVariable('cur')->value['child']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
@@ -98,7 +100,7 @@ if (count($_from) > 0){
     foreach ($_from as $_smarty_tpl->tpl_vars['cur2']->key => $_smarty_tpl->tpl_vars['cur2']->value){
 ?>
                                 <option <?php ob_start();?><?php echo $_smarty_tpl->getVariable('cur2')->value['id'];?>
-<?php $_tmp1=ob_get_clean();?><?php if ($_smarty_tpl->getVariable('data_select_category')->value[$_tmp1]){?> selected="selected"<?php }?> value="<?php echo $_smarty_tpl->getVariable('cur2')->value['id'];?>
+<?php $_tmp2=ob_get_clean();?><?php if ($_smarty_tpl->getVariable('data_select_category')->value[$_tmp2]){?> selected="selected"<?php }?> value="<?php echo $_smarty_tpl->getVariable('cur2')->value['id'];?>
 "><?php echo $_smarty_tpl->getVariable('cur2')->value['name'];?>
 </option>
                             <?php }} ?>
@@ -129,7 +131,7 @@ if (count($_from) > 0){
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 control-label">Изображение (превью):</label>
+            <label class="col-sm-2 control-label">Изображение (превью): <br /> 280 х 170 - гориз. <br /> 100 х 170 - верт.</label>
             <div class="col-sm-10">
                 <input  type="file" name="image" />
                 <br /><br />

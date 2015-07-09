@@ -1,16 +1,16 @@
-<?php /* Smarty version Smarty3-b7, created on 2015-07-09 13:37:51
+<?php /* Smarty version Smarty3-b7, created on 2015-07-09 17:26:12
          compiled from ".\templates\admin/admin_actions_list.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:28036559e4eff8f97e2-11726911%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:26415559e84842e55c1-34015011%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '9ea5142c4c56cd128563e62d1ee81ecb350bd1c7' => 
     array (
       0 => '.\\templates\\admin/admin_actions_list.tpl',
-      1 => 1436438268,
+      1 => 1436451969,
     ),
   ),
-  'nocache_hash' => '28036559e4eff8f97e2-11726911',
+  'nocache_hash' => '26415559e84842e55c1-34015011',
   'function' => 
   array (
   ),
@@ -69,6 +69,7 @@ $_smarty_tpl->decodeProperties(array (
                         <thead>
                             <tr>
                                 <th>Название</th>
+                                <th>Категории</th>
                                 <th>Дата начала</th>
                                 <th>Дата окончания</th>
                                 <th>На сайте</th>
@@ -86,9 +87,21 @@ if (count($_from) > 0){
                                 <tr>
                                     <td><?php echo $_smarty_tpl->getVariable('cur')->value['name'];?>
 </td>
-                                    <td><?php echo $_smarty_tpl->getVariable('cur')->value['date'];?>
+                                    <td>
+                                        <?php if ($_smarty_tpl->getVariable('cur')->value['category']){?>
+                                            <?php  $_smarty_tpl->tpl_vars['cur2'] = new Smarty_Variable;
+ $_from = $_smarty_tpl->getVariable('cur')->value['category']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+if (count($_from) > 0){
+    foreach ($_from as $_smarty_tpl->tpl_vars['cur2']->key => $_smarty_tpl->tpl_vars['cur2']->value){
+?>
+                                                <?php echo $_smarty_tpl->getVariable('cur2')->value['name_category'];?>
+<br/>
+                                            <?php }} ?>
+                                        <?php }?>
+                                    </td>
+                                    <td><?php echo smarty_modifier_date_format($_smarty_tpl->getVariable('cur')->value['date'],"%d.%m.%Y");?>
 </td>
-                                    <td><?php if (!$_smarty_tpl->getVariable('cur')->value['date_end']){?>не указана<?php }else{ ?><?php echo $_smarty_tpl->getVariable('cur')->value['date_end'];?>
+                                    <td><?php if (!$_smarty_tpl->getVariable('cur')->value['date_end']){?>не указана<?php }else{ ?><?php echo smarty_modifier_date_format($_smarty_tpl->getVariable('cur')->value['date_end'],"%d.%m.%Y");?>
 <?php }?></td>
                                     <td>
                                         <div class="checkbox">

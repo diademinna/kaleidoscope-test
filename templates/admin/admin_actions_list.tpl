@@ -46,6 +46,7 @@
                         <thead>
                             <tr>
                                 <th>Название</th>
+                                <th>Категории</th>
                                 <th>Дата начала</th>
                                 <th>Дата окончания</th>
                                 <th>На сайте</th>
@@ -56,8 +57,15 @@
                             {foreach from=$data item=cur name=loop}
                                 <tr>
                                     <td>{$cur.name}</td>
-                                    <td>{$cur.date}</td>
-                                    <td>{if !$cur.date_end}не указана{else}{$cur.date_end}{/if}</td>
+                                    <td>
+                                        {if $cur.category}
+                                            {foreach from=$cur.category item=cur2}
+                                                {$cur2.name_category}<br/>
+                                            {/foreach}
+                                        {/if}
+                                    </td>
+                                    <td>{$cur.date|date_format:"%d.%m.%Y"}</td>
+                                    <td>{if !$cur.date_end}не указана{else}{$cur.date_end|date_format:"%d.%m.%Y"}{/if}</td>
                                     <td>
                                         <div class="checkbox">
                                             <input id="male{$cur.id}" type="checkbox" name="my_checkbox" value="{$cur.active}" {if $cur.active==1}checked{/if} onclick="xajax_Activate('{$cur.id}')">

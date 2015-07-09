@@ -1,16 +1,16 @@
-<?php /* Smarty version Smarty3-b7, created on 2015-07-07 22:47:17
+<?php /* Smarty version Smarty3-b7, created on 2015-07-09 16:11:28
          compiled from ".\templates\category.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:27697559c2cc5c78e09-81424969%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:270559e7300bb18e6-87801173%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '8b8d5e7c56e6e5abaed147561ae75e91b2c83948' => 
     array (
       0 => '.\\templates\\category.tpl',
-      1 => 1436298435,
+      1 => 1436447487,
     ),
   ),
-  'nocache_hash' => '27697559c2cc5c78e09-81424969',
+  'nocache_hash' => '270559e7300bb18e6-87801173',
   'function' => 
   array (
   ),
@@ -120,6 +120,7 @@ $(document).ready(function(){
         $('.apply-filtr').click(function(){
             var min_price = $( "#contentSlider1" ).text();
             var max_price = $( "#contentSlider2" ).text();
+            $('.radio').children('input').removeAttr("checked");
              $.ajax({
                 type: "POST",
                 dataType: "json",

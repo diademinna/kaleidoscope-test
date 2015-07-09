@@ -1,22 +1,23 @@
-<?php /* Smarty version Smarty3-b7, created on 2015-07-09 00:32:09
+<?php /* Smarty version Smarty3-b7, created on 2015-07-09 17:41:53
          compiled from ".\templates\product.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:20797559d96d9f01dc2-43646936%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:28988559e8831945921-04207040%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'a0a0ea1f4ba0b28399383d7b7c7c75c5ef8ab4d7' => 
     array (
       0 => '.\\templates\\product.tpl',
-      1 => 1436391117,
+      1 => 1436452911,
     ),
   ),
-  'nocache_hash' => '20797559d96d9f01dc2-43646936',
+  'nocache_hash' => '28988559e8831945921-04207040',
   'function' => 
   array (
   ),
   'has_nocache_code' => false,
 )); /*/%%SmartyHeaderCode%%*/?>
-<?php ob_start(); ?>
+<?php if (!is_callable('smarty_modifier_cost')) include 'D:\Programms\OpenServer\OpenServer\domains\kaleidoscope-test.ru\req\external\smarty\plugins\modifier.cost.php';
+?><?php ob_start(); ?>
     <script type="text/javascript" src="/js/carousel/jquery.jcarousel.js" charset="utf-8"></script>
 <script>
     $(document).ready(function(){
@@ -138,9 +139,9 @@ _prev.<?php echo $_smarty_tpl->getVariable('data_product')->value['ext'];?>
                 <div class="description-product_name"><?php echo $_smarty_tpl->getVariable('data_product')->value['name'];?>
 </div>
                 <div class="description-product-price">
-                    <?php if ($_smarty_tpl->getVariable('data_product')->value['price']){?><div class="description-product-price-actual"><?php echo $_smarty_tpl->getVariable('data_product')->value['price'];?>
+                    <?php if ($_smarty_tpl->getVariable('data_product')->value['price']){?><div class="description-product-price-actual"><?php echo smarty_modifier_cost($_smarty_tpl->getVariable('data_product')->value['price']);?>
  руб.</div><?php }?>
-                    <?php if ($_smarty_tpl->getVariable('data_product')->value['old_price']){?><div class="description-product-price_old"><?php echo $_smarty_tpl->getVariable('data_product')->value['old_price'];?>
+                    <?php if ($_smarty_tpl->getVariable('data_product')->value['old_price']){?><div class="description-product-price_old"><?php echo smarty_modifier_cost($_smarty_tpl->getVariable('data_product')->value['old_price']);?>
  руб.</div><?php }?>
                     <div class="clear"></div>
                 </div>
@@ -172,10 +173,19 @@ _sm.<?php echo $_smarty_tpl->getVariable('cur')->value['ext'];?>
                     </ul>
                 </div>
                 <?php }?>
-                <div class='product-podarok'>
-                    <div class='product_podarok_icon'>  При покупке этого товара вы получаете в подарок 1 герберу
-                    </div>
-                </div>
+                <?php if ($_smarty_tpl->getVariable('data_actions')->value){?>
+                    <?php  $_smarty_tpl->tpl_vars['cur'] = new Smarty_Variable;
+ $_from = $_smarty_tpl->getVariable('data_actions')->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+if (count($_from) > 0){
+    foreach ($_from as $_smarty_tpl->tpl_vars['cur']->key => $_smarty_tpl->tpl_vars['cur']->value){
+?>
+                        <div class='product-podarok'>
+                            <div class='product_podarok_icon'><?php echo $_smarty_tpl->getVariable('cur')->value['text_action'];?>
+
+                            </div>
+                        </div>
+                    <?php }} ?>
+                <?php }?>
             </div>
             <div class="clear"></div>
             <?php if ($_smarty_tpl->getVariable('data_product')->value['text']){?>
@@ -192,63 +202,36 @@ _sm.<?php echo $_smarty_tpl->getVariable('cur')->value['ext'];?>
     <div class="container-width_300px">
         <div class="bgr-green title-block">часто покупаемые товары</div>
         <div class="container-bestsellers">
-	<div class="block-bestsellers">
-		<div class="block-bestsellers-image">
-			<a href="#"><img src="/img/bestsellers/1.png" /></a>
-		</div>
-		<div class="block-bestsellers-description">
-			<div class="block-bestsellers__name"><a href="#">ВЕСЕЛЫЙ МИШКА</a></div>
-			<div class="block-bestsellers-price">
-				<div class="block-bestsellers__old_price">80  руб.</div>
-				<div class="block-bestsellers_price">50  руб.</div>
-				<div class="clear"></div>
-			</div>
-		</div>
-		<div class="clear"></div>
-	</div>
-	<div class="block-bestsellers">
-		<div class="block-bestsellers-image">
-			<a href="#"><img src="/img/bestsellers/2.png" /></a>
-		</div>
-		<div class="block-bestsellers-description">
-			<div class="block-bestsellers__name"><a href="#">ВЕСЕЛЫЙ МИШКА</a></div>
-			<div class="block-bestsellers-price">
-				<div class="block-bestsellers__old_price">80  руб.</div>
-				<div class="block-bestsellers_price">50  руб.</div>
-				<div class="clear"></div>
-			</div>
-		</div>
-		<div class="clear"></div>
-	</div>
-	<div class="block-bestsellers">
-		<div class="block-bestsellers-image">
-			<a href="#"><img src="/img/bestsellers/3.png" /></a>
-		</div>
-		<div class="block-bestsellers-description">
-			<div class="block-bestsellers__name"><a href="#">ВЕСЕЛЫЙ МИШКА</a></div>
-			<div class="block-bestsellers-price">
-				<div class="block-bestsellers__old_price">80  руб.</div>
-				<div class="block-bestsellers_price">50  руб.</div>
-				<div class="clear"></div>
-			</div>
-		</div>
-		<div class="clear"></div>
-	</div>
-	<div class="block-bestsellers">
-		<div class="block-bestsellers-image">
-			<a href="#"><img src="/img/bestsellers/4.png" /></a>
-		</div>
-		<div class="block-bestsellers-description">
-			<div class="block-bestsellers__name"><a href="#">ВЕСЕЛЫЙ МИШКА</a></div>
-			<div class="block-bestsellers-price">
-				<div class="block-bestsellers__old_price">80  руб.</div>
-				<div class="block-bestsellers_price">50  руб.</div>
-				<div class="clear"></div>
-			</div>
-		</div>
-		<div class="clear"></div>
-	</div>
-</div>
+	<?php  $_smarty_tpl->tpl_vars['cur'] = new Smarty_Variable;
+ $_from = $_smarty_tpl->getVariable('data_product_buys')->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+if (count($_from) > 0){
+    foreach ($_from as $_smarty_tpl->tpl_vars['cur']->key => $_smarty_tpl->tpl_vars['cur']->value){
+?>
+            <div class="block-bestsellers">
+                <div class="block-bestsellers-image">
+                        <a href="/product/<?php echo $_smarty_tpl->getVariable('cur')->value['id'];?>
+/"><img src="/uploaded/product/<?php echo $_smarty_tpl->getVariable('cur')->value['id'];?>
+_buy.<?php echo $_smarty_tpl->getVariable('cur')->value['ext'];?>
+" /></a>
+                </div>
+                <div class="block-bestsellers-description">
+                    <div class="block-bestsellers__name"><a href="/product/<?php echo $_smarty_tpl->getVariable('cur')->value['id'];?>
+/"><?php echo $_smarty_tpl->getVariable('cur')->value['name'];?>
+</a></div>
+                    <div class="block-bestsellers-price">
+                        <?php if ($_smarty_tpl->getVariable('cur')->value['old_price']){?>
+                            <div class="block-bestsellers__old_price"><?php echo smarty_modifier_cost($_smarty_tpl->getVariable('cur')->value['old_price']);?>
+  руб.</div>
+                        <?php }?>
+                        <div class="block-bestsellers_price"><?php echo smarty_modifier_cost($_smarty_tpl->getVariable('cur')->value['price']);?>
+  руб.</div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+    <?php }} ?>
+    </div>
     </div>
     <div class="clear"></div>
 	

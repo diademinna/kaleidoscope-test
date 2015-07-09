@@ -61,7 +61,7 @@
                 <select name="id_category[]" multiple="multiple" size="8"> 
                     <option value="0">--- Выберите ---</option>
                     {foreach from=$data_category item=cur}
-                        <optgroup label="{$cur.name}"></optgroup>
+                        <option {if $data_select_category[{$cur2.id}]} selected="selected"{/if} style="font-weight: 700;" value="{$cur.id}">{$cur.name}</option>
                         {if $cur.child}
                             {foreach from=$cur.child item=cur2}
                                 <option {if $data_select_category[{$cur2.id}]} selected="selected"{/if} value="{$cur2.id}">{$cur2.name}</option>
@@ -90,7 +90,7 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 control-label">Изображение (превью):</label>
+            <label class="col-sm-2 control-label">Изображение (превью): <br /> 280 х 170 - гориз. <br /> 100 х 170 - верт.</label>
             <div class="col-sm-10">
                 <input  type="file" name="image" />
                 <br /><br />
