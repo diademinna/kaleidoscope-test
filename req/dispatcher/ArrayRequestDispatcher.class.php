@@ -140,6 +140,14 @@ class ArrayRequestDispatcher extends RequestDispatcher {
 			'/admin/news/add/'						=> array('moduleName' => 'admin/AdminNewsAddPage', 'moduleType' => 'module'),
 			'/admin/news/add/(\d+)/edit/(\d+)/'		=> array('moduleName' => 'admin/AdminNewsAddPage', 'moduleType' => 'module', 'page' => '$1', 'action' => 'edit', 'id' => '$2'),
 			'/admin/news_photo/add/(\d+)/(\d+)/'		=> array('moduleName' => 'admin/AdminNewsPhotoAddPage', 'moduleType' => 'module', 'page' => '$1', 'id' => '$2'),
+                    
+                        /*Акции*/
+                        '/admin/actions/list/'						=> array('moduleName' => 'admin/AdminActionsListPage', 'moduleType' => 'module'),
+			'/admin/actions/list/(\d+)/'				=> array('moduleName' => 'admin/AdminActionsListPage', 'moduleType' => 'module', 'page' => '$1'),
+			'/admin/actions/list/(\d+)/delete/(\d+)/'	=> array('moduleName' => 'admin/AdminActionsListPage', 'moduleType' => 'module', 'page' => '$1', 'action' => 'delete', 'id' => '$2'),
+			'/admin/actions/add/'						=> array('moduleName' => 'admin/AdminActionsAddPage', 'moduleType' => 'module'),
+			'/admin/actions/add/(\d+)/edit/(\d+)/'		=> array('moduleName' => 'admin/AdminActionsAddPage', 'moduleType' => 'module', 'page' => '$1', 'action' => 'edit', 'id' => '$2'),
+			
 			
 			
 			'/admin/faqs/list/' 				 	=> array('moduleName' => 'admin/AdminFaqsListPage', 'moduleType' => 'module'),

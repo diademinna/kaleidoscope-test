@@ -46,6 +46,7 @@
                 <thead>
                     <tr>
                         <th>Название</th>
+                        <th>Категория</th>
                         <th>Артикул</th>
                         <th>Цена</th>
                         <th>Старая цена</th>
@@ -58,6 +59,7 @@
                     <tr id="item_{$cur.id}">
                         
                         <td>{$cur.name}</td>
+                        <td>{$cur.name_category}</td>
                         <td>{$cur.code}</td>
                         <td>{if $cur.price|cost}{$cur.price|cost}{else}не указана{/if}</td>
                         <td>{if $cur.old_price|cost}{$cur.old_price|cost}{else}не указана{/if}</td>
@@ -68,10 +70,9 @@
                             </div>
                         </td>
                         <td style="font-size:18px;">
-                            <a href="/admin/product/add/{$page}/edit/{$cur.id}/{if $get_param}{$get_param}{/if}">
-                                <a href="/admin/product_photo/add/{$cur.id}/"><img src="/img/admin/photo.png"  title="Галерея" alt="Галерея" /></a>&nbsp;&nbsp;
-                                 <a href="/admin/product/add/{$page}/edit/{$cur.id}/"><i class="fa fa-pencil" title="Редактировать" alt="Редактировать"></i></a> &nbsp &nbsp
-                                <i class="fa fa-times" title="Удалить" alt="Удалить" onclick="delRecord('{$page}', '{$cur.id}', '{$get_param}');" onmouseover="this.style.cursor='pointer';"></i>
+                            <a href="/admin/product_photo/add/{$cur.id}/"><img src="/img/admin/photo.png"  title="Галерея" alt="Галерея" /></a>&nbsp;&nbsp;
+                            <a href="/admin/product/add/{$page}/edit/{$cur.id}/"><i class="fa fa-pencil" title="Редактировать" alt="Редактировать"></i></a> &nbsp &nbsp
+                            <i class="fa fa-times" title="Удалить" alt="Удалить" onclick="delRecord('{$page}', '{$cur.id}', '{$get_param}');" onmouseover="this.style.cursor='pointer';"></i>
                         </td>
                     </tr>
                     {/foreach}

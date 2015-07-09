@@ -90,7 +90,7 @@ class AdminProductListPage extends AbstractPageModule {
                     require_once 'module/common/PagerFactory.class.php';
 
                     $pager = new PagerFactory();
-                    $sql = "SELECT * FROM product ORDER BY id DESC";
+                    $sql = "SELECT pr.*, cat.name AS name_category FROM product pr LEFT JOIN category cat ON pr.id_category=cat.id ORDER BY id DESC";
                     $fromWhereCnt = "product";
                     $href = "/admin/product/list/".$get_param;
 

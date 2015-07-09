@@ -1,16 +1,16 @@
-<?php /* Smarty version Smarty3-b7, created on 2015-07-07 15:37:24
+<?php /* Smarty version Smarty3-b7, created on 2015-07-09 11:13:12
          compiled from ".\templates\admin/common/base_page.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:5472559bc804d3b207-01236379%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:3518559e2d187abd78-33741533%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'ba2415b75c2fc48c6aaf444b2b885335d3243cd6' => 
     array (
       0 => '.\\templates\\admin/common/base_page.tpl',
-      1 => 1436272640,
+      1 => 1436429589,
     ),
   ),
-  'nocache_hash' => '5472559bc804d3b207-01236379',
+  'nocache_hash' => '3518559e2d187abd78-33741533',
   'function' => 
   array (
   ),
@@ -105,6 +105,12 @@ $_smarty_tpl->decodeProperties(array (
                         <a href="/admin/parameter/list/">
                             <i class="fa fa-wrench"></i>
                             <span class="nav-label">Параметры для категорий</span>
+                        </a>
+                    </li>
+                    <li<?php if ($_smarty_tpl->getVariable('unit')->value=="actions"){?> class="active"<?php }?>>
+                        <a href="/admin/actions/list/">
+                            <i class="fa fa-gift"></i>
+                            <span class="nav-label">Акции</span>
                         </a>
                     </li>
                 </ul>

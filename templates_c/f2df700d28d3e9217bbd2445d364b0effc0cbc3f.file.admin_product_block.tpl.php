@@ -1,16 +1,16 @@
-<?php /* Smarty version Smarty3-b7, created on 2015-07-07 12:29:11
+<?php /* Smarty version Smarty3-b7, created on 2015-07-09 14:39:35
          compiled from ".\templates\admin/admin_product_block.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:32343559a8bb01c1227-19792143%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:4503559e5d772d6887-34039026%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'f2df700d28d3e9217bbd2445d364b0effc0cbc3f' => 
     array (
       0 => '.\\templates\\admin/admin_product_block.tpl',
-      1 => 1436257098,
+      1 => 1436441973,
     ),
   ),
-  'nocache_hash' => '32343559a8bb01c1227-19792143',
+  'nocache_hash' => '4503559e5d772d6887-34039026',
   'function' => 
   array (
   ),
@@ -69,6 +69,7 @@ $_smarty_tpl->decodeProperties(array (
                 <thead>
                     <tr>
                         <th>Название</th>
+                        <th>Категория</th>
                         <th>Артикул</th>
                         <th>Цена</th>
                         <th>Старая цена</th>
@@ -87,6 +88,8 @@ if (count($_from) > 0){
                         
                         <td><?php echo $_smarty_tpl->getVariable('cur')->value['name'];?>
 </td>
+                        <td><?php echo $_smarty_tpl->getVariable('cur')->value['name_category'];?>
+</td>
                         <td><?php echo $_smarty_tpl->getVariable('cur')->value['code'];?>
 </td>
                         <td><?php if (smarty_modifier_cost($_smarty_tpl->getVariable('cur')->value['price'])){?><?php echo smarty_modifier_cost($_smarty_tpl->getVariable('cur')->value['price']);?>
@@ -104,16 +107,12 @@ if (count($_from) > 0){
                             </div>
                         </td>
                         <td style="font-size:18px;">
+                            <a href="/admin/product_photo/add/<?php echo $_smarty_tpl->getVariable('cur')->value['id'];?>
+/"><img src="/img/admin/photo.png"  title="Галерея" alt="Галерея" /></a>&nbsp;&nbsp;
                             <a href="/admin/product/add/<?php echo $_smarty_tpl->getVariable('page')->value;?>
 /edit/<?php echo $_smarty_tpl->getVariable('cur')->value['id'];?>
-/<?php if ($_smarty_tpl->getVariable('get_param')->value){?><?php echo $_smarty_tpl->getVariable('get_param')->value;?>
-<?php }?>">
-                                <a href="/admin/product_photo/add/<?php echo $_smarty_tpl->getVariable('cur')->value['id'];?>
-/"><img src="/img/admin/photo.png"  title="Галерея" alt="Галерея" /></a>&nbsp;&nbsp;
-                                 <a href="/admin/product/add/<?php echo $_smarty_tpl->getVariable('page')->value;?>
-/edit/<?php echo $_smarty_tpl->getVariable('cur')->value['id'];?>
 /"><i class="fa fa-pencil" title="Редактировать" alt="Редактировать"></i></a> &nbsp &nbsp
-                                <i class="fa fa-times" title="Удалить" alt="Удалить" onclick="delRecord('<?php echo $_smarty_tpl->getVariable('page')->value;?>
+                            <i class="fa fa-times" title="Удалить" alt="Удалить" onclick="delRecord('<?php echo $_smarty_tpl->getVariable('page')->value;?>
 ', '<?php echo $_smarty_tpl->getVariable('cur')->value['id'];?>
 ', '<?php echo $_smarty_tpl->getVariable('get_param')->value;?>
 ');" onmouseover="this.style.cursor='pointer';"></i>

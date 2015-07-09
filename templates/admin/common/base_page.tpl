@@ -86,6 +86,12 @@
                             <span class="nav-label">Параметры для категорий</span>
                         </a>
                     </li>
+                    <li{if $unit=="actions"} class="active"{/if}>
+                        <a href="/admin/actions/list/">
+                            <i class="fa fa-gift"></i>
+                            <span class="nav-label">Акции</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </nav>

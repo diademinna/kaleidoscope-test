@@ -238,10 +238,10 @@ class AdminProductAddPage extends FormPageModule {
                     $query->setInteger('id_product', $id_new);
                     $query->execute();
                     
-                    $query = $this->conn->newStatement("UPDATE product SET code=:code: WHERE id=:id:");
+               /*     $query = $this->conn->newStatement("UPDATE product SET code=:code: WHERE id=:id:");
                     $query->setInteger('id', $id_new);
                     $query->setInteger('code', $this->formData['id_category'].$id_new);
-                    $query->execute();
+                    $query->execute();*/
                 }
 		
 		$this->response->redirect("/admin/product/list/{$this->page}/".($this->get_param?$this->get_param:"") );
