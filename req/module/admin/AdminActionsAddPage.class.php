@@ -158,10 +158,10 @@ class AdminActionsAddPage extends FormPageModule {
                     if($this->formData['type_resize'] == 1){
                             //  РЕСАЙЗИТЬ по ОПРЕДЕЛЕННЫМ РАЗМЕРАМ
                             if($img_position==1 OR $img_position==3){  // гориз.
-                                   $tmp_img->ResizeFromRaf(280, 170, "uploaded/actions/{$id_new}_sm.{$image_type}");
+                                   $tmp_img->ResizeFromRaf(160, 160, "uploaded/actions/{$id_new}_sm.{$image_type}");
                             }
                             else{ // вертик.
-                                    $tmp_img->ResizeFromRaf(100, 170, "uploaded/actions/{$id_new}_sm.{$image_type}");
+                                    $tmp_img->ResizeFromRaf(160, 160, "uploaded/actions/{$id_new}_sm.{$image_type}");
                             }
 
                             // РЕCАЙЗИТЬ ПРОПОРЦИОНАЛЬНО ШИРИНЕ!
@@ -184,9 +184,9 @@ class AdminActionsAddPage extends FormPageModule {
                // print_r($this->formData);die();
                 if ($this->formData['id_category'])
                 {
-                    if ($action != 'edit')
-                            $id_new = $query->getInsertId();
-                    else
+                    //if ($action != 'edit')
+                         //   $id_new = $query->getInsertId();
+                    if ($action == 'edit')
                         $id_new = $id;
                     $query = $conn->newStatement("DELETE FROM actions_category WHERE id_action=:id_action:");
                     $query->setInteger('id_action', $id_new);
@@ -197,6 +197,20 @@ class AdminActionsAddPage extends FormPageModule {
                         $query->setInteger('id_action', $id_new);
                         $query->setInteger('id_category', $value);
                         $query->execute();
+                        
+                        $query = $conn->newStatement("SELECT * FROM category WHERE parent_id=:parent_id:");
+                        $query->setInteger('parent_id', $value);
+                        $data_insert_subcategory = $query->getAllRecords();
+                        if ($data_insert_subcategory)
+                        {
+                            foreach ($data_insert_subcategory as $key2=>$value2)
+                            {
+                                $query = $conn->newStatement("INSERT INTO actions_category SET id_action=:id_action:, id_category=:id_category:");
+                                $query->setInteger('id_action', $id_new);
+                                $query->setInteger('id_category', $value2['id']);
+                                $query->execute();
+                            }
+                        }
                     }
                     
                 }
@@ -215,7 +229,7 @@ class AdminActionsAddPage extends FormPageModule {
 		$rules = array(
 			new EmptyFieldRule("name", 'Название'),			
 			new EmptyFieldRule("text", 'Контент'),
-			new EmptyFieldRule("text_product", 'Текст для станицы продукта'),
+			new EmptyFieldRule("date_end", 'Дата окончания')
 		);
 		
 		$validator = new Validator($this->formData);

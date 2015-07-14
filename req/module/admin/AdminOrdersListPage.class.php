@@ -57,7 +57,7 @@ class AdminOrdersListPage extends AbstractPageModule {
                     $data = $pager->getPageData();
                     foreach ($data as $key=>$value)
                     {
-                        $query = $conn->newStatement("SELECT ord_pr.*, pr.price AS price_product, pr.ext as img_ext, pr.name AS name_product FROM order_product ord_pr INNER JOIN product pr ON ord_pr.id_product=pr.id WHERE ord_pr.id_order=:id_order:");
+                        $query = $conn->newStatement("SELECT ord_pr.*, pr.id_category AS id_category, pr.price AS price_product, pr.ext as img_ext, pr.name AS name_product FROM order_product ord_pr INNER JOIN product pr ON ord_pr.id_product=pr.id WHERE ord_pr.id_order=:id_order:");
                         $query->setInteger('id_order', $value['id']);
                         $data_product = $query->getAllRecords();
                         if ($data_product)
@@ -67,6 +67,16 @@ class AdminOrdersListPage extends AbstractPageModule {
                             foreach ($data_product as $key2=>$value2)
                             {
                                 $total_summa = $total_summa + $value2['price_product']*$value2['count'];
+                                
+                                $query = $this->conn->newStatement("SELECT act_cat.*, act.date AS date_begin, act.date_end AS date_end, act.id AS id_action, act.text_product AS text_product,  act.name AS name_action FROM actions_category act_cat LEFT JOIN actions act ON act_cat.id_action=act.id WHERE act_cat.id_category=:id_category: AND act.date<now() AND act.date_end>now()");
+                                $query->setInteger('id_category', $value2['id_category']);
+                                $data_action = $query->getFirstRecord();
+                                if ($data_action)
+                                {
+                                    $data[$key]['order_product'][$key2]['actions'] = 1;
+                                    $data[$key]['order_product'][$key2]['name_action'] = $data_action['name_action'];
+                                    $data[$key]['order_product'][$key2]['id_action'] = $data_action['id_action'];
+                                }
                             }
                             $data[$key]['total_summa'] = $total_summa;
                         }

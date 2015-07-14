@@ -1,16 +1,16 @@
-<?php /* Smarty version Smarty3-b7, created on 2015-07-06 17:00:30
+<?php /* Smarty version Smarty3-b7, created on 2015-07-14 12:10:16
          compiled from ".\templates\admin/admin_orders_list.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:15354559a89fe870db7-52654804%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:1217455a4d1f84a9f11-84044556%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '2378235d7eb9da3178f29d278e835e15ae75ccf3' => 
     array (
       0 => '.\\templates\\admin/admin_orders_list.tpl',
-      1 => 1436131925,
+      1 => 1436865008,
     ),
   ),
-  'nocache_hash' => '15354559a89fe870db7-52654804',
+  'nocache_hash' => '1217455a4d1f84a9f11-84044556',
   'function' => 
   array (
   ),
@@ -143,6 +143,7 @@ if (count($_from) > 0){
                                                     <td style="border:1px solid #cccccc;padding:0 5px;">Количество</td>
                                                     <td style="border:1px solid #cccccc;padding:0 5px;">за 1 шт</td>
                                                     <td style="border:1px solid #cccccc;padding:0 5px;">Всего</td>
+                                                    <td style="border:1px solid #cccccc;padding:0 5px;">Название акции</td>
                                                 </tr>
                                                 <?php  $_smarty_tpl->tpl_vars['cur2'] = new Smarty_Variable;
  $_from = $_smarty_tpl->getVariable('cur')->value['order_product']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
@@ -162,6 +163,9 @@ _sm.<?php echo $_smarty_tpl->getVariable('cur2')->value['img_ext'];?>
  руб.</td>
                                                         <td style="border:1px solid #cccccc; text-align: center;padding:0 5px;"><?php echo smarty_function_math(array('assign'=>"price_count",'equation'=>"x*y",'x'=>$_smarty_tpl->getVariable('cur2')->value['price_product'],'y'=>$_smarty_tpl->getVariable('cur2')->value['count']),$_smarty_tpl->smarty,$_smarty_tpl);?><?php echo smarty_modifier_cost($_smarty_tpl->getVariable('price_count')->value);?>
  руб.</td>
+                                                         <td style="border:1px solid #cccccc; text-align: center;padding:0 5px;"><a href="/actions/<?php echo $_smarty_tpl->getVariable('cur')->value['id_action'];?>
+"><?php echo $_smarty_tpl->getVariable('cur2')->value['name_action'];?>
+</a></td>
                                                     </tr>
                                                 <?php }} ?>
                                             </table>

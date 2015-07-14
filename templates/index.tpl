@@ -15,7 +15,9 @@
 <div class="bgr-dark_red title-block">популярные товары</div>
 {foreach from=$data_product_popular item=cur name=loop}
     <div class="container-product"{if $smarty.foreach.loop.iteration%3==0} style="margin-right:0;"{/if}>
-       
+        {if $cur.actions}
+            <div class="container-product_action"><a href="/actions/{$cur.id_action}/"><img src="/img/podarok_icon.png" title="При покупке этого товара вы получаете подарок" alt="При покупке этого товара вы получаете подарок" /></a></div>
+        {/if}
         <div class="container-product__image"><a href="/product/{$cur.id}/"><img src="/uploaded/product/{$cur.id}_sm.{$cur.ext}" /></a></div>
         <div class="container-product__name"><a href="/product/{$cur.id}/">{$cur.name|truncate:35:"..."}</a></div>
         <div class="container-product-price">

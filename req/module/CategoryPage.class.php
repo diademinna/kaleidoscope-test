@@ -144,6 +144,17 @@ class CategoryPage extends AbstractPageModule {
                     }
                     $pagerString = $pager->getPagerString($page, $sql, $fromWhereCnt, $href);
                     $data_product = $pager->getPageData();
+                    foreach ($data_product as $key=>$value)
+                    {
+                        $query = $this->conn->newStatement("SELECT act_cat.*, act.date AS date_begin, act.date_end AS date_end, act.id AS id_action FROM actions_category act_cat LEFT JOIN actions act ON act_cat.id_action=act.id WHERE act_cat.id_category=:id_category: AND act.date<now() AND act.date_end>now()");
+                        $query->setInteger('id_category', $value['id_category']);
+                        $data = $query->getFirstRecord();
+                        if ($data)
+                        {
+                            $data_product[$key]['actions'] = 1;
+                            $data_product[$key]['id_action'] = $data['id_action'];
+                        }
+                    }
                     $query = $this->conn->newStatement("SELECT price FROM product WHERE active=1");
                     $data_product_all = $query->getAllRecords();
                     $max_price = $data_product_all[0]['price'];
@@ -214,6 +225,17 @@ class CategoryPage extends AbstractPageModule {
                     }
                     $pagerString = $pager->getPagerString($page, $sql, $fromWhereCnt, $href);
                     $data_product = $pager->getPageData();
+                    foreach ($data_product as $key=>$value)
+                    {
+                        $query = $this->conn->newStatement("SELECT act_cat.*, act.date AS date_begin, act.date_end AS date_end, act.id AS id_action FROM actions_category act_cat LEFT JOIN actions act ON act_cat.id_action=act.id WHERE act_cat.id_category=:id_category: AND act.date<now() AND act.date_end>now()");
+                        $query->setInteger('id_category', $value['id_category']);
+                        $data = $query->getFirstRecord();
+                        if ($data)
+                        {
+                            $data_product[$key]['actions'] = 1;
+                            $data_product[$key]['id_action'] = $data['id_action'];
+                        }
+                    }
                     $this->template->assign('pager_string', $pagerString);
                     $query = $this->conn->newStatement("SELECT price FROM product WHERE active=1 AND id_category IN ($mass)");
                     $data_product_all = $query->getAllRecords();

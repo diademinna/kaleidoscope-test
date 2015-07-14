@@ -101,6 +101,7 @@
                                                     <td style="border:1px solid #cccccc;padding:0 5px;">Количество</td>
                                                     <td style="border:1px solid #cccccc;padding:0 5px;">за 1 шт</td>
                                                     <td style="border:1px solid #cccccc;padding:0 5px;">Всего</td>
+                                                    <td style="border:1px solid #cccccc;padding:0 5px;">Название акции</td>
                                                 </tr>
                                                 {foreach from=$cur.order_product item=cur2}
                                                     <tr>
@@ -109,6 +110,7 @@
                                                         <td style="border:1px solid #cccccc; text-align: center;padding:0 5px;">{$cur2.count}</td>
                                                         <td style="border:1px solid #cccccc; text-align: center;padding:0 5px;">{$cur2.price_product|cost} руб.</td>
                                                         <td style="border:1px solid #cccccc; text-align: center;padding:0 5px;">{math assign="price_count" equation="x*y" x=$cur2.price_product y=$cur2.count}{$price_count|cost} руб.</td>
+                                                         <td style="border:1px solid #cccccc; text-align: center;padding:0 5px;"><a href="/actions/{$cur.id_action}">{$cur2.name_action}</a></td>
                                                     </tr>
                                                 {/foreach}
                                             </table>

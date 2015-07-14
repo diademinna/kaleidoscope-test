@@ -92,7 +92,7 @@ class ProductPage extends AbstractPageModule {
                     $data_actions = array();
                     foreach ($mass_navigation as $key=>$value)
                     {
-                        $query = $this->conn->newStatement("SELECT act_cat.*, act.text_product AS text_action FROM actions_category act_cat LEFT JOIN actions act ON act_cat.id_action=act.id WHERE act.date_end>now() AND act_cat.id_category=:id_category:");
+                        $query = $this->conn->newStatement("SELECT act_cat.*, act.text_product AS text_action FROM actions_category act_cat LEFT JOIN actions act ON act_cat.id_action=act.id WHERE act.date_end>now() AND act.date<now() AND act_cat.id_category=:id_category:");
                         $query->setInteger('id_category', $value['id']);
                         $data_action_category = $query->getAllRecords();
                         if ($data_action_category)

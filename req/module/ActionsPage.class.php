@@ -9,7 +9,7 @@ class ActionsPage extends AbstractPageModule {
 		$id = $this->request->getValue('id');
 		
 		if(!$id){  // Весь список
-			define('COUNT_PAGE', 10);
+			define('COUNT_PAGE', 6);
 			require_once 'module/common/PagerFactory.class.php'; 
 
 			$pager = new PagerFactory();
@@ -19,7 +19,7 @@ class ActionsPage extends AbstractPageModule {
 			}
 			$this->template->assign('page', $page);
 				
-			$sql = "SELECT * FROM actions WHERE active=1 ORDER BY date DESC, id DESC";
+			$sql = "SELECT * FROM actions WHERE active=1 AND date_end>now() AND date<now() ORDER BY date DESC, id DESC";
 			$fromWhereCnt = "actions WHERE active=1";
 			$href = "/actions/page/";
 			
@@ -27,27 +27,7 @@ class ActionsPage extends AbstractPageModule {
 			$data = $pager->getPageData();
 			$this->template->assign('pager_string', $pagerString);
 			
-			
-			// достать галлерею если нет анонса.
-			foreach ($data as $key=>$value) {				
-				if(!$value['anons']){  // достать галлерею.					
-					$query = $this->conn->newStatement("SELECT * FROM actions_photo WHERE id_actions=:id_actions: ORDER BY pos DESC, id DESC");
-					$query->setInteger('id_actions', $value['id']);
-					$data_photo = $query->getAllRecords();
 					
-					// сортируем фотки по гориз и вертикали.
-					$data_photo_vert = array();
-					foreach ($data_photo as $key_p => $value_p) {
-						if($value_p['img_position'] == 2){ // вертик
-							$data_photo_vert[] = $value_p;
-							unset($data_photo[$key_p]);
-						}
-					}
-					// получились здесь гориз $data_photo   //  здесь $data_photo_vert вертик	
-					$data[$key]['photo_goriz'] = $data_photo;
-					$data[$key]['photo_vert'] = $data_photo_vert;
-				}	
-			}			
 			
 			$this->template->assign('data_actions', $data);
 			
@@ -58,25 +38,19 @@ class ActionsPage extends AbstractPageModule {
 			$query->setInteger('id', $id);
 			$data_item = $query->getFirstRecord();
 			$this->template->assign('data_item', $data_item);
+                        
+                        //достаем категории
+                        $query = $this->conn->newStatement("SELECT act_cat.*, cat.name AS name_category, cat.id AS id_category FROM actions_category act_cat LEFT JOIN category cat ON act_cat.id_category=cat.id WHERE act_cat.id_action=:id:");
+			$query->setInteger('id', $data_item['id']);
+			$data_actions_category = $query->getAllRecords();
+                        $this->template->assign('data_actions_category', $data_actions_category);
+                        
+                        
 			
 			$this->setPageTitle("".($data_item['title']?$data_item['title']:$data_item['name'])." / Акции");
-						
-			// достаем галерею.
-			$query = $this->conn->newStatement("SELECT * FROM actions_photo WHERE id_actions=:id_actions: ORDER BY pos DESC, id DESC");
-			$query->setInteger('id_actions', $id);
-			$data_photo = $query->getAllRecords();
-			
-			// сортируем фотки по гориз и вертикали.
-			$data_photo_vert = array();
-			foreach ($data_photo as $key => $value) {
-				if($value['img_position'] == 2){ // вертик
-					$data_photo_vert[] = $value;
-					unset($data_photo[$key]);
-				}
-			}
-			
-			$this->template->assign('data_photo_goriz', $data_photo);
-			$this->template->assign('data_photo_vert', $data_photo_vert);
+			$query = $this->conn->newStatement("SELECT * FROM actions WHERE active=1 AND id!={$data_item['id']} ORDER BY id DESC LIMIT 3");
+			$data_last_actions = $query->getAllRecords();	
+                        $this->template->assign('data_last_actions', $data_last_actions);
 			
 		}
 		

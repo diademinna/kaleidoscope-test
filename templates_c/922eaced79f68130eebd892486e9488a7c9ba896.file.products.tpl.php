@@ -1,16 +1,16 @@
-<?php /* Smarty version Smarty3-b7, created on 2015-07-07 11:35:11
+<?php /* Smarty version Smarty3-b7, created on 2015-07-14 11:41:10
          compiled from ".\templates\rebuild/products.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:14703559a64b5a4dab9-64346998%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:2423555a4cb260a7106-01393790%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '922eaced79f68130eebd892486e9488a7c9ba896' => 
     array (
       0 => '.\\templates\\rebuild/products.tpl',
-      1 => 1436257098,
+      1 => 1436863267,
     ),
   ),
-  'nocache_hash' => '14703559a64b5a4dab9-64346998',
+  'nocache_hash' => '2423555a4cb260a7106-01393790',
   'function' => 
   array (
   ),
@@ -28,6 +28,10 @@ if (count($_from) > 0){
  $_smarty_tpl->tpl_vars['smarty']->value['foreach']['loop']['iteration']++;
 ?>
         <div class="container-product"<?php if ($_smarty_tpl->getVariable('smarty')->value['foreach']['loop']['iteration']%3==0){?> style="margin-right:0;"<?php }?>>
+            <?php if ($_smarty_tpl->getVariable('cur')->value['actions']){?>
+                <div class="container-product_action"><a href="/actions/<?php echo $_smarty_tpl->getVariable('cur')->value['id_action'];?>
+/"><img src="/img/podarok_icon.png" title="При покупке этого товара вы получаете подарок" alt="При покупке этого товара вы получаете подарок" /></a></div>
+            <?php }?>
             <div class="container-product__image"><a href="/product/<?php echo $_smarty_tpl->getVariable('cur')->value['id'];?>
 /"><img src="/uploaded/product/<?php echo $_smarty_tpl->getVariable('cur')->value['id'];?>
 _sm.<?php echo $_smarty_tpl->getVariable('cur')->value['ext'];?>
