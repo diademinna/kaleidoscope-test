@@ -115,6 +115,11 @@ class ArrayRequestDispatcher extends RequestDispatcher {
 			
                         '/review/' 		=> array('moduleName' => 'ReviewPage', 'moduleType' => 'module'),
                         '/review/(\d+)/' 	=> array('moduleName' => 'ReviewPage', 'moduleType' => 'module', 'page' => '$1'),
+                    
+                        /*Портфолио*/
+                        '/portfolio/' 			=> array('moduleName' => 'PortfolioPage', 'moduleType' => 'module'),
+			'/portfolio/page/(\d+)/' => array('moduleName' => 'PortfolioPage', 'moduleType' => 'module', 'page' => '$1'),
+			'/portfolio/(\d+)/' 		=> array('moduleName' => 'PortfolioPage', 'moduleType' => 'module', 'id' => '$1'),
 			
 			/* CRON */
 			
@@ -297,6 +302,14 @@ class ArrayRequestDispatcher extends RequestDispatcher {
                         '/admin/review/add/' 				=> array('moduleName' => 'admin/AdminReviewAddPage', 'moduleType' => 'module'),
                         '/admin/review/add/(\d+)/edit/(\d+)/'  		=> array('moduleName' => 'admin/AdminReviewAddPage', 'moduleType' => 'module', 'page' => '$1', 'action' => 'edit', 'id' => '$2'),
 			
+                    
+                        /*ПОРТФОЛИО*/
+                        '/admin/portfolio/list/'						=> array('moduleName' => 'admin/AdminPortfolioListPage', 'moduleType' => 'module'),
+			'/admin/portfolio/list/(\d+)/'				=> array('moduleName' => 'admin/AdminPortfolioListPage', 'moduleType' => 'module', 'page' => '$1'),
+			'/admin/portfolio/list/(\d+)/delete/(\d+)/'	=> array('moduleName' => 'admin/AdminPortfolioListPage', 'moduleType' => 'module', 'page' => '$1', 'action' => 'delete', 'id' => '$2'),			
+			'/admin/portfolio/add/'						=> array('moduleName' => 'admin/AdminPortfolioAddPage', 'moduleType' => 'module'),
+			'/admin/portfolio/add/(\d+)/edit/(\d+)/'		=> array('moduleName' => 'admin/AdminPortfolioAddPage', 'moduleType' => 'module', 'page' => '$1', 'action' => 'edit', 'id' => '$2'),			
+			'/admin/portfolio_photo/add/(\d+)/(\d+)/'		=> array('moduleName' => 'admin/AdminPortfolioPhotoAddPage', 'moduleType' => 'module', 'page' => '$1', 'id' => '$2'),
 			
 			/* DEVELOPER CODE  */
 			

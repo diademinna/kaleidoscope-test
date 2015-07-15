@@ -103,7 +103,7 @@ class AdminProductPhotoAddPage extends AbstractPageModule {
                                                 $tmp_img->ResizeFromRaf(75, 75, "uploaded/product/{$id}/{$id_new}_prev.{$image_type}");
                                         }
                                         else{ // вертик.
-                                                $tmp_img->ResizeFromRaf(120, 200, "uploaded/product/{$id}/{$id_new}_sm.{$image_type}");
+                                                $tmp_img->ResizeFromRaf(70, 200, "uploaded/product/{$id}/{$id_new}_sm.{$image_type}");
                                                 $tmp_img->ResizeFromRaf(75, 75, "uploaded/product/{$id}/{$id_new}_prev.{$image_type}");
                                         }
 

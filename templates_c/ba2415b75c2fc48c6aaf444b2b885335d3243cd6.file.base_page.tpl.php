@@ -1,16 +1,16 @@
-<?php /* Smarty version Smarty3-b7, created on 2015-07-14 21:31:47
+<?php /* Smarty version Smarty3-b7, created on 2015-07-15 14:45:26
          compiled from ".\templates\admin/common/base_page.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:2609955a55593e4afc2-59313945%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:3154255a647d67439e5-33730613%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'ba2415b75c2fc48c6aaf444b2b885335d3243cd6' => 
     array (
       0 => '.\\templates\\admin/common/base_page.tpl',
-      1 => 1436898701,
+      1 => 1436960722,
     ),
   ),
-  'nocache_hash' => '2609955a55593e4afc2-59313945',
+  'nocache_hash' => '3154255a647d67439e5-33730613',
   'function' => 
   array (
   ),
@@ -125,6 +125,12 @@ $_smarty_tpl->decodeProperties(array (
                             <span class="nav-label">Отзывы</span>
                         </a>
                     </li>
+                    <li<?php if ($_smarty_tpl->getVariable('unit')->value=="portfolio"){?> class="active"<?php }?>>
+                        <a href="/admin/portfolio/list/">
+                            <i class="fa fa-briefcase"></i>
+                            <span class="nav-label">Портфолио</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </nav>
@@ -192,77 +198,6 @@ if (count($_from) > 0){
             <?php echo $_smarty_tpl->smarty->_smarty_vars['capture']['content'];?>
 
         </div>
-
-
-
-	</div>
-<!--
-<div class="c_top">
-	<div class="name"><a href="/">На сайт</a></div>
-	<div class="help_ico"><a href="/admin/help/"> Помощь</a></div>
-	<div class="clean"></div>
-</div>
-
-
-
-<table class="main">
-	<tr>
-		<td class="left">
-
-			<ul class="menu">
-
-				<li><a href="/admin/category/list/">Каталог</a></li>
-				<li><a href="/admin/brand/list/">Бренды для каталога</a></li>
-
-
-				<li><a href="/admin/section/list/">Одноуровневые разделы</a></li>
-
-
-				<li><a href="/admin/pages/1/">О компании</a></li>
-
-
-				<li><a href="/admin/content/list/">Контентные страницы</a></li>
-
-				<li><a href="/admin/news/list/">Новости</a></li>
-
-
-				<li><a href="/admin/gallery/list/">Галерея</a></li>
-
-
-				<li><a href="/admin/faqs/list/">Вопрос-Ответ</a></li>
-
-
-				<li><a href="/admin/contacts/">Контакты</a></li>
-
-
-				<li><a href="/admin/user/list/">Пользователи</a></li>
-
-
-				<li><a href="/admin/vacancy/list/">Вакансии</a></li>
-				<li><a href="/admin/vacancy_user/list/">Вакансии (сообщения)</a></li>
-
-				<li><a href="/admin/article/list/">Статьи</a></li>
-
-
-				<li><a href="/admin/callback_user/list/">Обратная связь (сообщения)</a></li>
-
-				<li><a href="/admin/blog/list/">Блоги</a></li>
-				<li><a href="/admin/blog_comment/list/">Комментарии блогов</a></li>
-
-
-			</ul>
-		</td>
-		<td class="right">
-			<p class="zag"><?php echo $_smarty_tpl->smarty->_smarty_vars['capture']['content_name'];?>
-</p>
-
-			<div class="content">
-				<?php echo $_smarty_tpl->smarty->_smarty_vars['capture']['content'];?>
-
-			</div>
-		</td>
-	</tr>
-</table>
--->
+    </div>
 </body>
 </html>

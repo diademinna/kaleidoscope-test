@@ -141,9 +141,9 @@
                     </ul>
                     <div class="header-cart">
                     <div class="header-cart__heading" data-toggle="dropdown" >
-                        <i class="icon-basket"></i>
+                        <i class="fa fa-shopping-cart"></i>
                         <span id="header-cart_top"> Моя корзина: <span id="total_count-cart-header">{if $cart}{count($cart)}{else}0{/if}</span> продукта (-ов) - <span id="total_price-cart-header">{if $cart}{$total_price|cost}{else}0{/if}</span> руб.</span>
-                        <i class="icon-down-open"></i>
+                        <i class="fa fa-chevron-down"></i>
                     </div>
                     <div class="header-cart__content">
                         <div class="header-cart__container"> 
@@ -199,7 +199,7 @@
             </div>
             <div class="header-search">
               <form>
-                <button class="header-search__button"><i class="icon-search"></i></button>
+                <button class="header-search__button"><i class="fa fa-search"></i></button>
                 <input class="header-search__input" type="text" name="seach_phrase" placeholder="Поиск...">
               </form>
             </div>
@@ -303,7 +303,7 @@
         <ul class="footer-submenu">
           <li class="footer-submenu__item"><a class="footer-submenu__link" href="/actions/">Акции</a></li>
           <li class="footer-submenu__item"><a class="footer-submenu__link" href="/contacts/">Контакты</a></li>
-          <li class="footer-submenu__item"><a class="footer-submenu__link" href="#">Портфолио</a></li>
+          <li class="footer-submenu__item"><a class="footer-submenu__link" href="/portfolio/">Портфолио</a></li>
           <li class="footer-submenu__item"><a class="footer-submenu__link" href="#">Услуги</a></li>
         </ul>
       </li>

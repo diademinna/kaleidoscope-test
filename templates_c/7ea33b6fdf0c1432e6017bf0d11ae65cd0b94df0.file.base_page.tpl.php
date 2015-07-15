@@ -1,16 +1,16 @@
-<?php /* Smarty version Smarty3-b7, created on 2015-07-15 12:25:29
+<?php /* Smarty version Smarty3-b7, created on 2015-07-15 17:45:51
          compiled from ".\templates\common/base_page.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:813955a62709648810-89412767%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:2839155a6721f052c67-88933624%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '7ea33b6fdf0c1432e6017bf0d11ae65cd0b94df0' => 
     array (
       0 => '.\\templates\\common/base_page.tpl',
-      1 => 1436952328,
+      1 => 1436971548,
     ),
   ),
-  'nocache_hash' => '813955a62709648810-89412767',
+  'nocache_hash' => '2839155a6721f052c67-88933624',
   'function' => 
   array (
   ),
@@ -165,11 +165,11 @@ if (!is_callable('smarty_modifier_date_format')) include 'D:\Programms\OpenServe
                     </ul>
                     <div class="header-cart">
                     <div class="header-cart__heading" data-toggle="dropdown" >
-                        <i class="icon-basket"></i>
+                        <i class="fa fa-shopping-cart"></i>
                         <span id="header-cart_top"> Моя корзина: <span id="total_count-cart-header"><?php if ($_smarty_tpl->getVariable('cart')->value){?><?php echo count($_smarty_tpl->getVariable('cart')->value);?>
 <?php }else{ ?>0<?php }?></span> продукта (-ов) - <span id="total_price-cart-header"><?php if ($_smarty_tpl->getVariable('cart')->value){?><?php echo smarty_modifier_cost($_smarty_tpl->getVariable('total_price')->value);?>
 <?php }else{ ?>0<?php }?></span> руб.</span>
-                        <i class="icon-down-open"></i>
+                        <i class="fa fa-chevron-down"></i>
                     </div>
                     <div class="header-cart__content">
                         <div class="header-cart__container"> 
@@ -237,7 +237,7 @@ _sm.<?php echo $_smarty_tpl->getVariable('cur')->value['ext'];?>
             </div>
             <div class="header-search">
               <form>
-                <button class="header-search__button"><i class="icon-search"></i></button>
+                <button class="header-search__button"><i class="fa fa-search"></i></button>
                 <input class="header-search__input" type="text" name="seach_phrase" placeholder="Поиск...">
               </form>
             </div>
@@ -363,7 +363,7 @@ if (count($_from) > 0){
         <ul class="footer-submenu">
           <li class="footer-submenu__item"><a class="footer-submenu__link" href="/actions/">Акции</a></li>
           <li class="footer-submenu__item"><a class="footer-submenu__link" href="/contacts/">Контакты</a></li>
-          <li class="footer-submenu__item"><a class="footer-submenu__link" href="#">Портфолио</a></li>
+          <li class="footer-submenu__item"><a class="footer-submenu__link" href="/portfolio/">Портфолио</a></li>
           <li class="footer-submenu__item"><a class="footer-submenu__link" href="#">Услуги</a></li>
         </ul>
       </li>

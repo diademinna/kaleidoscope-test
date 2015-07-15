@@ -104,6 +104,12 @@
                             <span class="nav-label">Отзывы</span>
                         </a>
                     </li>
+                    <li{if $unit=="portfolio"} class="active"{/if}>
+                        <a href="/admin/portfolio/list/">
+                            <i class="fa fa-briefcase"></i>
+                            <span class="nav-label">Портфолио</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </nav>

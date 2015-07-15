@@ -12,7 +12,7 @@ header { color:#9d9d9d;font-size: 12px;}
 .header-action__link:hover { color:#eb5f60;text-decoration: none;}
 .header-cart { float: right; position: relative;}
 .header-cart__heading { padding:6px 0 8px 0; cursor: pointer;}
-.header-cart__heading .icon-basket{ font-size: 15px;  color:#eb5f60;}
+.header-cart__heading .fa-shopping-cart{ font-size: 15px;  color:#eb5f60; padding-right:5px;}
 .header-cart__heading:hover .icon-down-open{ color: #eb5f60;}
 .header-cart__content { position: absolute; z-index: 5; display:none; top:100%; right:0; box-shadow: 0 5px 5px rgba(0, 0, 0, 0.05);width: 267px;padding: 20px;background-color: #ffffff; margin-top:1px;}
 .open .header-cart__content {display:block;}
@@ -291,3 +291,14 @@ label { display: inline-block; font-weight: 700; margin-bottom: 5px; max-width: 
 .add-review:hover{background-color: #eb5f60;}
 .forma-review__title {text-transform: uppercase; text-align: center; font-size: 20px; margin:10px 0;}
 .forma-review {text-align: center;}
+.portfolio-list {}
+.portfolio-list__item {float:left; margin-right:30px; width:310px; margin-bottom:25px;}
+.portfolio-list__item.vert{width:225px;}
+.portfolio-list__item.last {margin-right:0;}
+.portfolio-list-item__name {margin:10px 0 15px 0; text-align: center; font-size: 16px;}
+.portfolio-list-item__name a {color:#d75d6f; text-decoration: none;}
+.portfolio-list__item:hover .portfolio-list-item__name a {color:#a42a3c;}
+.portfolio-list-item__image {padding:9px; border: 1px solid #ffffff; background-color: #ffffff;}
+.portfolio-list__item:hover .portfolio-list-item__image {border: 1px solid #d75d6f;}
+.portfolio-list-item__anons {text-align: center; color: #a4978f; line-height: 1.5; font-size: 15px;}
+.portfolio-text {font-size: 15px; margin-bottom:20px;}

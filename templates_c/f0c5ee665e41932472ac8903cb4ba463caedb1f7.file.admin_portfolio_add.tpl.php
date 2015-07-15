@@ -1,26 +1,25 @@
-<?php /* Smarty version Smarty3-b7, created on 2015-07-15 15:07:03
-         compiled from ".\templates\admin/admin_review_add.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:40755a64ce7698736-97552409%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /* Smarty version Smarty3-b7, created on 2015-07-15 16:59:01
+         compiled from ".\templates\admin/admin_portfolio_add.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:2788355a6672578b9e8-83934558%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
-    '3f6a0309b4492fd38974e99e10b25f63db60874f' => 
+    'f0c5ee665e41932472ac8903cb4ba463caedb1f7' => 
     array (
-      0 => '.\\templates\\admin/admin_review_add.tpl',
-      1 => 1436962021,
+      0 => '.\\templates\\admin/admin_portfolio_add.tpl',
+      1 => 1436968739,
     ),
   ),
-  'nocache_hash' => '40755a64ce7698736-97552409',
+  'nocache_hash' => '2788355a6672578b9e8-83934558',
   'function' => 
   array (
   ),
   'has_nocache_code' => false,
 )); /*/%%SmartyHeaderCode%%*/?>
 <?php ob_start(); ?>
-	Акции / <?php if ($_smarty_tpl->getVariable('data')->value['name']){?>Редактировать - <?php echo $_smarty_tpl->getVariable('data')->value['name'];?>
+	Портфолио / <?php if ($_smarty_tpl->getVariable('data')->value['name']){?>Редактировать - <?php echo $_smarty_tpl->getVariable('data')->value['name'];?>
 <?php }else{ ?>Добавить<?php }?>
 <?php  $_smarty_tpl->smarty->_smarty_vars['capture']["content_name"]=ob_get_clean();?>
-
 
 <?php ob_start(); ?>
 
@@ -58,43 +57,37 @@ $_smarty_tpl->decodeProperties(array (
  echo $_template->getRenderedTemplate();?><?php $_template->updateParentVariables(0);?><?php unset($_template);?>
 
         <div class="form-group">
-            <label class="col-sm-2 control-label">ФИО* :</label>
+            <label class="col-sm-2 control-label">Название* :</label>
             <div class="col-sm-10">
-                <input name="fio" class="form-control" type="text" value="<?php echo $_smarty_tpl->getVariable('data')->value['fio'];?>
+                <input name="name" class="form-control" type="text" value="<?php echo $_smarty_tpl->getVariable('data')->value['name'];?>
 " />
             </div>
         </div>
+       
         <div class="form-group">
-            <label class="col-sm-2 control-label">E-mail :</label>
+            <label class="col-sm-2 control-label">Анонс :</label>
             <div class="col-sm-10">
-                <input name="email" class="form-control" type="text" value="<?php echo $_smarty_tpl->getVariable('data')->value['email'];?>
-" />
+                <textarea name="anons" class="tiny"><?php echo $_smarty_tpl->getVariable('data')->value['anons'];?>
+</textarea>
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 control-label">Дата :</label>
-            <div class="col-sm-10">
-                <input name="date" id="date" class="form-control" type="text" value="<?php echo $_smarty_tpl->getVariable('data')->value['date'];?>
-" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label">Отзыв :</label>
+            <label class="col-sm-2 control-label">Контент :</label>
             <div class="col-sm-10">
                 <textarea name="text" class="tiny"><?php echo $_smarty_tpl->getVariable('data')->value['text'];?>
 </textarea>
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 control-label">Изображение (превью): <br /> 130 х 130 </label>
+            <label class="col-sm-2 control-label">Изображение (превью): <br /> 280 х 170</label>
             <div class="col-sm-10">
                 <input  type="file" name="image" />
                 <br /><br />
                 <div id="photo">
                     <?php if ($_smarty_tpl->getVariable('data')->value['ext']){?>
-                        <a href="/uploaded/review/<?php echo $_smarty_tpl->getVariable('data')->value['id'];?>
-.<?php echo $_smarty_tpl->getVariable('data')->value['ext'];?>
-" target="_blank"><img src="/uploaded/review/<?php echo $_smarty_tpl->getVariable('data')->value['id'];?>
+                        <a href="/uploaded/portfolio/<?php echo $_smarty_tpl->getVariable('data')->value['id'];?>
+_sm.<?php echo $_smarty_tpl->getVariable('data')->value['ext'];?>
+" target="_blank"><img src="/uploaded/portfolio/<?php echo $_smarty_tpl->getVariable('data')->value['id'];?>
 _sm.<?php echo $_smarty_tpl->getVariable('data')->value['ext'];?>
 " class="photo" /></a>
                         &nbsp;<i onmouseover="this.style.cursor='pointer';" class="fa fa-times" onclick="if(confirm('Вы уверены?')) xajax_deleteImage('<?php echo $_smarty_tpl->getVariable('data')->value['id'];?>
@@ -103,6 +96,13 @@ _sm.<?php echo $_smarty_tpl->getVariable('data')->value['ext'];?>
 " />
                     <?php }?>
                 </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Тайтл:</label>
+            <div class="col-sm-10">
+                <input name="title" class="form-control" type="text" value="<?php echo $_smarty_tpl->getVariable('data')->value['title'];?>
+" />
             </div>
         </div>
         <div class="form-group">

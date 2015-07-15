@@ -1,16 +1,16 @@
-<?php /* Smarty version Smarty3-b7, created on 2015-07-06 17:07:53
+<?php /* Smarty version Smarty3-b7, created on 2015-07-15 15:41:15
          compiled from ".\templates\admin/admin_product_photo_add.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:32068559a8bb9ad3963-62365367%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:2735355a654eb26b838-84511720%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '3cfa52f12512395cb31d0043dc21015d08726475' => 
     array (
       0 => '.\\templates\\admin/admin_product_photo_add.tpl',
-      1 => 1435175378,
+      1 => 1436963443,
     ),
   ),
-  'nocache_hash' => '32068559a8bb9ad3963-62365367',
+  'nocache_hash' => '2735355a654eb26b838-84511720',
   'function' => 
   array (
   ),

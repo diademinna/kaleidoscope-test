@@ -1,7 +1,6 @@
 {capture name="content_name"}
-	Акции / {if $data.name}Редактировать - {$data.name}{else}Добавить{/if}
+	Портфолио / {if $data.name}Редактировать - {$data.name}{else}Добавить{/if}
 {/capture}
-
 
 {capture name="content"}
 
@@ -37,41 +36,47 @@
     <form action="" method="post" class="form-horizontal" enctype="multipart/form-data">
         {include file="common/errors_block.tpl"}
         <div class="form-group">
-            <label class="col-sm-2 control-label">ФИО* :</label>
+            <label class="col-sm-2 control-label">Название* :</label>
             <div class="col-sm-10">
-                <input name="fio" class="form-control" type="text" value="{$data.fio}" />
+                <input name="name" class="form-control" type="text" value="{$data.name}" />
             </div>
         </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label">E-mail :</label>
-            <div class="col-sm-10">
-                <input name="email" class="form-control" type="text" value="{$data.email}" />
-            </div>
-        </div>
-        <div class="form-group">
+       {* <div class="form-group">
             <label class="col-sm-2 control-label">Дата :</label>
             <div class="col-sm-10">
                 <input name="date" id="date" class="form-control" type="text" value="{$data.date}" />
             </div>
+        </div>*}
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Анонс :</label>
+            <div class="col-sm-10">
+                <textarea name="anons" class="tiny">{$data.anons}</textarea>
+            </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 control-label">Отзыв :</label>
+            <label class="col-sm-2 control-label">Контент :</label>
             <div class="col-sm-10">
                 <textarea name="text" class="tiny">{$data.text}</textarea>
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 control-label">Изображение (превью): <br /> 130 х 130 </label>
+            <label class="col-sm-2 control-label">Изображение (превью): <br /> 280 х 170</label>
             <div class="col-sm-10">
                 <input  type="file" name="image" />
                 <br /><br />
                 <div id="photo">
                     {if $data.ext}
-                        <a href="/uploaded/review/{$data.id}.{$data.ext}" target="_blank"><img src="/uploaded/review/{$data.id}_sm.{$data.ext}" class="photo" /></a>
+                        <a href="/uploaded/portfolio/{$data.id}_sm.{$data.ext}" target="_blank"><img src="/uploaded/portfolio/{$data.id}_sm.{$data.ext}" class="photo" /></a>
                         &nbsp;<i onmouseover="this.style.cursor='pointer';" class="fa fa-times" onclick="if(confirm('Вы уверены?')) xajax_deleteImage('{$data.id}'); return false;"></i>
                         <input type="hidden" name="ext" value="{$data.ext}" />
                     {/if}
                 </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Тайтл:</label>
+            <div class="col-sm-10">
+                <input name="title" class="form-control" type="text" value="{$data.title}" />
             </div>
         </div>
         <div class="form-group">
