@@ -178,8 +178,7 @@
                             </div>
                             <div class="clear"></div>
                             <div class="header-cart-actions">
-                              <div class="header-cart-actions__button"><a class="header-cart-actions__button__link" href="/cart/">Обзор корзины</a></div>
-                              <div class="header-cart-actions__button"><a class="header-cart-actions__button__link" href="#">Оформить заказ</a></div>
+                              <div class="header-cart-actions__button"><a class="header-cart-actions__button__link" href="/cart/">Оформить заказ</a></div>
                             </div>
                             {else}
                                 Ваша корзина пуста!
@@ -226,10 +225,11 @@
                         </ul>-->
                 </li>
                 <li class="header-menu__item"><a class="header-menu_link" href="/actions/">Акции</a></li>
+                <li class="header-menu__item"><a class="header-menu_link" href="/contacts/">Контакты</a></li>
+                <li class="header-menu__item"><a class="header-menu_link" href="/review/">Отзывы</a></li>
                 <li class="header-menu__item"><a class="header-menu_link" href="#">Доставка</a></li>
                 <li class="header-menu__item"><a class="header-menu_link" href="#">Способы оплаты</a></li>
-                <li class="header-menu__item"><a class="header-menu_link" href="#">Контакты</a></li>
-                <li class="header-menu__item"><a class="header-menu_link" href="#">Отзывы</a></li>
+                
                 <div class="clear"></div>
             </ul>
         </div>
@@ -290,17 +290,21 @@
     <div class="footer-logo"><a href="/"><img src="/img/logo.png" alt="Калейдоскоп" title="Калейдоскоп" /></a></div>
     <ul class="footer-container-menu">
       <li class="footer-menu">
-        <div class="footer-menu__name">Информация</div>
+        <div class="footer-menu__name">Сервис и помощь</div>
         <ul class="footer-submenu">
           <li class="footer-submenu__item"><a class="footer-submenu__link" href="#">Доставка</a></li>
-          <li class="footer-submenu__item"><a class="footer-submenu__link" href="#">Защита покупателя</a></li>
+         
           <li class="footer-submenu__item"><a class="footer-submenu__link" href="#">Способы оплаты</a></li>
+          <li class="footer-submenu__item"><a class="footer-submenu__link" href="/review/">Отзывы</a></li>
         </ul>
       </li>
       <li class="footer-menu">
         <div class="footer-menu__name">Покупателям</div>
         <ul class="footer-submenu">
-          <li class="footer-submenu__item"><a class="footer-submenu__link" href="#">Акции</a></li>
+          <li class="footer-submenu__item"><a class="footer-submenu__link" href="/actions/">Акции</a></li>
+          <li class="footer-submenu__item"><a class="footer-submenu__link" href="/contacts/">Контакты</a></li>
+          <li class="footer-submenu__item"><a class="footer-submenu__link" href="#">Портфолио</a></li>
+          <li class="footer-submenu__item"><a class="footer-submenu__link" href="#">Услуги</a></li>
         </ul>
       </li>
       <li class="footer-menu">

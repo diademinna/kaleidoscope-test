@@ -1,11 +1,30 @@
-{capture name="content_name"}
+<?php /* Smarty version Smarty3-b7, created on 2015-07-14 16:16:03
+         compiled from ".\templates\admin/admin_contacts_add.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:1312555a50b937b5349-24286519%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+$_smarty_tpl->decodeProperties(array (
+  'file_dependency' => 
+  array (
+    '2f1755d9ecf466965fc35d3e5b13d279bfd3715b' => 
+    array (
+      0 => '.\\templates\\admin/admin_contacts_add.tpl',
+      1 => 1436879761,
+    ),
+  ),
+  'nocache_hash' => '1312555a50b937b5349-24286519',
+  'function' => 
+  array (
+  ),
+  'has_nocache_code' => false,
+)); /*/%%SmartyHeaderCode%%*/?>
+<?php ob_start(); ?>
 	Редактировать - Контакты
-{/capture}
+<?php  $_smarty_tpl->smarty->_smarty_vars['capture']["content_name"]=ob_get_clean();?>
 
-{capture name="content"}
-{literal}
+<?php ob_start(); ?>
+
 <script src="http://api-maps.yandex.ru/2.0/?load=package.full&lang=ru-RU" type="text/javascript"></script>
 
+    
     <script type="text/javascript">
         // Как только будет загружен API и готов DOM, выполняем инициализацию
         ymaps.ready(init);
@@ -15,9 +34,11 @@
             var myMap = new ymaps.Map('map', {
                 // При инициализации карты, обязательно нужно указать
                 // ее центр и коэффициент масштабирования
-				center: [{/literal}{if $data.latitude && $data.longitude}{$data.latitude}, {$data.longitude}{else}53.199449, 45.020121{/if}{literal}], // Метка
+				center: [<?php if ($_smarty_tpl->getVariable('data')->value['latitude']&&$_smarty_tpl->getVariable('data')->value['longitude']){?><?php echo $_smarty_tpl->getVariable('data')->value['latitude'];?>
+, <?php echo $_smarty_tpl->getVariable('data')->value['longitude'];?>
+<?php }else{ ?>53.199449, 45.020121<?php }?>], // Метка
                 //center: [53.199449, 45.020121], // Пенза
-                zoom: 13
+                zoom: 16
             });
             
             
@@ -41,7 +62,9 @@
             myMap.controls.add(new ymaps.control.ScaleLine())
             
            
-            myPlacemark = new ymaps.Placemark([{/literal}{if $data.latitude && $data.longitude}{$data.latitude}, {$data.longitude}{else}53.199449, 45.020121{/if}{literal}], {
+            myPlacemark = new ymaps.Placemark([<?php if ($_smarty_tpl->getVariable('data')->value['latitude']&&$_smarty_tpl->getVariable('data')->value['longitude']){?><?php echo $_smarty_tpl->getVariable('data')->value['latitude'];?>
+, <?php echo $_smarty_tpl->getVariable('data')->value['longitude'];?>
+<?php }else{ ?>53.199449, 45.020121<?php }?>], {
                     hintContent: 'Подвинь меня!'
                 }, {
                     draggable: true // Метку можно перетаскивать, зажав левую кнопку мыши.
@@ -68,81 +91,53 @@
 		   });
         }
     </script>
-{/literal}
-<div class="ibox-title">
-    <h5>Контакты</h5>
-</div>
+
 <div class="ibox-content">
     <form action="" method="post" class="form-horizontal" enctype="multipart/form-data">
-        {include file="common/errors_block.tpl"}
+        <?php $_template = new Smarty_Internal_Template("common/errors_block.tpl", $_smarty_tpl->smarty, $_smarty_tpl, $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null);
+ echo $_template->getRenderedTemplate();?><?php $_template->updateParentVariables(0);?><?php unset($_template);?>
+
         <div class="form-group">
-            <label class="col-sm-2 control-label">Название* :</label>
+            <label class="col-sm-2 control-label">Название <br />местоположения* :</label>
             <div class="col-sm-10">
-                <input name="name" class="form-control" type="text" value="{$data.name}" />
+                <input name="name_place" class="form-control" type="text" value="<?php echo $_smarty_tpl->getVariable('data')->value['name_place'];?>
+" />
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 control-label">Описание :</label>
+            <label class="col-sm-2 control-label">Адрес:</label>
             <div class="col-sm-10">
-                <textarea name="description" class="tiny" type="text">{$data.description}</textarea>
+                <input name="address" class="form-control" type="text" value="<?php echo $_smarty_tpl->getVariable('data')->value['address'];?>
+" />
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 control-label">Расположение на карте :</label>
+            <label class="col-sm-2 control-label">Телефон:</label>
             <div class="col-sm-10">
-                <div id="map"></div>
+                <input name="phone" class="form-control" type="text" value="<?php echo $_smarty_tpl->getVariable('data')->value['phone'];?>
+" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Расположение на карте:</label>
+            <div class="col-sm-10">
+                <div id="map" style="width:600px;height:500px;"></div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-4 col-sm-offset-2"> 		
+                <input type="hidden" name="submitted" value="1" />
+                <input type="hidden" id="latitude" name="latitude" value="<?php echo $_smarty_tpl->getVariable('data')->value['latitude'];?>
+" />
+                <input type="hidden" id="longitude" name="longitude" value="<?php echo $_smarty_tpl->getVariable('data')->value['longitude'];?>
+" />
+                <button class="btn btn-primary" type="submit">Сохранить</button>
             </div>
         </div>
     </form>
 </div>
 
-{*
-	<form action="" method="post" enctype="multipart/form-data">
-	
-		{include file="common/errors_block.tpl"}
-	
-		<table class="edit" width="100%">
-		
-			<tr>
-				<td>Название:</td>
-				<td><textarea type="text" name="name">{$data.name}</textarea></td>
-			</tr>	
-			
-			<tr>
-				<td>Описание:</td>
-				<td><textarea name="description" class="tiny content">{$data.description}</textarea></td>
-			</tr>
-			
-			<tr>
-				<td>Расположение на карте:</td>
-				<td>
-					<div id="map"></div>
-				</td>
-			</tr>
-			
-			<tr>
-				<td>Текст в <br />сплывающей подсказке<br />на карте:</td>
-				<td>
-					<textarea type="text" name="name_on_map" class="tiny">{$data.name_on_map}</textarea>
-				</td>
-			</tr>
-						
-			<tr>
-				<td>Тайтл:</td>
-				<td><textarea name="title">{$data.title}</textarea></td>
-			</tr>
-			
-			<tr>
-				<td></td>
-				<td>				
-					<input type="hidden" name="submitted" value="1" />
-					<input type="hidden" id="latitude" name="latitude" value="{$data.latitude}" />
-					<input type="hidden" id="longitude" name="longitude" value="{$data.longitude}" />
-					<input type="image" src="/img/admin/btn_send.png" name="submit" class="submit">
-				</td>
-			</tr>
-		</table>
-	</form>*}
-{/capture}
+<?php  $_smarty_tpl->smarty->_smarty_vars['capture']["content"]=ob_get_clean();?>
 
-{include file="admin/common/base_page.tpl"}
+<?php $_template = new Smarty_Internal_Template("admin/common/base_page.tpl", $_smarty_tpl->smarty, $_smarty_tpl, $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null);
+ echo $_template->getRenderedTemplate();?><?php $_template->updateParentVariables(0);?><?php unset($_template);?>

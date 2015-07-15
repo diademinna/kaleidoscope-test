@@ -92,6 +92,18 @@
                             <span class="nav-label">Акции</span>
                         </a>
                     </li>
+                    <li{if $unit=="contacts"} class="active"{/if}>
+                        <a href="/admin/contacts/list/">
+                            <i class="fa fa-map-marker"></i>
+                            <span class="nav-label">Контакты</span>
+                        </a>
+                    </li>
+                    <li{if $unit=="review"} class="active"{/if}>
+                        <a href="/admin/review/list/">
+                            <i class="fa fa-thumbs-o-up"></i>
+                            <span class="nav-label">Отзывы</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </nav>
@@ -142,75 +154,6 @@
             </div>
             {$smarty.capture.content}
         </div>
-
-
-
-	</div>
-<!--
-<div class="c_top">
-	<div class="name"><a href="/">На сайт</a></div>
-	<div class="help_ico"><a href="/admin/help/"> Помощь</a></div>
-	<div class="clean"></div>
-</div>
-
-
-
-<table class="main">
-	<tr>
-		<td class="left">
-
-			<ul class="menu">
-
-				<li><a href="/admin/category/list/">Каталог</a></li>
-				<li><a href="/admin/brand/list/">Бренды для каталога</a></li>
-
-
-				<li><a href="/admin/section/list/">Одноуровневые разделы</a></li>
-
-
-				<li><a href="/admin/pages/1/">О компании</a></li>
-
-
-				<li><a href="/admin/content/list/">Контентные страницы</a></li>
-
-				<li><a href="/admin/news/list/">Новости</a></li>
-
-
-				<li><a href="/admin/gallery/list/">Галерея</a></li>
-
-
-				<li><a href="/admin/faqs/list/">Вопрос-Ответ</a></li>
-
-
-				<li><a href="/admin/contacts/">Контакты</a></li>
-
-
-				<li><a href="/admin/user/list/">Пользователи</a></li>
-
-
-				<li><a href="/admin/vacancy/list/">Вакансии</a></li>
-				<li><a href="/admin/vacancy_user/list/">Вакансии (сообщения)</a></li>
-
-				<li><a href="/admin/article/list/">Статьи</a></li>
-
-
-				<li><a href="/admin/callback_user/list/">Обратная связь (сообщения)</a></li>
-
-				<li><a href="/admin/blog/list/">Блоги</a></li>
-				<li><a href="/admin/blog_comment/list/">Комментарии блогов</a></li>
-
-
-			</ul>
-		</td>
-		<td class="right">
-			<p class="zag">{$smarty.capture.content_name}</p>
-
-			<div class="content">
-				{$smarty.capture.content}
-			</div>
-		</td>
-	</tr>
-</table>
--->
+    </div>
 </body>
 </html>

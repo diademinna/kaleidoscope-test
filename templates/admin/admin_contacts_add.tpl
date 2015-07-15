@@ -6,6 +6,7 @@
 {literal}
 <script src="http://api-maps.yandex.ru/2.0/?load=package.full&lang=ru-RU" type="text/javascript"></script>
 
+    
     <script type="text/javascript">
         // Как только будет загружен API и готов DOM, выполняем инициализацию
         ymaps.ready(init);
@@ -17,7 +18,7 @@
                 // ее центр и коэффициент масштабирования
 				center: [{/literal}{if $data.latitude && $data.longitude}{$data.latitude}, {$data.longitude}{else}53.199449, 45.020121{/if}{literal}], // Метка
                 //center: [53.199449, 45.020121], // Пенза
-                zoom: 13
+                zoom: 16
             });
             
             
@@ -69,33 +70,43 @@
         }
     </script>
 {/literal}
-<div class="ibox-title">
-    <h5>Контакты</h5>
-</div>
 <div class="ibox-content">
     <form action="" method="post" class="form-horizontal" enctype="multipart/form-data">
         {include file="common/errors_block.tpl"}
         <div class="form-group">
-            <label class="col-sm-2 control-label">Название* :</label>
+            <label class="col-sm-2 control-label">Название <br />местоположения* :</label>
             <div class="col-sm-10">
-                <input name="name" class="form-control" type="text" value="{$data.name}" />
+                <input name="name_place" class="form-control" type="text" value="{$data.name_place}" />
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 control-label">Описание :</label>
+            <label class="col-sm-2 control-label">Адрес:</label>
             <div class="col-sm-10">
-                <textarea name="description" class="tiny" type="text">{$data.description}</textarea>
+                <input name="address" class="form-control" type="text" value="{$data.address}" />
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 control-label">Расположение на карте :</label>
+            <label class="col-sm-2 control-label">Телефон:</label>
             <div class="col-sm-10">
-                <div id="map"></div>
+                <input name="phone" class="form-control" type="text" value="{$data.phone}" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Расположение на карте:</label>
+            <div class="col-sm-10">
+                <div id="map" style="width:600px;height:500px;"></div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-4 col-sm-offset-2"> 		
+                <input type="hidden" name="submitted" value="1" />
+                <input type="hidden" id="latitude" name="latitude" value="{$data.latitude}" />
+                <input type="hidden" id="longitude" name="longitude" value="{$data.longitude}" />
+                <button class="btn btn-primary" type="submit">Сохранить</button>
             </div>
         </div>
     </form>
 </div>
-
 {*
 	<form action="" method="post" enctype="multipart/form-data">
 	
@@ -104,14 +115,38 @@
 		<table class="edit" width="100%">
 		
 			<tr>
-				<td>Название:</td>
-				<td><textarea type="text" name="name">{$data.name}</textarea></td>
+				<td>Название<br/>местоположения:</td>
+				<td><textarea type="text" name="name_place">{$data.name_place}</textarea></td>
 			</tr>	
-			
 			<tr>
-				<td>Описание:</td>
-				<td><textarea name="description" class="tiny content">{$data.description}</textarea></td>
+				<td>Адрес:</td>
+				<td><textarea type="text" name="address">{$data.address}</textarea></td>
+			</tr>	
+			<tr>
+				<td>Ссылка на страницу<br>Яндекс-карты:</td>
+				<td><textarea type="text" name="link_yandex">{$data.link_yandex}</textarea></td>
+			</tr>	
+			<tr>
+				<td>Изображение (превью)<br />(если необходимо):</td>
+				<td>				
+					<input type="file" name="image" />					
+					<select name="type_resize">
+						<option value="1">Обрезать края</option>
+						<option value="2">Добавлять пустые поля</option>
+					</select>
+					
+					<br /><br />
+					<div id="photo">
+						{if $data.ext}
+							<a href="/uploaded/contacts/{$data.id}.{$data.ext}" target="_blank"><img src="/uploaded/contacts/{$data.id}_sm.{$data.ext}" class="photo" /></a>
+							&nbsp;<a href="" onclick="if(confirm('Вы уверены?')) xajax_deleteImage('{$data.id}'); return false;"><img src="/img/admin/del.png" title="Удалить фото" alt="Удалить фото"></a>
+							<input type="hidden" name="ext" value="{$data.ext}" />
+						{/if}
+					</div>
+				</td>
 			</tr>
+			
+			
 			
 			<tr>
 				<td>Расположение на карте:</td>
@@ -126,12 +161,6 @@
 					<textarea type="text" name="name_on_map" class="tiny">{$data.name_on_map}</textarea>
 				</td>
 			</tr>
-						
-			<tr>
-				<td>Тайтл:</td>
-				<td><textarea name="title">{$data.title}</textarea></td>
-			</tr>
-			
 			<tr>
 				<td></td>
 				<td>				

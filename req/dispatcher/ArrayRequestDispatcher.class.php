@@ -100,6 +100,7 @@ class ArrayRequestDispatcher extends RequestDispatcher {
                         '/remove_product/' => array('moduleName' => 'ajax/RemoveProductPage', 'moduleType' => 'module'), 
                         '/remove_one_product/' => array('moduleName' => 'ajax/RemoveOneProductPage', 'moduleType' => 'module'), 
                         '/add_order/' => array('moduleName' => 'ajax/AddOrderPage', 'moduleType' => 'module'), 
+                        '/add_review/' => array('moduleName' => 'ajax/AddReviewPage', 'moduleType' => 'module'), 
                         '/admin_change_category/' => array('moduleName' => 'ajax/AdminChangeCategoryPage', 'moduleType' => 'module'), 
 			
 			
@@ -112,6 +113,8 @@ class ArrayRequestDispatcher extends RequestDispatcher {
 			'/actions/(\d+)/' 		=> array('moduleName' => 'ActionsPage', 'moduleType' => 'module', 'id' => '$1'),
 			
 			
+                        '/review/' 		=> array('moduleName' => 'ReviewPage', 'moduleType' => 'module'),
+                        '/review/(\d+)/' 	=> array('moduleName' => 'ReviewPage', 'moduleType' => 'module', 'page' => '$1'),
 			
 			/* CRON */
 			
@@ -134,7 +137,16 @@ class ArrayRequestDispatcher extends RequestDispatcher {
 			'/admin/content/add/(\d+)/edit/'	=> array('moduleName' => 'admin/AdminContentAddPage', 'moduleType' => 'module', 'id' => '$1', 'action' => 'edit'), 
 				
 			
-			'/admin/contacts/' 						=> array('moduleName' => 'admin/AdminContactsPage', 'moduleType' => 'module'),
+			'/admin/contacts/list/'	=> array('moduleName' => 'admin/AdminContactsListPage', 'moduleType' => 'module'),
+
+			'/admin/contacts/list/(\d+)/'	=> array('moduleName' => 'admin/AdminContactsListPage', 'moduleType' => 'module', 'page' => '$1'),
+
+
+			'/admin/contacts/list/(\d+)/delete/(\d+)/'	=> array('moduleName' => 'admin/AdminContactsListPage', 'moduleType' => 'module', 'page' => '$1', 'action' => 'delete', 'id' => '$2'),			
+
+			'/admin/contacts/add/'	=> array('moduleName' => 'admin/AdminContactsAddPage', 'moduleType' => 'module'),
+
+			'/admin/contacts/add/(\d+)/edit/(\d+)/'		=> array('moduleName' => 'admin/AdminContactsAddPage', 'moduleType' => 'module', 'page' => '$1', 'action' => 'edit', 'id' => '$2'),	
 				
 			
 			'/admin/news/list/'						=> array('moduleName' => 'admin/AdminNewsListPage', 'moduleType' => 'module'),
@@ -278,7 +290,12 @@ class ArrayRequestDispatcher extends RequestDispatcher {
 			'/admin/blog_comment/add/(\d+)/'				=> array('moduleName' => 'admin/AdminBlogCommentAddPage', 'moduleType' => 'module', 'page' => '$1'),
 			'/admin/blog_comment/add/(\d+)/edit/(\d+)/'		=> array('moduleName' => 'admin/AdminBlogCommentAddPage', 'moduleType' => 'module', 'page' => '$1', 'action' => 'edit', 'id' => '$2'),
 			 
-			
+			/*ОТЗЫВЫ*/
+                        '/admin/review/list/'				=> array('moduleName' => 'admin/AdminReviewListPage', 'moduleType' => 'module'),
+                        '/admin/review/list/(\d+)/' 			=> array('moduleName' => 'admin/AdminReviewListPage', 'moduleType' => 'module', 'page' => '$1'),
+                        '/admin/review/list/(\d+)/delete/(\d+)/'	=> array('moduleName' => 'admin/AdminReviewListPage', 'moduleType' => 'module', 'page' => '$1', 'action' => 'delete', 'id' => '$2'),
+                        '/admin/review/add/' 				=> array('moduleName' => 'admin/AdminReviewAddPage', 'moduleType' => 'module'),
+                        '/admin/review/add/(\d+)/edit/(\d+)/'  		=> array('moduleName' => 'admin/AdminReviewAddPage', 'moduleType' => 'module', 'page' => '$1', 'action' => 'edit', 'id' => '$2'),
 			
 			
 			/* DEVELOPER CODE  */
