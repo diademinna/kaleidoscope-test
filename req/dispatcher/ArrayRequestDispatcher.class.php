@@ -19,7 +19,7 @@ class ArrayRequestDispatcher extends RequestDispatcher {
 			'/404/' 	=> array('moduleName' => 'common/404error.tpl', 'moduleType' => 'template'),
 			'/index_ie/'=> array('moduleName' => 'common/index_ie.tpl', 'moduleType' => 'template'), // ie6, ie7 заглушка
 			'/kcaptcha/'=> array('moduleName' => 'common/Captcha', 'moduleType' => 'module'), // капча
-			
+			'/parser/' 		=> array('moduleName' => 'ParserPage', 'moduleType' => 'module'),
 			// PAGES CLASS
 			'/company/' 		=> array('moduleName' => 'PagesPage', 'moduleType' => 'module', 'id' => '1'),
 			// PAGES CLASS
@@ -102,6 +102,8 @@ class ArrayRequestDispatcher extends RequestDispatcher {
                         '/add_order/' => array('moduleName' => 'ajax/AddOrderPage', 'moduleType' => 'module'), 
                         '/add_review/' => array('moduleName' => 'ajax/AddReviewPage', 'moduleType' => 'module'), 
                         '/admin_change_category/' => array('moduleName' => 'ajax/AdminChangeCategoryPage', 'moduleType' => 'module'), 
+                    
+                        '/search/'=> array('moduleName' => 'SearchPage', 'moduleType' => 'module', 'word' => '$1'), // поиск
 			
 			
 			

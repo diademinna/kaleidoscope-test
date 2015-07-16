@@ -1,16 +1,16 @@
-<?php /* Smarty version Smarty3-b7, created on 2015-07-15 17:45:51
+<?php /* Smarty version Smarty3-b7, created on 2015-07-16 18:24:54
          compiled from ".\templates\common/base_page.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:2839155a6721f052c67-88933624%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:3159755a7ccc6de4438-21063632%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '7ea33b6fdf0c1432e6017bf0d11ae65cd0b94df0' => 
     array (
       0 => '.\\templates\\common/base_page.tpl',
-      1 => 1436971548,
+      1 => 1437060287,
     ),
   ),
-  'nocache_hash' => '2839155a6721f052c67-88933624',
+  'nocache_hash' => '3159755a7ccc6de4438-21063632',
   'function' => 
   array (
   ),
@@ -232,13 +232,15 @@ _sm.<?php echo $_smarty_tpl->getVariable('cur')->value['ext'];?>
               <a href="/"><img src="/img/logo.png" alt="Калейдоскоп"  title="Калейдоскоп"/></a>
             </div>
             <div class="header-contacts">
-              <div class="header-contacts__item">Адрес: <span>г. Пенза, 1-й Онежский проезд, д.6</span></div>
-              <div class="header-contacts__item">Телефон: <span>8 935 455 25 26</span></div>
+              <?php if ($_smarty_tpl->getVariable('data_contacts')->value['address']){?><div class="header-contacts__item">Адрес: <span><?php echo $_smarty_tpl->getVariable('data_contacts')->value['address'];?>
+</span></div><?php }?>
+              <?php if ($_smarty_tpl->getVariable('data_contacts')->value['phone']){?><div class="header-contacts__item">Телефон: <span><?php echo $_smarty_tpl->getVariable('data_contacts')->value['phone'];?>
+</span></div><?php }?>
             </div>
             <div class="header-search">
-              <form>
+              <form action="/search/" method="GET">
                 <button class="header-search__button"><i class="fa fa-search"></i></button>
-                <input class="header-search__input" type="text" name="seach_phrase" placeholder="Поиск...">
+                <input class="header-search__input" type="text" name="submitted" placeholder="Поиск..." />
               </form>
             </div>
             <div class="clear"></div>

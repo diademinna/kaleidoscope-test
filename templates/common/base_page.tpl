@@ -194,13 +194,13 @@
               <a href="/"><img src="/img/logo.png" alt="Калейдоскоп"  title="Калейдоскоп"/></a>
             </div>
             <div class="header-contacts">
-              <div class="header-contacts__item">Адрес: <span>г. Пенза, 1-й Онежский проезд, д.6</span></div>
-              <div class="header-contacts__item">Телефон: <span>8 935 455 25 26</span></div>
+              {if $data_contacts.address}<div class="header-contacts__item">Адрес: <span>{$data_contacts.address}</span></div>{/if}
+              {if $data_contacts.phone}<div class="header-contacts__item">Телефон: <span>{$data_contacts.phone}</span></div>{/if}
             </div>
             <div class="header-search">
-              <form>
+              <form action="/search/" method="GET">
                 <button class="header-search__button"><i class="fa fa-search"></i></button>
-                <input class="header-search__input" type="text" name="seach_phrase" placeholder="Поиск...">
+                <input class="header-search__input" type="text" name="submitted" placeholder="Поиск..." />
               </form>
             </div>
             <div class="clear"></div>

@@ -302,3 +302,7 @@ label { display: inline-block; font-weight: 700; margin-bottom: 5px; max-width: 
 .portfolio-list__item:hover .portfolio-list-item__image {border: 1px solid #d75d6f;}
 .portfolio-list-item__anons {text-align: center; color: #a4978f; line-height: 1.5; font-size: 15px;}
 .portfolio-text {font-size: 15px; margin-bottom:20px;}
+.find-word {color:#eb5f60;}
+.search-item{margin-bottom:15px;}
+.search-item__name a {color:#eb5f60;}
+.find-word__stroka {font-size: 16px; margin-bottom: 15px;}

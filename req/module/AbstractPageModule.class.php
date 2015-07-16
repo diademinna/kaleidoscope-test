@@ -54,6 +54,55 @@ class AbstractPageModule {
 			$this->user = UserAction::isLogin();
 		}
 		$this->template->assign('user', $this->user);  // в итоге здесь либо FALSE либо данные USERa
+                 ///определение ip-адреса пользователя
+                if (!empty($_SERVER['HTTP_CLIENT_IP']))
+                {
+                  $ip=$_SERVER['HTTP_CLIENT_IP'];
+                }
+                elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) //переменная окружения
+                {
+                  $ip=$_SERVER['HTTP_X_FORWARDED_FOR'];
+                }
+                else
+                {
+                  $ip=$_SERVER['REMOTE_ADDR'];///IP-адрес, с которого пользователь просматривает текущую страницу. 
+                }
+                $mass = explode(".", $ip);
+                $ip_user = 0;
+                $count = 0;
+                
+                foreach ($mass as $key=>$value)
+                {
+                    $count++;
+                    if ($count == 1)
+                    {
+                       $ip_user = $mass[$key] * 1000000000;
+                    }
+                    else if ($count == 2)
+                    {
+                        $ip_user = $ip_user + $mass[$key] * 1000000;
+                    }
+                    else if ($count == 3)
+                    {
+                        $ip_user = $ip_user + $mass[$key] * 1000;
+                    }
+                    else
+                        $ip_user = $ip_user + $mass[$key];
+                   
+                }
+                $query = $this->conn->newStatement("SELECT * FROM city_ip WHERE id_city=2 AND {$ip_user} BETWEEN begin_ip AND end_ip");
+                $data_ul = $query->getFirstRecord();
+                if ($data_ul)
+                {
+                    $query = $this->conn->newStatement("SELECT * FROM contacts WHERE id=2");
+                    $data_contacts = $query->getFirstRecord();
+                }
+                else
+                {
+                    $query = $this->conn->newStatement("SELECT * FROM contacts WHERE id=3");
+                    $data_contacts = $query->getFirstRecord();
+                }
+                $this->template->assign('data_contacts', $data_contacts);
 
 
 		$MN = array('01'=>"Января", '02'=>"Февраля", '03'=>"Марта", '04'=>"Апреля", '05'=>"Мая", '06'=>"Июня", '07'=>"Июля", '08'=>"Августа", '09'=>"Сентября", '10'=>"Октября", '11'=>"Ноября", '12'=>"Декабря");
