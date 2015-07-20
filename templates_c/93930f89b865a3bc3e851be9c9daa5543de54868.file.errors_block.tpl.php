@@ -1,0 +1,32 @@
+<?php /* Smarty version Smarty3-b7, created on 2015-07-18 21:00:30
+         compiled from "./templates/common/errors_block.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:103815649555aa943e52ba00-95320252%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+$_smarty_tpl->decodeProperties(array (
+  'file_dependency' => 
+  array (
+    '93930f89b865a3bc3e851be9c9daa5543de54868' => 
+    array (
+      0 => './templates/common/errors_block.tpl',
+      1 => 1437229354,
+    ),
+  ),
+  'nocache_hash' => '103815649555aa943e52ba00-95320252',
+  'function' => 
+  array (
+  ),
+  'has_nocache_code' => false,
+)); /*/%%SmartyHeaderCode%%*/?>
+<?php if (isset($_smarty_tpl->getVariable('errors')->value)&&count($_smarty_tpl->getVariable('errors')->value)>0){?>
+	<div class="errors_block" style="color:#d70000;">
+		<ul>
+			<?php  $_smarty_tpl->tpl_vars['error'] = new Smarty_Variable;
+ $_from = $_smarty_tpl->getVariable('errors')->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+if (count($_from) > 0){
+    foreach ($_from as $_smarty_tpl->tpl_vars['error']->key => $_smarty_tpl->tpl_vars['error']->value){
+?>
+				<li style="background:none; list-style-type:disc;"><?php echo $_smarty_tpl->getVariable('error')->value;?>
+</li>
+			<?php }} ?>
+		</ul>
+	</div>
+<?php }?>

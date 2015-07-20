@@ -1,11 +1,11 @@
 <?php
 
 //E-MAIL
-define("ADMIN_EMAIL", 'aaa@aaa.ru');
+define("ADMIN_EMAIL", 'diademinna@yandex.ru');
 
 // DEFINE
-define('DEFAULT_CONNECTION', 'MySql://root:@localhost/kaleidoscope-test');
-//define('DEFAULT_CONNECTION', 'MySql://diademinna:sapr2014aaa@diademinna.myjino.ru/diademinna_sapr');
+//define('DEFAULT_CONNECTION', 'MySql://root:@localhost/kaleidoscope-test');
+define('DEFAULT_CONNECTION', 'MySql://diademinna:sapr2014aaa@diademinna.myjino.ru/diademinna_sapr');
 define("HTTP_REFERER", $_SERVER['HTTP_REFERER']);
 define("BASE_URL", "http://".$_SERVER['SERVER_NAME']."/");
 define('CONTENT', 'templates/content/');

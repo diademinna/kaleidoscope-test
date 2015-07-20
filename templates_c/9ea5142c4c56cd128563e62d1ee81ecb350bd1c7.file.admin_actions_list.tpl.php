@@ -1,16 +1,16 @@
-<?php /* Smarty version Smarty3-b7, created on 2015-07-09 17:26:12
+<?php /* Smarty version Smarty3-b7, created on 2015-07-17 12:05:31
          compiled from ".\templates\admin/admin_actions_list.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:26415559e84842e55c1-34015011%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:2475955a8c55b5f6130-23458091%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '9ea5142c4c56cd128563e62d1ee81ecb350bd1c7' => 
     array (
       0 => '.\\templates\\admin/admin_actions_list.tpl',
-      1 => 1436451969,
+      1 => 1437123929,
     ),
   ),
-  'nocache_hash' => '26415559e84842e55c1-34015011',
+  'nocache_hash' => '2475955a8c55b5f6130-23458091',
   'function' => 
   array (
   ),
@@ -128,6 +128,8 @@ if (count($_from) > 0){
                     </table>
                 </div>
             </div>
+            <?php if ($_smarty_tpl->getVariable('pager_string')->value){?><div class="pager"><?php echo $_smarty_tpl->getVariable('pager_string')->value;?>
+</div><?php }?>  
         </div>
     </form>
 <?php }?>

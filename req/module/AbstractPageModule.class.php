@@ -107,6 +107,11 @@ class AbstractPageModule {
 
 		$MN = array('01'=>"Января", '02'=>"Февраля", '03'=>"Марта", '04'=>"Апреля", '05'=>"Мая", '06'=>"Июня", '07'=>"Июля", '08'=>"Августа", '09'=>"Сентября", '10'=>"Октября", '11'=>"Ноября", '12'=>"Декабря");
                 $this->template->assign('MN', $MN);
+                
+                
+                $query = $this->conn->newStatement("SELECT * FROM contacts ORDER BY id ASC");
+                $data_contacts_footer = $query->getAllRecords();
+                $this->template->assign('data_contacts_footer', $data_contacts_footer);
 
               
                     

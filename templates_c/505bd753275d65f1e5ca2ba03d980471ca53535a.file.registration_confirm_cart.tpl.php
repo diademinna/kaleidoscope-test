@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty3-b7, created on 2015-07-03 23:05:54
+<?php /* Smarty version Smarty3-b7, created on 2015-07-18 14:39:10
          compiled from ".\templates\mail/registration_confirm_cart.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:170355596eb222101d7-22724777%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_smarty_tpl->decodeProperties(array (
     '505bd753275d65f1e5ca2ba03d980471ca53535a' => 
     array (
       0 => '.\\templates\\mail/registration_confirm_cart.tpl',
-      1 => 1435953723,
+      1 => 1436257098,
     ),
   ),
   'nocache_hash' => '170355596eb222101d7-22724777',

@@ -1,16 +1,16 @@
-<?php /* Smarty version Smarty3-b7, created on 2015-07-15 14:45:26
+<?php /* Smarty version Smarty3-b7, created on 2015-07-18 17:15:44
          compiled from ".\templates\admin/common/base_page.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:3154255a647d67439e5-33730613%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:191555aa5f90e31a39-26627708%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'ba2415b75c2fc48c6aaf444b2b885335d3243cd6' => 
     array (
       0 => '.\\templates\\admin/common/base_page.tpl',
-      1 => 1436960722,
+      1 => 1437228941,
     ),
   ),
-  'nocache_hash' => '3154255a647d67439e5-33730613',
+  'nocache_hash' => '191555aa5f90e31a39-26627708',
   'function' => 
   array (
   ),
@@ -25,6 +25,7 @@ $_smarty_tpl->decodeProperties(array (
 	<link href="/css/admin/style.css" rel="stylesheet" type="text/css" />
 
 	<script type="text/javascript" src="/js/jquery-2.1.1.min.js"></script>
+        <script type="text/javascript" src="/js/bootstrap.min.js"></script>
 
 	<!--  v1.11  -  для датапикера datepicker и sortable -->
 	<link type="text/css" href="/js/ui/css/jquery-ui.css" rel="stylesheet" />
@@ -58,7 +59,7 @@ $_smarty_tpl->decodeProperties(array (
             <div class="sidebar-collapse">
                 <ul id="side-menu" class="nav metismenu">
                     <li class="nav-header" style="">
-                        <div class="dropdown profile-element">
+                        <a href="/admin/"><div class="dropdown profile-element">
                             <span>
                                 <img class="img-circle" src="/img/admin/admin.png" alt="image" />
                             </span>
@@ -69,44 +70,92 @@ $_smarty_tpl->decodeProperties(array (
                                     </span>
                                 </span>
                             </a>
+                        </a>
                         </div>
-                    </li>
-                    <li<?php if ($_smarty_tpl->getVariable('unit')->value=="category"){?> class="active"<?php }?>>
-                        <a href="/admin/category/list/">
-                                <i class="fa fa-archive"></i>
-                                <span class="nav-label">Все категории</span>
-                        </a>
-                    </li>
-                    <li<?php if ($_smarty_tpl->getVariable('unit')->value=="main_category"){?> class="active"<?php }?>>
-                        <a href="/admin/main_category/list/">
-                            <i class="fa fa-star"></i>
-                            <span class="nav-label">Категории на главной</span>
-                        </a>
-                    </li>
-                    <li<?php if ($_smarty_tpl->getVariable('unit')->value=="product"){?> class="active"<?php }?>>
-                        <a href="/admin/product/list/">
-                            <i class="fa fa-list-alt"></i>
-                            <span class="nav-label">Товары</span>
-                        </a>
                     </li>
                     <li<?php if ($_smarty_tpl->getVariable('unit')->value=="user"){?> class="active"<?php }?>>
                         <a href="/admin/user/list/">
                             <i class="fa fa-users"></i>
                             <span class="nav-label">Покупатели</span>
+                             <span title="Покупатели, зарегестрированные сегодня" class="label label-primary pull-right"><?php echo count($_smarty_tpl->getVariable('data_users_admin')->value);?>
+</span>
                         </a>
                     </li>
                     <li<?php if ($_smarty_tpl->getVariable('unit')->value=="orders"){?> class="active"<?php }?>>
                         <a href="/admin/orders/list/">
                             <i class="fa fa-shopping-cart"></i>
                             <span class="nav-label">Заказы</span>
+                            <span title="Заказы за сегодня" class="label label-primary pull-right"><?php echo count($_smarty_tpl->getVariable('data_order_admin')->value);?>
+</span>
                         </a>
                     </li>
-                    <li<?php if ($_smarty_tpl->getVariable('unit')->value=="parameter"){?> class="active"<?php }?>>
-                        <a href="/admin/parameter/list/">
-                            <i class="fa fa-wrench"></i>
-                            <span class="nav-label">Параметры для категорий</span>
+                    <li<?php if ($_smarty_tpl->getVariable('unit')->value=="respond"){?> class="active"<?php }?>>
+                        <a href="/admin/respond/list/">
+                            <i class="fa fa-calendar"></i>
+                            <span class="nav-label">Завки на услуги</span>
+                            <span title="Заявки на услуги за сегодня" class="label label-primary pull-right"><?php echo count($_smarty_tpl->getVariable('data_respond_admin')->value);?>
+</span>
                         </a>
                     </li>
+                    <li>
+                        <a href="#collapseExample" data-toggle="collapse" <?php if ($_smarty_tpl->getVariable('unit')->value=="category"||$_smarty_tpl->getVariable('unit')->value=="main_category"||$_smarty_tpl->getVariable('unit')->value=="parameter"){?> class="active"<?php }?>>
+                             <i class="fa fa-archive"></i>
+                            <span class="nav-label">Категории</span>
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="nav nav-second-level collapse<?php if ($_smarty_tpl->getVariable('unit')->value=="category"||$_smarty_tpl->getVariable('unit')->value=="main_category"||$_smarty_tpl->getVariable('unit')->value=="parameter"){?>in<?php }?>" id="collapseExample">
+                           <li<?php if ($_smarty_tpl->getVariable('unit')->value=="category"){?> class="active"<?php }?>>
+                                <a href="/admin/category/list/">
+                                    <i class="fa fa-archive"></i>
+                                    <span class="nav-label">Все категории</span>
+                                </a>
+                            </li>
+                           <li<?php if ($_smarty_tpl->getVariable('unit')->value=="main_category"){?> class="active"<?php }?>>
+                                <a href="/admin/main_category/list/">
+                                    <i class="fa fa-star"></i>
+                                    <span class="nav-label">Категории на главной</span>
+                                </a>
+                            </li>
+                            <li<?php if ($_smarty_tpl->getVariable('unit')->value=="parameter"){?> class="active"<?php }?>>
+                              <a href="/admin/parameter/list/">
+                                  <i class="fa fa-wrench"></i>
+                                  <span class="nav-label">Параметры для категорий</span>
+                              </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#collapseExample1" data-toggle="collapse" <?php if ($_smarty_tpl->getVariable('unit')->value=="category"||$_smarty_tpl->getVariable('unit')->value=="main_category"||$_smarty_tpl->getVariable('unit')->value=="parameter"){?> class="active"<?php }?>>
+                             <i class="fa fa fa-list-alt"></i>
+                            <span class="nav-label">Товары</span>
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="nav nav-second-level collapse<?php if ($_smarty_tpl->getVariable('unit')->value=="product"||$_smarty_tpl->getVariable('unit')->value=="popular_product"||$_smarty_tpl->getVariable('unit')->value=="buy_product"){?>in<?php }?>" id="collapseExample1">
+                           <li<?php if ($_smarty_tpl->getVariable('unit')->value=="product"){?> class="active"<?php }?>>
+                                <a href="/admin/product/list/">
+                                    <i class="fa fa-list-alt"></i>
+                                    <span class="nav-label">Товары</span>
+                                </a>
+                            </li>
+                            <li<?php if ($_smarty_tpl->getVariable('unit')->value=="popular_product"){?> class="active"<?php }?>>
+                                <a href="/admin/popular_product/list/">
+                                    <i class="fa fa-star-o"></i>
+                                    <span class="nav-label">Популярные товары</span>
+                                </a>
+                            </li>
+                            <li<?php if ($_smarty_tpl->getVariable('unit')->value=="buy_product"){?> class="active"<?php }?>>
+                                <a href="/admin/buy_product/list/">
+                                    <i class="fa fa-star"></i>
+                                    <span class="nav-label">Часто покупаемые товары</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    
+                   
+                    
+                  
+                  
                     <li<?php if ($_smarty_tpl->getVariable('unit')->value=="actions"){?> class="active"<?php }?>>
                         <a href="/admin/actions/list/">
                             <i class="fa fa-gift"></i>
@@ -131,6 +180,14 @@ $_smarty_tpl->decodeProperties(array (
                             <span class="nav-label">Портфолио</span>
                         </a>
                     </li>
+                    <li<?php if ($_smarty_tpl->getVariable('unit')->value=="services"){?> class="active"<?php }?>>
+                        <a href="/admin/services/list/">
+                            <i class="fa fa-check-square-o"></i>
+                            <span class="nav-label">Услуги</span>
+                        </a>
+                    </li>
+                    
+                   
                 </ul>
             </div>
         </nav>

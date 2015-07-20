@@ -304,23 +304,28 @@
           <li class="footer-submenu__item"><a class="footer-submenu__link" href="/actions/">Акции</a></li>
           <li class="footer-submenu__item"><a class="footer-submenu__link" href="/contacts/">Контакты</a></li>
           <li class="footer-submenu__item"><a class="footer-submenu__link" href="/portfolio/">Портфолио</a></li>
-          <li class="footer-submenu__item"><a class="footer-submenu__link" href="#">Услуги</a></li>
+          <li class="footer-submenu__item"><a class="footer-submenu__link" href="/services/">Услуги</a></li>
         </ul>
       </li>
-      <li class="footer-menu">
+      <li class="footer-menu" style="width:134px;">
         <div class="footer-menu__name">Контакты</div>
-        <ul class="footer-submenu">
-          <li class="footer-submenu__item"><a class="footer-submenu__link" href="mailto:email@yandex.ru">email@yandex.ru</a></li>
-          <li class="footer-submenu__item">8 (800) 100-20-30</li>
-          <li class="footer-submenu__item">8 (800) 100-20-30</li>
-        </ul>
+        {if $data_contacts_footer}
+            <ul class="footer-submenu">
+                {foreach from=$data_contacts_footer item=cur}
+                    <li class="footer-submenu__item">{$cur.phone}</li>
+                {/foreach}
+            </ul>
+        {/if}
       </li>
-      <li class="footer-menu">
+      <li class="footer-menu" style="width:194px;">
         <div class="footer-menu__name">Наши адреса</div>
+        {if $data_contacts_footer}
         <ul class="footer-submenu">
-          <li class="footer-submenu__item">г. Пенза, 1-й Онежский проезд, д.6</li>
-          <li class="footer-submenu__item">г. Пенза, 1-й Онежский проезд, д.6</li>
+            {foreach from=$data_contacts_footer item=cur}
+                <li class="footer-submenu__item">{$cur.address}</li>
+            {/foreach}
         </ul>
+        {/if}
       </li>
     </ul>
     <div class="clear"></div>

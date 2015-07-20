@@ -139,7 +139,8 @@
                     data:{
                         login:login,
                         text:$('.container-checkout textarea[name="text"]').val(),
-                        phone: $('.container-checkout input[name="phone"]').val()
+                        phone: $('.container-checkout input[name="phone"]').val(),
+                        city: $('.container-checkout input[name="city"]').val()
                     },
                     success: function(data){
                     }
@@ -163,6 +164,11 @@
             {
                 counter++;
                 $('.container-checkout input[name="last_name"]').addClass('error');
+            }
+            if (!$('.container-checkout input[name="city"]').val()) 
+            {
+                counter++;
+                $('.container-checkout input[name="city"]').addClass('error');
             }
             if (!$('.container-checkout input[name="email"]').val()) 
             {
@@ -217,7 +223,8 @@
                         email:$('.container-checkout input[name="email"]').val(),
                         login:0,
                         text:$('.container-checkout textarea[name="text"]').val(),
-                        phone: $('.container-checkout input[name="phone"]').val()
+                        phone: $('.container-checkout input[name="phone"]').val(),
+                        city: $('.container-checkout input[name="city"]').val()
                     },
                     success: function(data){
                     }
@@ -275,6 +282,7 @@
             </tr>
             </tbody>
         </table>
+        {if $cart}
         <div class="buttons-cart">
             <div class="buttons-cart_button">
                 <a href="/category/">Продолжить покупки
@@ -286,6 +294,7 @@
             </div>
             <div class="clear"></div>
         </div>
+        {/if}
     </div>
 </div>
 <div id="checkout" style="display:none;width:500px;">
@@ -319,7 +328,14 @@
         <div class="form-login-row">
             <div class="form-login-label big"><span>*</span>Телефон: </div>
             <div class="form-login-input">
-                <input type="text" {if !$user}value=""{else}value="{$user.phone}"{/if} name="phone">
+                <input type="text" value="" name="phone">
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="form-login-row">
+            <div class="form-login-label big"><span>*</span>Город: </div>
+            <div class="form-login-input">
+                <input type="text" value="" name="city">
             </div>
             <div class="clear"></div>
         </div>

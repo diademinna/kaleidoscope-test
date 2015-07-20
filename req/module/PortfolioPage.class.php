@@ -29,7 +29,7 @@ class PortfolioPage extends AbstractPageModule {
                     $this->template->assign('pager_string', $pagerString);
                     $this->template->assign('data_portfolio', $data);
 
-                    $this->setPageTitle("Галерея");
+                    $this->setPageTitle("Портфолио");
 		}
 		else{ // выбранный элемент
                     $query = $this->conn->newStatement("SELECT * FROM portfolio WHERE id=:id: AND active=1");
@@ -37,7 +37,7 @@ class PortfolioPage extends AbstractPageModule {
                     $data_item = $query->getFirstRecord();
                     $this->template->assign('data_item', $data_item);
 
-                    $this->setPageTitle("".($data_item['title']?$data_item['title']:$data_item['name'])." / Галерея");
+                    $this->setPageTitle("".($data_item['title']?$data_item['title']:$data_item['name'])." / Портфолио");
 
                     // достаем галерею.
                     $query = $this->conn->newStatement("SELECT * FROM portfolio_photo WHERE id_portfolio=:id_portfolio: ORDER BY pos DESC, id DESC");

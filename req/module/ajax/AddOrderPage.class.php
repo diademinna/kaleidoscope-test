@@ -15,6 +15,8 @@ class AddOrderPage extends AbstractPageModule {
 		$login = $this->request->getValue('login');
 		$phone = $this->request->getValue('phone');
 		$text = $this->request->getValue('text');
+		$city = $this->request->getValue('city');
+		 setcookie("user_cart", "", time()-3600, "/");
                 $mass_user_cart = unserialize($_COOKIE['user_cart']);
                 if ($login)
                 {
@@ -49,7 +51,6 @@ class AddOrderPage extends AbstractPageModule {
                     while($max--) // Создаём пароль. 
                         $password.=$chars[rand(0,$size)]; 
                      /*-генерация пароля-*/
-                    echo json_encode(array('data_reg_user'=>$password));
                     $query = $this->conn->newStatement("INSERT INTO user SET name=:name:, last_name=:last_name:, email=:email:, phone=:phone:, login=:login:, password=:password:, date=now(), activate=:activate:");
                     $query->setVarchar("name", $name);
                     $query->setVarchar("last_name", $last_name);
@@ -58,6 +59,7 @@ class AddOrderPage extends AbstractPageModule {
                     $query->setVarchar("phone", $phone);
                     $query->setVarchar("password", md5($password) );
                     $query->setInteger("activate", 1);
+                    $query->setVarChar("city", $city);
                     $query->execute();
                     
                     $insertId = $query->getInsertId();
@@ -66,8 +68,6 @@ class AddOrderPage extends AbstractPageModule {
                     $form['login'] = $email;
                     $form['password'] = $password;
                     $form['servak'] = $_SERVER['HTTP_HOST'];
-                    $form['id'] = $insertId;
-                    $form['checkSum'] = base64_encode(md5($email));
                     $mail = new MailUtil();
                     $mail->setTo($email);
                     $mail->setSubject('Вы зарегистрированы на сайте '.$_SERVER['HTTP_HOST']);
@@ -110,10 +110,45 @@ class AddOrderPage extends AbstractPageModule {
                     }
                     $query->setInteger('id_product', $value['id_product']);
                     $query->execute();
+                    
+                    $query = $this->conn->newStatement('SELECT name, price FROM product WHERE id=:id:');
+                    $query->setInteger('id', $value['id_product']);
+                    $data_name_product = $query->getFirstRecord();
+                    $mass_user_cart[$key]['name_product'] = $data_name_product['name'];
+                    $mass_user_cart[$key]['price'] = $data_name_product['price'];
+                    
                 }
+                $form = array();
+                $form['login'] = $login;
+                $form['password'] = $password;
+                $form['servak'] = $_SERVER['HTTP_HOST'];
+                $form['products'] = $mass_user_cart;
+                $form['text'] = $text;
+                $form['phone'] = $phone;
+                $form['city'] = $city;
+                if ($login)
+                {
+                    $form['name'] = $data_user['name']."  ".$data_user['last_name'];
+                }
+                else
+                {
+                    $form['name'] = $name."  ".$last_name;
+                }
+                $mail = new MailUtil();
+                $mail->setTo(ADMIN_EMAIL);
+                $mail->setSubject('Заказ с сайта');
+                $mail->setFrom("{$_SERVER['HTTP_HOST']} <" . ADMIN_EMAIL . ">");
+                $tdata = $form;
+                $mail->setEmailTextTemplate('mail/order_admin.tpl', $tdata);
+                $mail->doSend();
+
+               
                 
-                setcookie ("user_cart", "/", time() - 3600);
-                echo json_encode(array('data_reg_user'=>$login));
+                
+                
+                
+                
+                echo json_encode(array('data_reg_user'=>$str_id_product));
                 die();
 	}
 	

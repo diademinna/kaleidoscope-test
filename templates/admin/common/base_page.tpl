@@ -7,6 +7,7 @@
 	<link href="/css/admin/style.css" rel="stylesheet" type="text/css" />
 
 	<script type="text/javascript" src="/js/jquery-2.1.1.min.js"></script>
+        <script type="text/javascript" src="/js/bootstrap.min.js"></script>
 
 	<!--  v1.11  -  для датапикера datepicker и sortable -->
 	<link type="text/css" href="/js/ui/css/jquery-ui.css" rel="stylesheet" />
@@ -37,7 +38,7 @@
             <div class="sidebar-collapse">
                 <ul id="side-menu" class="nav metismenu">
                     <li class="nav-header" style="">
-                        <div class="dropdown profile-element">
+                        <a href="/admin/"><div class="dropdown profile-element">
                             <span>
                                 <img class="img-circle" src="/img/admin/admin.png" alt="image" />
                             </span>
@@ -48,44 +49,89 @@
                                     </span>
                                 </span>
                             </a>
+                        </a>
                         </div>
-                    </li>
-                    <li{if $unit=="category"} class="active"{/if}>
-                        <a href="/admin/category/list/">
-                                <i class="fa fa-archive"></i>
-                                <span class="nav-label">Все категории</span>
-                        </a>
-                    </li>
-                    <li{if $unit=="main_category"} class="active"{/if}>
-                        <a href="/admin/main_category/list/">
-                            <i class="fa fa-star"></i>
-                            <span class="nav-label">Категории на главной</span>
-                        </a>
-                    </li>
-                    <li{if $unit=="product"} class="active"{/if}>
-                        <a href="/admin/product/list/">
-                            <i class="fa fa-list-alt"></i>
-                            <span class="nav-label">Товары</span>
-                        </a>
                     </li>
                     <li{if $unit=="user"} class="active"{/if}>
                         <a href="/admin/user/list/">
                             <i class="fa fa-users"></i>
                             <span class="nav-label">Покупатели</span>
+                             <span title="Покупатели, зарегестрированные сегодня" class="label label-primary pull-right">{count($data_users_admin)}</span>
                         </a>
                     </li>
                     <li{if $unit=="orders"} class="active"{/if}>
                         <a href="/admin/orders/list/">
                             <i class="fa fa-shopping-cart"></i>
                             <span class="nav-label">Заказы</span>
+                            <span title="Заказы за сегодня" class="label label-primary pull-right">{count($data_order_admin)}</span>
                         </a>
                     </li>
-                    <li{if $unit=="parameter"} class="active"{/if}>
-                        <a href="/admin/parameter/list/">
-                            <i class="fa fa-wrench"></i>
-                            <span class="nav-label">Параметры для категорий</span>
+                    <li{if $unit=="respond"} class="active"{/if}>
+                        <a href="/admin/respond/list/">
+                            <i class="fa fa-calendar"></i>
+                            <span class="nav-label">Завки на услуги</span>
+                            <span title="Заявки на услуги за сегодня" class="label label-primary pull-right">{count($data_respond_admin)}</span>
                         </a>
                     </li>
+                    <li>
+                        <a href="#collapseExample" data-toggle="collapse" {if $unit=="category" OR $unit=="main_category" OR $unit=="parameter"} class="active"{/if}>
+                             <i class="fa fa-archive"></i>
+                            <span class="nav-label">Категории</span>
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="nav nav-second-level collapse{if $unit=="category" OR $unit=="main_category" OR $unit=="parameter"}in{/if}" id="collapseExample">
+                           <li{if $unit=="category"} class="active"{/if}>
+                                <a href="/admin/category/list/">
+                                    <i class="fa fa-archive"></i>
+                                    <span class="nav-label">Все категории</span>
+                                </a>
+                            </li>
+                           <li{if $unit=="main_category"} class="active"{/if}>
+                                <a href="/admin/main_category/list/">
+                                    <i class="fa fa-star"></i>
+                                    <span class="nav-label">Категории на главной</span>
+                                </a>
+                            </li>
+                            <li{if $unit=="parameter"} class="active"{/if}>
+                              <a href="/admin/parameter/list/">
+                                  <i class="fa fa-wrench"></i>
+                                  <span class="nav-label">Параметры для категорий</span>
+                              </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#collapseExample1" data-toggle="collapse" {if $unit=="category" OR $unit=="main_category" OR $unit=="parameter"} class="active"{/if}>
+                             <i class="fa fa fa-list-alt"></i>
+                            <span class="nav-label">Товары</span>
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="nav nav-second-level collapse{if $unit=="product" OR $unit=="popular_product" OR $unit=="buy_product"}in{/if}" id="collapseExample1">
+                           <li{if $unit=="product"} class="active"{/if}>
+                                <a href="/admin/product/list/">
+                                    <i class="fa fa-list-alt"></i>
+                                    <span class="nav-label">Товары</span>
+                                </a>
+                            </li>
+                            <li{if $unit=="popular_product"} class="active"{/if}>
+                                <a href="/admin/popular_product/list/">
+                                    <i class="fa fa-star-o"></i>
+                                    <span class="nav-label">Популярные товары</span>
+                                </a>
+                            </li>
+                            <li{if $unit=="buy_product"} class="active"{/if}>
+                                <a href="/admin/buy_product/list/">
+                                    <i class="fa fa-star"></i>
+                                    <span class="nav-label">Часто покупаемые товары</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    
+                   
+                    
+                  
+                  
                     <li{if $unit=="actions"} class="active"{/if}>
                         <a href="/admin/actions/list/">
                             <i class="fa fa-gift"></i>
@@ -110,6 +156,14 @@
                             <span class="nav-label">Портфолио</span>
                         </a>
                     </li>
+                    <li{if $unit=="services"} class="active"{/if}>
+                        <a href="/admin/services/list/">
+                            <i class="fa fa-check-square-o"></i>
+                            <span class="nav-label">Услуги</span>
+                        </a>
+                    </li>
+                    
+                   
                 </ul>
             </div>
         </nav>

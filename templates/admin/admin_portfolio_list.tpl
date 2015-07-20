@@ -80,6 +80,7 @@
                 </table>
             </div>
         </div>       
+        {if $pager_string}<div class="pager">{$pager_string}</div>{/if}  
     </div>
 </form>
             

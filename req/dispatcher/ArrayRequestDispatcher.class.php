@@ -102,6 +102,7 @@ class ArrayRequestDispatcher extends RequestDispatcher {
                         '/add_order/' => array('moduleName' => 'ajax/AddOrderPage', 'moduleType' => 'module'), 
                         '/add_review/' => array('moduleName' => 'ajax/AddReviewPage', 'moduleType' => 'module'), 
                         '/admin_change_category/' => array('moduleName' => 'ajax/AdminChangeCategoryPage', 'moduleType' => 'module'), 
+                        '/add_respond/' => array('moduleName' => 'ajax/AddRespondPage', 'moduleType' => 'module'), 
                     
                         '/search/'=> array('moduleName' => 'SearchPage', 'moduleType' => 'module', 'word' => '$1'), // поиск
 			
@@ -122,6 +123,11 @@ class ArrayRequestDispatcher extends RequestDispatcher {
                         '/portfolio/' 			=> array('moduleName' => 'PortfolioPage', 'moduleType' => 'module'),
 			'/portfolio/page/(\d+)/' => array('moduleName' => 'PortfolioPage', 'moduleType' => 'module', 'page' => '$1'),
 			'/portfolio/(\d+)/' 		=> array('moduleName' => 'PortfolioPage', 'moduleType' => 'module', 'id' => '$1'),
+                    
+                    
+                        '/services/' 			=> array('moduleName' => 'ServicesPage', 'moduleType' => 'module'),
+			'/services/page/(\d+)/' => array('moduleName' => 'ServicesPage', 'moduleType' => 'module', 'page' => '$1'),
+			'/services/(\d+)/' 		=> array('moduleName' => 'ServicesPage', 'moduleType' => 'module', 'id' => '$1'),
 			
 			/* CRON */
 			
@@ -313,6 +319,29 @@ class ArrayRequestDispatcher extends RequestDispatcher {
 			'/admin/portfolio/add/(\d+)/edit/(\d+)/'		=> array('moduleName' => 'admin/AdminPortfolioAddPage', 'moduleType' => 'module', 'page' => '$1', 'action' => 'edit', 'id' => '$2'),			
 			'/admin/portfolio_photo/add/(\d+)/(\d+)/'		=> array('moduleName' => 'admin/AdminPortfolioPhotoAddPage', 'moduleType' => 'module', 'page' => '$1', 'id' => '$2'),
 			
+                    
+                    
+                    
+                        /*Услуги*/
+                        '/admin/services/list/'						=> array('moduleName' => 'admin/AdminServicesListPage', 'moduleType' => 'module'),
+			'/admin/services/list/(\d+)/'				=> array('moduleName' => 'admin/AdminServicesListPage', 'moduleType' => 'module', 'page' => '$1'),
+			'/admin/services/list/(\d+)/delete/(\d+)/'	=> array('moduleName' => 'admin/AdminServicesListPage', 'moduleType' => 'module', 'page' => '$1', 'action' => 'delete', 'id' => '$2'),
+			'/admin/services/add/'						=> array('moduleName' => 'admin/AdminServicesAddPage', 'moduleType' => 'module'),
+			'/admin/services/add/(\d+)/edit/(\d+)/'		=> array('moduleName' => 'admin/AdminServicesAddPage', 'moduleType' => 'module', 'page' => '$1', 'action' => 'edit', 'id' => '$2'),
+                    
+                    
+                    
+                        /*Заявки на услуги*/
+                        '/admin/respond/list/'						=> array('moduleName' => 'admin/AdminRespondListPage', 'moduleType' => 'module'),
+			'/admin/respond/list/(\d+)/'				=> array('moduleName' => 'admin/AdminRespondListPage', 'moduleType' => 'module', 'page' => '$1'),
+			'/admin/respond/list/(\d+)/delete/(\d+)/'	=> array('moduleName' => 'admin/AdminRespondListPage', 'moduleType' => 'module', 'page' => '$1', 'action' => 'delete', 'id'=> '$2'),
+			'/admin/respond/add/(\d+)/'				=> array('moduleName' => 'admin/AdminRespondAddPage', 'moduleType' => 'module', 'page' => '$1'),
+			'/admin/respond/add/(\d+)/edit/(\d+)/'		=> array('moduleName' => 'admin/AdminRespondAddPage', 'moduleType' => 'module', 'page' => '$1', 'action' => 'edit', 'id' => '$2'),
+                    
+                    
+                        ///популярные товары
+                        '/admin/popular_product/list/'						=> array('moduleName' => 'admin/AdminPopularProductListPage', 'moduleType' => 'module'),
+                        '/admin/buy_product/list/'						=> array('moduleName' => 'admin/AdminBuyProductListPage', 'moduleType' => 'module'),
 			/* DEVELOPER CODE  */
 			
 			

@@ -306,3 +306,10 @@ label { display: inline-block; font-weight: 700; margin-bottom: 5px; max-width: 
 .search-item{margin-bottom:15px;}
 .search-item__name a {color:#eb5f60;}
 .find-word__stroka {font-size: 16px; margin-bottom: 15px;}
+.services-list{}
+.services-list__item {width:290px; float: left; margin:0 25px 35px 0; background-color: #ffffff; padding:10px 10px 20px 10px;}
+.services-list__item.last {margin-right:0;}
+.services-list-item__image {text-align: center;}
+.services-list-item__name {color:#d75d6f; font-size: 16px; padding:10px 0; text-align: center;}
+.button-service {text-align: center; background-color: #93c567; color:#ffffff; text-transform: uppercase; padding:10px 0; margin:10px 30px 0 30px; cursor: pointer;}
+.button-service:hover {background-color:#eb5f60;}

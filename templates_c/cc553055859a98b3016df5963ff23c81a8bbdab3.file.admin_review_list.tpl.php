@@ -1,16 +1,16 @@
-<?php /* Smarty version Smarty3-b7, created on 2015-07-14 19:10:38
+<?php /* Smarty version Smarty3-b7, created on 2015-07-17 12:05:49
          compiled from ".\templates\admin/admin_review_list.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:2559855a5347e865868-89207878%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:2681255a8c56de20276-23928396%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'cc553055859a98b3016df5963ff23c81a8bbdab3' => 
     array (
       0 => '.\\templates\\admin/admin_review_list.tpl',
-      1 => 1436890236,
+      1 => 1437123949,
     ),
   ),
-  'nocache_hash' => '2559855a5347e865868-89207878',
+  'nocache_hash' => '2681255a8c56de20276-23928396',
   'function' => 
   array (
   ),
@@ -113,6 +113,8 @@ if (count($_from) > 0){
                     </table>
                 </div>
             </div>
+            <?php if ($_smarty_tpl->getVariable('pager_string')->value){?><div class="pager"><?php echo $_smarty_tpl->getVariable('pager_string')->value;?>
+</div><?php }?>  
         </div>
     </form>
 <?php }?>

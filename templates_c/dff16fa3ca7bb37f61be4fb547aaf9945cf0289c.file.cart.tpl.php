@@ -1,16 +1,16 @@
-<?php /* Smarty version Smarty3-b7, created on 2015-07-07 14:30:18
+<?php /* Smarty version Smarty3-b7, created on 2015-07-18 22:14:01
          compiled from ".\templates\user/cart.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:18750559a96429b3868-28685497%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:503355aaa579da3a34-78329204%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'dff16fa3ca7bb37f61be4fb547aaf9945cf0289c' => 
     array (
       0 => '.\\templates\\user/cart.tpl',
-      1 => 1436257098,
+      1 => 1437246836,
     ),
   ),
-  'nocache_hash' => '18750559a96429b3868-28685497',
+  'nocache_hash' => '503355aaa579da3a34-78329204',
   'function' => 
   array (
   ),
@@ -144,6 +144,7 @@ if (!is_callable('smarty_modifier_cost')) include 'D:\Programms\OpenServer\OpenS
         var counter = 0;
         if (login)
         {
+            alert(login);
             if (!$('.container-checkout input[name="phone"]').val()) 
             {
                 counter++;
@@ -159,7 +160,8 @@ if (!is_callable('smarty_modifier_cost')) include 'D:\Programms\OpenServer\OpenS
                     data:{
                         login:login,
                         text:$('.container-checkout textarea[name="text"]').val(),
-                        phone: $('.container-checkout input[name="phone"]').val()
+                        phone: $('.container-checkout input[name="phone"]').val(),
+                        city: $('.container-checkout input[name="city"]').val()
                     },
                     success: function(data){
                     }
@@ -183,6 +185,11 @@ if (!is_callable('smarty_modifier_cost')) include 'D:\Programms\OpenServer\OpenS
             {
                 counter++;
                 $('.container-checkout input[name="last_name"]').addClass('error');
+            }
+            if (!$('.container-checkout input[name="city"]').val()) 
+            {
+                counter++;
+                $('.container-checkout input[name="city"]').addClass('error');
             }
             if (!$('.container-checkout input[name="email"]').val()) 
             {
@@ -237,7 +244,8 @@ if (!is_callable('smarty_modifier_cost')) include 'D:\Programms\OpenServer\OpenS
                         email:$('.container-checkout input[name="email"]').val(),
                         login:0,
                         text:$('.container-checkout textarea[name="text"]').val(),
-                        phone: $('.container-checkout input[name="phone"]').val()
+                        phone: $('.container-checkout input[name="phone"]').val(),
+                        city: $('.container-checkout input[name="city"]').val()
                     },
                     success: function(data){
                     }
@@ -355,8 +363,14 @@ _sm.<?php echo $_smarty_tpl->getVariable('cur')->value['ext'];?>
         <div class="form-login-row">
             <div class="form-login-label big"><span>*</span>Телефон: </div>
             <div class="form-login-input">
-                <input type="text" <?php if (!$_smarty_tpl->getVariable('user')->value){?>value=""<?php }else{ ?>value="<?php echo $_smarty_tpl->getVariable('user')->value['phone'];?>
-"<?php }?> name="phone">
+                <input type="text" value="" name="phone">
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="form-login-row">
+            <div class="form-login-label big"><span>*</span>Город: </div>
+            <div class="form-login-input">
+                <input type="text" value="" name="city">
             </div>
             <div class="clear"></div>
         </div>

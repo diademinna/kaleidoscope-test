@@ -30,11 +30,7 @@
                             </div>
                         </td>
                         <td>
-                            {if $cur['category_child']}
-                            <a href="/admin/category/list/{$cur.id}/" title="Перейти в этот раздел">{$cur.name}</a>
-                            {else}
-                                {$cur.name}
-                            {/if}
+                            <a href="/admin/category/list/{$cur.id}/" title="Перейти в этот раздел">{$cur.name}</a> 
                         </td>
                         
                         <td>
@@ -60,6 +56,7 @@
                 </tbody>
             </table>
         </div>
+                {*
         <div class="table-responsive">
            <table class="table table-striped">
                 <thead>
@@ -83,7 +80,7 @@
                 </tr>
                 </thead>
             </table>
-        </div>
+        </div>*}
     </div>
 </div>
 </form>

@@ -1,16 +1,16 @@
-<?php /* Smarty version Smarty3-b7, created on 2015-07-16 18:24:54
+<?php /* Smarty version Smarty3-b7, created on 2015-07-17 12:37:21
          compiled from ".\templates\common/base_page.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:3159755a7ccc6de4438-21063632%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:2387255a8ccd146c7b9-22003782%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '7ea33b6fdf0c1432e6017bf0d11ae65cd0b94df0' => 
     array (
       0 => '.\\templates\\common/base_page.tpl',
-      1 => 1437060287,
+      1 => 1437125838,
     ),
   ),
-  'nocache_hash' => '3159755a7ccc6de4438-21063632',
+  'nocache_hash' => '2387255a8ccd146c7b9-22003782',
   'function' => 
   array (
   ),
@@ -366,23 +366,38 @@ if (count($_from) > 0){
           <li class="footer-submenu__item"><a class="footer-submenu__link" href="/actions/">Акции</a></li>
           <li class="footer-submenu__item"><a class="footer-submenu__link" href="/contacts/">Контакты</a></li>
           <li class="footer-submenu__item"><a class="footer-submenu__link" href="/portfolio/">Портфолио</a></li>
-          <li class="footer-submenu__item"><a class="footer-submenu__link" href="#">Услуги</a></li>
+          <li class="footer-submenu__item"><a class="footer-submenu__link" href="/services/">Услуги</a></li>
         </ul>
       </li>
-      <li class="footer-menu">
+      <li class="footer-menu" style="width:134px;">
         <div class="footer-menu__name">Контакты</div>
-        <ul class="footer-submenu">
-          <li class="footer-submenu__item"><a class="footer-submenu__link" href="mailto:email@yandex.ru">email@yandex.ru</a></li>
-          <li class="footer-submenu__item">8 (800) 100-20-30</li>
-          <li class="footer-submenu__item">8 (800) 100-20-30</li>
-        </ul>
+        <?php if ($_smarty_tpl->getVariable('data_contacts_footer')->value){?>
+            <ul class="footer-submenu">
+                <?php  $_smarty_tpl->tpl_vars['cur'] = new Smarty_Variable;
+ $_from = $_smarty_tpl->getVariable('data_contacts_footer')->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+if (count($_from) > 0){
+    foreach ($_from as $_smarty_tpl->tpl_vars['cur']->key => $_smarty_tpl->tpl_vars['cur']->value){
+?>
+                    <li class="footer-submenu__item"><?php echo $_smarty_tpl->getVariable('cur')->value['phone'];?>
+</li>
+                <?php }} ?>
+            </ul>
+        <?php }?>
       </li>
-      <li class="footer-menu">
+      <li class="footer-menu" style="width:194px;">
         <div class="footer-menu__name">Наши адреса</div>
+        <?php if ($_smarty_tpl->getVariable('data_contacts_footer')->value){?>
         <ul class="footer-submenu">
-          <li class="footer-submenu__item">г. Пенза, 1-й Онежский проезд, д.6</li>
-          <li class="footer-submenu__item">г. Пенза, 1-й Онежский проезд, д.6</li>
+            <?php  $_smarty_tpl->tpl_vars['cur'] = new Smarty_Variable;
+ $_from = $_smarty_tpl->getVariable('data_contacts_footer')->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+if (count($_from) > 0){
+    foreach ($_from as $_smarty_tpl->tpl_vars['cur']->key => $_smarty_tpl->tpl_vars['cur']->value){
+?>
+                <li class="footer-submenu__item"><?php echo $_smarty_tpl->getVariable('cur')->value['address'];?>
+</li>
+            <?php }} ?>
         </ul>
+        <?php }?>
       </li>
     </ul>
     <div class="clear"></div>
